@@ -1,5 +1,6 @@
 <?php
-
+use App\Modal;
+use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,4 @@ Route::get('/', function () {
 });
 
 Route::get('products', ['uses'=>'ProductsController@index']);
+

@@ -14,10 +14,11 @@ class Product extends Model
     public function getPriceAttribute($value){
 
         $newForm = $value." Bs";
-        return $newForm;
-    
-    
+        return $newForm;    
     }
     
+    public function modal() {
+        return $this->hasOne('App\Modal');
+    }
 
 }
