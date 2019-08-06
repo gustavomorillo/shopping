@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
+use App\Cart;
 
 class ProductsController extends Controller
 {
@@ -13,4 +14,6 @@ class ProductsController extends Controller
         return view('allproducts', compact('products'));
 
     }
+
+  
 }

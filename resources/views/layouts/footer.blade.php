@@ -162,7 +162,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	@foreach($products as $product)
 
 	<!-- Modal1 -->
-	<div class="wrap-modal1 {{$product->modal->name}} p-t-60 p-b-20">
+<div class="wrap-modal1 {{$product->modal->name}} p-t-60 p-b-20" >
 		<div class="overlay-modal1 {{$product->modal->second_name}}"></div>
 
 		<div class="container">
@@ -280,10 +280,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
-
-										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+									 <a href="{{route('cart.edit', ['id'=>$product->id])}}"> 
+										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" data-id="{{$product->id}}">
 											Add to cart
 										</button>
+									 </a>
 									</div>
 								</div>	
 							</div>
@@ -577,6 +578,32 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
+			
+      let id = $(this).data('id');
+      console.log(id);
+    	
+
+
+
+
+
+
+		// 	addItem();
+		// 	function addItem(){
+    //   $.ajax({
+    //     method:'POST',
+    //     url:'http://itemapi2.test/api/items',
+    //     data: {}
+    //   }).done(function(item){
+    //     alert(item);
+		// 	});
+		// 	console.log('hola');
+    // }
+
+
+
+
+
 			});
 		});
 	
