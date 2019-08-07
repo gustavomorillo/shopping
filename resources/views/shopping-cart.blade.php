@@ -691,7 +691,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
+<script>
 
+	$(document).ready(function() {
+	console.log('test');
+	
+	});
+	
+	</script>
 <script>
 	
 	
@@ -734,7 +741,7 @@ $(document).ready(function() {
 				$.ajax({
 							type: 'POST',
 							url: 'cart/'+proId,
-							data: {newqty,rowId,proId,_method: 'PATCH'}
+							data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
 						}).done(function(item){
 						console.log(item);
 						getAll();
@@ -744,7 +751,7 @@ $(document).ready(function() {
 					$.ajax({
 						type: 'get',
 						url:'cart/get/all',
-						data: {rowId, newqty}
+						data: {rowId:rowId, newqty:newqty}
 						}).done(function(item) {
 						console.log(item);
 						$('#subtotal<?php echo $i;?>').val(item['0']);
@@ -792,7 +799,7 @@ $(document).ready(function() {
 				$.ajax({
 							type: 'POST',
 							url: 'cart/'+proId,
-							data: {newqty,rowId,proId,_method: 'PATCH'}
+							data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
 						}).done(function(item){
 						console.log(item);
 						getAll();
@@ -802,7 +809,7 @@ $(document).ready(function() {
 					$.ajax({
 						type: 'get',
 						url:'cart/get/all',
-						data: {rowId, newqty}
+						data: {rowId:rowId, newqty:newqty}
 						}).done(function(item) {
 						console.log(item);
 						$('#subtotal<?php echo $i;?>').val(item['0']);
