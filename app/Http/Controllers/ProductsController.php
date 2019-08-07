@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Product;
+
 use Illuminate\Http\Request;
-use App\Cart;
+use App\Product;
 
 class ProductsController extends Controller
 {
@@ -16,12 +16,9 @@ class ProductsController extends Controller
     }
 
     public function show($id){
-
-
         
-
-    }
-
-
-  
+        $product = Product::find($id);
+        
+        return view('product', compact('product'));
+    }  
 }

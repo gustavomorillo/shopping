@@ -4,41 +4,56 @@
 	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/MagnificPopup/magnific-popup.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
 	
 	<!-- Header -->
-	<header>
+	<header class="
+	<?php if(request()->is('cart')){
+		echo 'header-v4';
+	} elseif(request()->is('product'))  {
+		echo 'header-v4';
+	} elseif(request()->is('products/*')) {
+		echo 'header-v4';
+	} else {
+		echo '';
+	}
+?>"> 
+	
+	{{-- {{ (request()->is('cart')) ? 'header-v4' : '' }} --}}
+	
+	
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
@@ -68,19 +83,34 @@
 				</div>
 			</div>
 
-			<div class="wrap-menu-desktop">
+			<div class="wrap-menu-desktop 
+			
+			{{-- {{ (request()->is('cart')) ? 'how-shadow1' : '' }} --}}
+
+			<?php if(request()->is('cart')){
+				echo 'how-shadow1';
+			} elseif(request()->is('product'))  {
+				echo 'how-shadow1';
+			} elseif(request()->is('products/*')) {
+				echo 'how-shadow1';
+			} else {
+				echo '';
+			}
+		?>
+		
+			">
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="{{asset('images/icons/logo-01.png')}}" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
-								<a href="index.html">Home</a>
+							<li class=" {{ (request()->is('products')) ? 'active-menu' : '' }}">
+								<a href="{{ url('products')}}">Home</a>
 								<ul class="sub-menu">
 									<li><a href="index.html">Homepage 1</a></li>
 									<li><a href="home-02.html">Homepage 2</a></li>
@@ -133,7 +163,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+				<a href="index.html"><img src="{{asset('images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -229,7 +259,7 @@
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 			<div class="container-search-header">
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
+					<img src="{{asset('images/icons/icon-close2.png')}}" alt="CLOSE">
 				</button>
 
 				<form class="wrap-search-header flex-w p-l-15">

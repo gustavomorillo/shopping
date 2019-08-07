@@ -22,4 +22,6 @@ Route::get('product/addtocart/{id}', ['uses'=>'ProductsController@addProductToCa
 
 Route::resource('/cart', 'CartController');
 
-Route::get('cart/get/all', 'CartController@getAll');
+Route::get('cart/get/all', 'CartController@getAll')->name('getDataToAjax');
+
+Route::get('products/{id}', 'ProductsController@show')->name('getOneProduct');
