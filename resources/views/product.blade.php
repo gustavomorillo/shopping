@@ -111,7 +111,18 @@
 	</div>
 		
 
-	<!-- Product Detail -->
+  <!-- Product Detail -->
+  
+
+<form action="" id="{{$product->id}}">
+<input id="prodId" name="id" type="hidden" value="{{$product->id}}">
+<input id="name" name="name" type="hidden" value="{{$product->name}}">
+<input id="price" name="price" type="hidden" value="{{$product->price}}">
+<input id="image" name="image" type="hidden" value="{{$product->image}}">
+<input id="weight" name="weight" type="hidden" value="0">
+
+
+
 	<section class="sec-product-detail bg0 p-t-65 p-b-60">
 		<div class="container">
 			<div class="row">
@@ -179,12 +190,12 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>Choose an option</option>
-											<option>Size S</option>
-											<option>Size M</option>
-											<option>Size L</option>
-											<option>Size XL</option>
+										<select class="js-select2" name="size" form="{{$product->id}}">
+											<option value="">Choose an option</option>
+											<option value="s">Size S</option>
+											<option value="m">Size M</option>
+											<option value="l">Size L</option>
+											<option value="xl">Size XL</option>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -198,12 +209,12 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>Choose an option</option>
-											<option>Red</option>
-											<option>Blue</option>
-											<option>White</option>
-											<option>Grey</option>
+										<select class="js-select2" name="color" form="{{$product->id}}">
+											<option value="">Choose an option</option>
+											<option value="red">Red</option>
+											<option value="blue">Blue</option>
+											<option value="white">White</option>
+											<option value="grey">Grey</option>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -217,19 +228,23 @@
 											<i class="fs-16 zmdi zmdi-minus"></i>
 										</div>
 
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+										<input class="mtext-104 cl3 txt-center num-product" type="number" name="qty" value="1">
 
 										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div>
 
-									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                  
+
+									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail " data-id="{{$product->id}}">
 										Add to cart
 									</button>
 								</div>
 							</div>	
-						</div>
+            </div>
+            
+          </form>
 
 						<!--  -->
 						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
@@ -403,17 +418,17 @@
 											<div class="row p-b-25">
 												<div class="col-12 p-b-5">
 													<label class="stext-102 cl3" for="review">Your review</label>
-													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
+													{{-- <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea> --}}
 												</div>
 
 												<div class="col-sm-6 p-b-5">
 													<label class="stext-102 cl3" for="name">Name</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
+													{{-- <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name"> --}}
 												</div>
 
 												<div class="col-sm-6 p-b-5">
 													<label class="stext-102 cl3" for="email">Email</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
+													{{-- <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email"> --}}
 												</div>
 											</div>
 

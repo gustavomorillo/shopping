@@ -87,7 +87,11 @@ class CartController extends Controller
 
         $product = $request->all();
 
-        
+        $validatedData = $request->validate([
+            'size' => 'required',
+            'color' => 'required'
+            
+        ]);
 
 
         //return response()->json($product['name']);

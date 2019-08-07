@@ -437,6 +437,51 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		/*---------------------------------------------*/
 
+		$('.js-addcart-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(e){
+
+
+				e.preventDefault();
+				swal(nameProduct, "is added to cart !", "success");
+
+
+				let id = $(this).data('id');
+				alert(id);
+			
+				var datos = $('#'+id).serialize();
+				alert(datos);
+
+				$.ajax({
+						type: 'get',
+						url: '/cart/'+ id + '/edit',
+						data: datos,
+				}).done(function(item){
+					console.log('Item added');
+					
+				});
+	
+
+		});
+
+
+
+
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		$('.js-addcart-detail1').each(function(){
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(e){
