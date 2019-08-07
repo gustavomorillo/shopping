@@ -21,3 +21,5 @@ Route::get('products', ['uses'=>'ProductsController@index', "as" => "allProducts
 Route::get('product/addtocart/{id}', ['uses'=>'ProductsController@addProductToCart','as'=>'AddToCartProduct']);
 
 Route::resource('/cart', 'CartController');
+
+Route::get('cart/get/all', 'CartController@getAll');

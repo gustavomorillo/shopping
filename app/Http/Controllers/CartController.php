@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Product;
@@ -13,8 +14,34 @@ class CartController extends Controller
      */
     public function index()
     {
+        
+        // Session::flush();
+        Cart::setGlobalTax(0);
         $cartItems = Cart::content();
-        return view('cart', compact('cartItems'));
+        
+        return view('shopping-cart', compact('cartItems'));
+    }
+
+    public function getAll(Request $request)
+    {
+        $qty = $request->newqty;
+        $rowId = $request->rowId;
+        Cart::update($rowId, $qty);
+
+        $cartItems = Cart::content();
+        $total = Cart::total();
+
+        $oneItem= Cart::get($rowId);
+        $subtotalOneItem = $oneItem->subtotal;
+        $subtotal = Cart::subtotal();
+
+        $updateData = [$subtotalOneItem, $subtotal , $total];
+
+
+
+
+        return response()->json($updateData);
+        
     }
 
     /**
@@ -55,15 +82,22 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $product = Product::find($id);
+
+        $product = $request->all();
+
+        
+
+
+        //return response()->json($product['name']);
+        // $product = Product::find($id);
     
-        $price = (int) str_replace(" Bs","",$product->price);
+        // $price = (int) str_replace(" Bs","",$product->price);
 
-        Cart::add($id, $product->name, 1, $price, 0,['size'=>'medium']);
+        Cart::add($id, $product['name'], $product['qty'], $product['price'], $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
 
-        return back();
+        // return back();
     }
 
     /**
@@ -75,7 +109,13 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            
+      
+            $qty = $request->newqty;
+            $proId = $request->proId;
+            $rowId = $request->rowId;
+            return response()->json($rowId);
+
     }
 
     /**

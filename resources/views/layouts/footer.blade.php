@@ -160,8 +160,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 	@foreach($products as $product)
-
+<form action="" id="{{$product->id}}">
 	<!-- Modal1 -->
+<input id="prodId" name="id" type="hidden" value="{{$product->id}}">
+<input id="name" name="name" type="hidden" value="{{$product->name}}">
+<input id="price" name="price" type="hidden" value="{{$product->price}}">
+<input id="image" name="image" type="hidden" value="{{$product->image}}">
+<input id="weight" name="weight" type="hidden" value="0">
+
+
+
 <div class="wrap-modal1 {{$product->modal->name}} p-t-60 p-b-20" >
 		<div class="overlay-modal1 {{$product->modal->second_name}}"></div>
 
@@ -220,7 +228,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							</h4>
 
 							<span class="mtext-106 cl2">
-								$58.79
+								{{$product->price}}
 							</span>
 
 							<p class="stext-102 cl3 p-t-23">
@@ -236,12 +244,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
+											<select class="js-select2" name="size" form="{{$product->id}}">
 												<option>Choose an option</option>
-												<option>Size S</option>
-												<option>Size M</option>
-												<option>Size L</option>
-												<option>Size XL</option>
+												<option value="s">Size S</option>
+												<option value="m">Size M</option>
+												<option value="l">Size L</option>
+												<option value="xl">Size XL</option>
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -255,12 +263,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
+											<select class="js-select2" name="color" form="{{$product->id}}">
 												<option>Choose an option</option>
-												<option>Red</option>
-												<option>Blue</option>
-												<option>White</option>
-												<option>Grey</option>
+												<option value="red">Red</option>
+												<option value="blue">Blue</option>
+												<option value="white">White</option>
+												<option value="grey">Grey</option>
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -274,17 +282,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="qty" value="1">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
-									 <a href="{{route('cart.edit', ['id'=>$product->id])}}"> 
-										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" data-id="{{$product->id}}">
+									 {{-- <a href="{{route('cart.edit', ['id'=>$product->id])}}">  --}}
+									 <button  class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail{{$product->id}}" data-id="{{$product->id}}">
 											Add to cart
 										</button>
-									 </a>
+									 {{-- </a> --}}
 									</div>
 								</div>	
 							</div>
@@ -308,6 +316,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
 									<i class="fa fa-google-plus"></i>
 								</a>
+								
 							</div>
 						</div>
 					</div>
@@ -315,7 +324,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 		</div>
 	</div>
-
+	
+</form>
 @endforeach
 
 
@@ -574,38 +584,73 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function(){
+		$('.js-addcart-detail1').each(function(){
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
+			$(this).on('click', function(e){
+				e.preventDefault();
 				swal(nameProduct, "is added to cart !", "success");
+				let id = $(this).data('id');
 			
-      let id = $(this).data('id');
-      console.log(id);
-    	
+				var datos = $('#1').serialize();
 
-
-
-
-
-
-		// 	addItem();
-		// 	function addItem(){
-    //   $.ajax({
-    //     method:'POST',
-    //     url:'http://itemapi2.test/api/items',
-    //     data: {}
-    //   }).done(function(item){
-    //     alert(item);
-		// 	});
-		// 	console.log('hola');
-    // }
-
-
-
-
-
+				$.ajax({
+						url: 'cart/'+ id + '/edit',
+						data: datos,
+				}).done(function(item){
+					console.log('Item added');
+					
+				});
 			});
 		});
+
+
+
+		$('.js-addcart-detail2').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(e){
+				e.preventDefault();
+				swal(nameProduct, "is added to cart !", "success");
+				let id = $(this).data('id');
+
+				var datos = $('#2').serialize();
+				$.ajax({
+						url: 'cart/'+ id + '/edit',
+						data: datos,
+				}).done(function(item){
+					console.log('Item added');
+					
+				});
+			});
+		});
+
+
+
+
+
+
+		$('.js-addcart-detail3').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(e){
+				e.preventDefault();
+				swal(nameProduct, "is added to cart !", "success");
+				let id = $(this).data('id');
+				var datos = $('#3').serialize();
+				$.ajax({
+						url: 'cart/'+ id + '/edit',
+						data: datos,
+				}).done(function(item){
+					console.log('Item added');
+					
+				});
+			});
+		});
+
+
+
+
+
+
+
 	
 	</script>
 <!--===============================================================================================-->

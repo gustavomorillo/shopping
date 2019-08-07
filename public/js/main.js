@@ -288,6 +288,19 @@
         $('.js-modal2').removeClass('show-modal1');
     });
 
+        /*==================================================================
+    [ Show modal3 ]*/
+    $('.js-show-modal3').on('click',function(e){
+        e.preventDefault();
+        $('.js-modal3').addClass('show-modal1');
+    });
+
+    $('.js-hide-modal3').on('click',function(){
+        $('.js-modal3').removeClass('show-modal1');
+    });
+
+    
+
 
 
 })(jQuery);
