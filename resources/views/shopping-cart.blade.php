@@ -374,7 +374,7 @@
 											<img src="{{Storage::disk('local')->url('product_images/'.$cartItem->options->image)}}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">{{$cartItem->name}}</td>
+								<td class="column-2">{{$cartItem->name}}&nbsp; talla: &nbsp;{{$cartItem->options->size}} &nbsp;color: {{$cartItem->options->color}}</td>
 									<td class="column-3">{{$cartItem->price}}</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">

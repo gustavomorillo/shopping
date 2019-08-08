@@ -114,12 +114,7 @@
   <!-- Product Detail -->
   
 
-<form id="{{$product->id}}" action="#">
-<input id="prodId" name="id" type="hidden" value="{{$product->id}}">
-<input id="name" name="name" type="hidden" value="{{$product->name}}">
-<input id="price" name="price" type="hidden" value="{{$product->price}}">
-<input id="image" name="image" type="hidden" value="{{$product->image}}">
-<input id="weight" name="weight" type="hidden" value="0">
+
 
 
 
@@ -190,6 +185,12 @@
 
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
+											<form id="{{$product->id}}" action="#">
+													<input id="prodId" name="id" type="hidden" value="{{$product->id}}">
+													<input id="name" name="name" type="hidden" value="{{$product->name}}">
+													<input id="price" name="price" type="hidden" value="{{$product->price}}">
+													<input id="image" name="image" type="hidden" value="{{$product->image}}">
+													<input id="weight" name="weight" type="hidden" value="0">
 										<select class="js-select2" name="size" form="{{$product->id}}" id="size">
 											<option value="">Choose an option</option>
 											<option value="s">Size S</option>

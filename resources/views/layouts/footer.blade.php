@@ -339,7 +339,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-
+ <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 
 <!--===============================================================================================-->	
 <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
