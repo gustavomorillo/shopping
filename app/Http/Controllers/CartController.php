@@ -16,14 +16,56 @@ class CartController extends Controller
     {
         
         // Session::flush();
+
+        // set tax to value of 0
         Cart::setGlobalTax(0);
         $cartItems = Cart::content();
         
         return view('shopping-cart', compact('cartItems'));
     }
 
+    public function wishlist()
+    {
+        
+        Cart::instance('wishlist')->add('sdjk9223', 'Product 2', 1, 19.95, 550, ['size' => 'medium', 'color'=>'green','image'=>'red_shirt.jpg']);
+
+        // Get the content of the 'wishlist' cart
+        
+        $cartItems = Cart::content();
+        
+        return view('wishlist', compact('cartItems'));
+    }
+
+    public function getWishlist(Request $request)
+    {
+        // subtotal item, subtotal of all and total amount of shopping cart
+        // is returned to footer.blade.php in ajax where is displayed in shopping-cart.blade.php 
+
+        $qty = $request->newqty;
+        $rowId = $request->rowId;
+        Cart::update($rowId, $qty);
+
+        $cartItems = Cart::content();
+        $total = Cart::total();
+
+        $oneItem= Cart::get($rowId);
+        $subtotalOneItem = $oneItem->subtotal;
+        $subtotal = Cart::subtotal();
+
+        $updateData = [$subtotalOneItem, $subtotal , $total];
+
+
+
+
+        return response()->json($updateData);
+        
+    }
+
     public function getAll(Request $request)
     {
+        // subtotal item, subtotal of all and total amount of shopping cart
+        // is returned to footer.blade.php in ajax where is displayed in shopping-cart.blade.php 
+
         $qty = $request->newqty;
         $rowId = $request->rowId;
         Cart::update($rowId, $qty);
@@ -85,7 +127,7 @@ class CartController extends Controller
     public function edit(Request $request, $id)
     {
 
-        
+        // Validate that size and color is required and add the item to the cart
 
         $validatedData = $request->validate([
             'size' => 'required',
@@ -122,6 +164,9 @@ class CartController extends Controller
     {
             
       
+            // this function is for update a specific item in shopping cart ,
+            // this function is called in footer.blade.php and executed in shopping-cart.blade.php
+
             $qty = $request->newqty;
             $proId = $request->proId;
             $rowId = $request->rowId;

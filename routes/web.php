@@ -25,3 +25,5 @@ Route::resource('/cart', 'CartController');
 Route::get('cart/get/all', 'CartController@getAll')->name('getDataToAjax');
 
 Route::get('products/{id}', 'ProductsController@show')->name('getOneProduct');
+
+Route::get('wishlist', 'CartController@wishlist')->name('wishlist');
