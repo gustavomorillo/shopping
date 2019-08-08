@@ -85,7 +85,7 @@ class CartController extends Controller
     public function edit(Request $request, $id)
     {
 
-        $product = $request->all();
+        
 
         $validatedData = $request->validate([
             'size' => 'required',
@@ -93,13 +93,20 @@ class CartController extends Controller
             
         ]);
 
+        
+        $product = $request->all();
+
+
+        Cart::add($id, $product['name'], $product['qty'], $product['price'], $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
+
+
 
         //return response()->json($product['name']);
         // $product = Product::find($id);
     
         // $price = (int) str_replace(" Bs","",$product->price);
 
-        Cart::add($id, $product['name'], $product['qty'], $product['price'], $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
+        
 
         // return back();
     }

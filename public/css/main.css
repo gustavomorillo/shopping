@@ -3339,5 +3339,10 @@ input.num-product::-webkit-inner-spin-button {
 
 .zmdi-shopping-cart{
   color:black!important
+}
 
+.text-validate {
+  color:red;
+  float:right;
+  padding-top: 10px;
 }

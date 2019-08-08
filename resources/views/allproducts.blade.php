@@ -636,8 +636,8 @@
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="size" form="{{$product->id}}">
-												<option>Choose an option</option>
+											<select class="js-select2" name="size" form="{{$product->id}}" id="size">
+												<option value="">Choose an option</option>
 												<option value="s">Size S</option>
 												<option value="m">Size M</option>
 												<option value="l">Size L</option>
@@ -655,8 +655,8 @@
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="color" form="{{$product->id}}">
-												<option>Choose an option</option>
+											<select class="js-select2" name="color" form="{{$product->id}}" id="color">
+												<option value="">Choose an option</option>
 												<option value="red">Red</option>
 												<option value="blue">Blue</option>
 												<option value="white">White</option>
