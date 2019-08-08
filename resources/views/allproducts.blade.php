@@ -552,7 +552,7 @@
 
 
 				@foreach($products as $product)
-<form action="" id="{{$product->id}}">
+<form id="{{$product->id}}" action="#">
 	<!-- Modal1 -->
 <input id="prodId" name="id" type="hidden" value="{{$product->id}}">
 <input id="name" name="name" type="hidden" value="{{$product->name}}">
@@ -680,7 +680,7 @@
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
-									 {{-- <a href="{{route('cart.edit', ['id'=>$product->id])}}">  --}}
+							
 									 <button  class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail{{$product->id}}" data-id="{{$product->id}}">
 											Add to cart
 										</button>

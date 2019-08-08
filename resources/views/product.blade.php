@@ -114,7 +114,7 @@
   <!-- Product Detail -->
   
 
-<form action="" id="{{$product->id}}">
+<form id="{{$product->id}}" action="#">
 <input id="prodId" name="id" type="hidden" value="{{$product->id}}">
 <input id="name" name="name" type="hidden" value="{{$product->name}}">
 <input id="price" name="price" type="hidden" value="{{$product->price}}">
@@ -245,6 +245,7 @@
             </div>
             
           </form>
+         
 
 						<!--  -->
 						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
