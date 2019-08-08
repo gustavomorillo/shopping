@@ -5,7 +5,8 @@ use Session;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-class CartController extends Controller
+
+class WishListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,22 +15,22 @@ class CartController extends Controller
      */
     public function index()
     {
-        
-        // Session::flush();
+        Cart::instance('wishlist');
 
-        // set tax to value of 0
-        Cart::setGlobalTax(0);
+        // Get the content of the 'wishlist' cart
+        
         $cartItems = Cart::content();
         
-        return view('shopping-cart', compact('cartItems'));
+        return view('wishlist', compact('cartItems'));
     }
+
 
 
     public function getAll(Request $request)
     {
         // subtotal item, subtotal of all and total amount of shopping cart
         // is returned to footer.blade.php in ajax where is displayed in shopping-cart.blade.php 
-
+        Cart::instance('wishlist');
         $qty = $request->newqty;
         $rowId = $request->rowId;
         Cart::update($rowId, $qty);
@@ -50,14 +51,18 @@ class CartController extends Controller
         
     }
 
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        
+        //
     }
 
     /**
@@ -90,31 +95,14 @@ class CartController extends Controller
      */
     public function edit(Request $request, $id)
     {
-
-        // Validate that size and color is required and add the item to the cart
-
         $validatedData = $request->validate([
             'size' => 'required',
-            'color' => 'required'
-            
+            'color' => 'required' 
         ]);
 
-        
         $product = $request->all();
 
-
-        Cart::add($id, $product['name'], $product['qty'], $product['price'], $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
-
-
-
-        //return response()->json($product['name']);
-        // $product = Product::find($id);
-    
-        // $price = (int) str_replace(" Bs","",$product->price);
-
-        
-
-        // return back();
+        Cart::instance('wishlist')->add($id, $product['name'], $product['qty'], $product['price'], $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
     }
 
     /**
@@ -126,16 +114,10 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-            
-      
-            // this function is for update a specific item in shopping cart ,
-            // this function is called in footer.blade.php and executed in shopping-cart.blade.php
-
-            $qty = $request->newqty;
-            $proId = $request->proId;
-            $rowId = $request->rowId;
-            return response()->json($rowId);
-
+        $qty = $request->newqty;
+        $proId = $request->proId;
+        $rowId = $request->rowId;
+        return response()->json($rowId);
     }
 
     /**
@@ -147,5 +129,32 @@ class CartController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    
+    //Move wishlist items to default shopping cart list
+    public function wishTodefault()
+    {
+        Cart::instance('wishlist');
+
+        $cartItems = Cart::content();
+
+        foreach ($cartItems as $cartItem) {
+            $id = $cartItem->id;
+            $name = $cartItem->name;
+            $qty = $cartItem->qty;
+            $price = $cartItem->price;
+            $weight = $cartItem->weight;
+            $size = $cartItem->options->size;
+            $color = $cartItem->options->color;
+            $image = $cartItem->options->image;
+
+            Cart::instance('default')->add($id, $name, $qty, $price, $weight,['size'=>$size, 'color' => $color, 'image'=>$image]);
+
+            Cart::instance('wishlist')->destroy();
+
+            return redirect()->back();
+            
+        }
     }
 }

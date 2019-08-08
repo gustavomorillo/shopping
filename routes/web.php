@@ -17,13 +17,12 @@ Route::get('/', function () {
 });
 
 Route::get('products', ['uses'=>'ProductsController@index', "as" => "allProducts"]);
-
-Route::get('product/addtocart/{id}', ['uses'=>'ProductsController@addProductToCart','as'=>'AddToCartProduct']);
-
-Route::resource('/cart', 'CartController');
-
-Route::get('cart/get/all', 'CartController@getAll')->name('getDataToAjax');
-
 Route::get('products/{id}', 'ProductsController@show')->name('getOneProduct');
 
-Route::get('wishlist', 'CartController@wishlist')->name('wishlist');
+Route::resource('/cart', 'CartController');
+Route::get('cart/get/all', 'CartController@getAll')->name('getDataToAjax');
+
+Route::resource('/wishlist', 'WishListController');
+Route::get('wishlist/get/all', 'WishListController@getAll')->name('getDataToAjax');
+
+Route::get('wishTodefault', 'WishListController@wishTodefault')->name('wishTodefault');

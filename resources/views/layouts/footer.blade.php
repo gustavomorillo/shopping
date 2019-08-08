@@ -477,6 +477,122 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				<?php } ?>
 				
 					});
+
+
+					// WISHLIST
+
+					$(document).ready(function() {
+			
+			<?php for($i=1;$i<20;$i++){?>
+			
+
+			
+				$('#upCartw<?php echo $i;?>').on('click', function(){
+								
+					var subtotal = $('#subtotalw<?php echo $i;?>').val();
+					var newqty = $('#upw<?php echo $i;?>').val();
+					var rowId = $('#rowIdw<?php echo $i;?>').val();
+					var proId = $('#proIdw<?php echo $i;?>').val();
+					alert(newqty);
+					$('#carrito').data('notify',20);
+					alert($('#carrito').data('notify'))
+					
+			
+							$.ajax({
+										type: 'POST',
+										url: 'wishlist/'+proId,
+										data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
+									}).done(function(item){
+									console.log(item);
+									getAll();
+									});
+			
+							function getAll(){
+								$.ajax({
+									type: 'get',
+									url:'wishlist/get/all',
+									data: {rowId:rowId, newqty:newqty}
+									}).done(function(item) {
+									console.log(item);
+									$('#subtotalw<?php echo $i;?>').val(item['0']);
+									$('#subtotal').val(item['1']);
+									$('#total').val(item['2']);
+									
+									});
+							}
+					});
+			
+			<?php } ?>
+			
+				});
+			
+			
+				$(document).ready(function() {
+			
+			<?php for($i=1;$i<20;$i++){?>
+			
+			
+				$('#downCartw<?php echo $i;?>').on('click', function(){
+								
+					var subtotal = $('#subtotalw<?php echo $i;?>').val();
+					var newqty = $('#upw<?php echo $i;?>').val();
+					var rowId = $('#rowIdw<?php echo $i;?>').val();
+					var proId = $('#proIdw<?php echo $i;?>').val();
+					// alert(newqty);
+					
+			
+			
+					if (newqty == 0) {
+						refresh();
+					}
+			
+					function refresh() {
+						myVar = setTimeout(function(){
+							location.reload();
+						}, 1000);
+					}
+					
+					
+							$.ajax({
+										type: 'POST',
+										url: 'wishlist/'+proId,
+										data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
+									}).done(function(item){
+									console.log(item);
+									getAll();
+									});
+			
+							function getAll(){
+								$.ajax({
+									type: 'get',
+									url:'wishlist/get/all',
+									data: {rowId:rowId, newqty:newqty}
+									}).done(function(item) {
+									console.log(item);
+									$('#subtotalw<?php echo $i;?>').val(item['0']);
+									$('#subtotal').val(item['1']);
+									$('#total').val(item['2']);
+									
+									});
+							}
+			
+						
+					});
+			
+			<?php } ?>
+			
+				});
+
+
+
+
+
+
+
+
+
+
+
 							
 					</script>
 

@@ -44,21 +44,7 @@ $(document).ready(function() {
         });
     });
 
-    $(".js-addwish-detail").each(function() {
-        var nameProduct = $(this)
-            .parent()
-            .parent()
-            .parent()
-            .find(".js-name-detail")
-            .html();
 
-        $(this).on("click", function() {
-            swal(nameProduct, "is added to wishlist !", "success");
-
-            $(this).addClass("js-addedwish-detail");
-            $(this).off("click");
-        });
-    });
 
     $(".js-pscroll").each(function() {
         $(this).css("position", "relative");
@@ -73,212 +59,324 @@ $(document).ready(function() {
             ps.update();
         });
     });
-    console.log("Welcome to gusclick.com");
+
+    $(".js-addcart-detail").each(function() {
+        var nameProduct = $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .find(".js-name-detail")
+            .html();
+        $(this).on("click", function(e) {
+            e.preventDefault();
+            let id = $(this).data("id");
+            var datos = $("#" + id).serialize();
+            axios
+                .get("/cart/" + id + "/edit?" + datos)
+                .then(function(response) {
+                    console.log(response);
+                    swal(nameProduct, "is added to cart !", "success");
+
+                    function refresh() {
+                        myVar = setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    }
+
+                    refresh();
+                })
+                .catch(function(error) {
+                    var errors = error.response.data.errors;
+                    var firstItem = Object.keys(errors)[0];
+                    var firstItemDom = $("#" + firstItem);
+                    var firstErrorMessage = errors[firstItem][0];
+                    var errorMessages = document.querySelectorAll(
+                        ".text-validate"
+                    );
+                    // errorMessages.forEach(function (element) {
+                    // 	return element.textContent = '';
+                    // });
+                    firstItemDom.after(
+                        '<div class="text-validate">' +
+                            firstErrorMessage +
+                            "</div>"
+                    );
+                    console.log(firstItem);
+                });
+        });
+    });
+
+    $(".js-addcart-detail1").each(function() {
+        var nameProduct = $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .find(".js-name-detail")
+            .html();
+        $(this).on("click", function(e) {
+            e.preventDefault();
+            let id = $(this).data("id");
+            var datos = $("#1").serialize();
+
+            axios
+                .get("/cart/" + id + "/edit?" + datos)
+                .then(function(response) {
+                    console.log(response);
+                    swal(nameProduct, "is added to cart !", "success");
+
+                    function refresh() {
+                        myVar = setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    }
+
+                    refresh();
+                })
+                .catch(function(error) {
+                    var errors = error.response.data.errors;
+                    var firstItem = Object.keys(errors)[0];
+                    var firstItemDom = $("#" + firstItem);
+                    var firstErrorMessage = errors[firstItem][0];
+                    var errorMessages = document.querySelectorAll(
+                        ".text-validate"
+                    );
+                    // errorMessages.forEach(function(element) {
+                    //     return (element.textContent = "");
+                    // });
+                    alert(firstErrorMessage);
+                });
+
+            // $.ajax({
+            // 		url: 'cart/'+ id + '/edit',
+            // 		data: datos,
+            // }).done(function(item){
+            // 	console.log('Item added');
+
+            // });
+        });
+    });
+
+    $(".js-addcart-detail2").each(function() {
+        var nameProduct = $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .find(".js-name-detail")
+            .html();
+        $(this).on("click", function(e) {
+            e.preventDefault();
+            let id = $(this).data("id");
+            var datos = $("#2").serialize();
+            axios
+                .get("/cart/" + id + "/edit?" + datos)
+                .then(function(response) {
+                    console.log(response);
+                    swal(nameProduct, "is added to cart !", "success");
+
+                    function refresh() {
+                        myVar = setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    }
+
+                    refresh();
+                })
+                .catch(function(error) {
+                    var errors = error.response.data.errors;
+                    var firstItem = Object.keys(errors)[0];
+                    var firstItemDom = $("#" + firstItem);
+                    var firstErrorMessage = errors[firstItem][0];
+                    var errorMessages = document.querySelectorAll(
+                        ".text-validate"
+                    );
+                    // errorMessages.forEach(function(element) {
+                    //     return (element.textContent = "");
+                    // });
+                    alert(firstErrorMessage);
+                });
+        });
+    });
+
+    $(".js-addcart-detail3").each(function() {
+        var nameProduct = $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .find(".js-name-detail")
+            .html();
+        $(this).on("click", function(e) {
+            e.preventDefault();
+            swal(nameProduct, "is added to cart !", "success");
+            let id = $(this).data("id");
+            var datos = $("#3").serialize();
+
+            axios
+                .get("/cart/" + id + "/edit?" + datos)
+                .then(function(response) {
+                    console.log(response);
+                    swal(nameProduct, "is added to cart !", "success");
+
+                    function refresh() {
+                        myVar = setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    }
+
+                    refresh();
+                })
+                .catch(function(error) {
+                    var errors = error.response.data.errors;
+                    var firstItem = Object.keys(errors)[0];
+                    var firstItemDom = $("#" + firstItem);
+                    var firstErrorMessage = errors[firstItem][0];
+                    var errorMessages = document.querySelectorAll(
+                        ".text-validate"
+                    );
+                    // errorMessages.forEach(function(element) {
+                    //     return (element.textContent = "");
+                    // });
+                    alert(firstErrorMessage);
+                });
+        });
+		});
+		
+
+
+
+
+		$(".js-addwish-detail").each(function() {
+			var nameProduct = $(this)
+					.parent()
+					.parent()
+					.parent()
+					.find(".js-name-detail")
+					.html();
+
+			$(this).on("click", function() {
+					let id = $(this).data("id");
+					console.log(id);
+					var datos = $("#" + id).serialize();
+					axios.get("/wishlist/" + id + "/edit?" + datos)
+                .then(function(response) {
+                    console.log(response);
+										swal(nameProduct, "is added to wishlist !", "success");
+										$(this).addClass("js-addedwish-detail");
+										$(this).off("click");
+                })
+                .catch(function(error) {
+                    var errors = error.response.data.errors;
+                    var firstItem = Object.keys(errors)[0];
+                    var firstErrorMessage = errors[firstItem][0];
+                    alert(firstErrorMessage);
+								});
+								
+
+			});
+	});
+
+
+		$(".js-addwish-detail1").each(function() {
+			var nameProduct = $(this)
+					.parent()
+					.parent()
+					.parent()
+					.find(".js-name-detail")
+					.html();
+
+			$(this).on("click", function() {
+					let id = $(this).data("id");
+					var datos = $("#" + id).serialize();
+					alert(datos);
+					axios.get("/wishlist/" + id + "/edit?" + datos)
+                .then(function(response) {
+                    console.log(response);
+										swal(nameProduct, "is added to wishlist !", "success");
+										$(this).addClass("js-addedwish-detail");
+										$(this).off("click");
+                })
+                .catch(function(error) {
+                    var errors = error.response.data.errors;
+                    var firstItem = Object.keys(errors)[0];
+                    var firstErrorMessage = errors[firstItem][0];
+                    alert(firstErrorMessage);
+								});
+								
+
+			});
+	});
+
+	$(".js-addwish-detail2").each(function() {
+		var nameProduct = $(this)
+				.parent()
+				.parent()
+				.parent()
+				.find(".js-name-detail")
+				.html();
+
+		$(this).on("click", function() {
+				let id = $(this).data("id");
+				var datos = $("#" + id).serialize();
+				alert(datos);
+				axios.get("/wishlist/" + id + "/edit?" + datos)
+							.then(function(response) {
+									console.log(response);
+									swal(nameProduct, "is added to wishlist !", "success");
+									$(this).addClass("js-addedwish-detail");
+									$(this).off("click");
+							})
+							.catch(function(error) {
+									var errors = error.response.data.errors;
+									var firstItem = Object.keys(errors)[0];
+									var firstErrorMessage = errors[firstItem][0];
+									alert(firstErrorMessage);
+							});
+							
+
+		});
 });
 
 
-		
-		$(".js-addcart-detail").each(function() {
-            var nameProduct = $(this)
-                .parent()
-                .parent()
-                .parent()
-                .parent()
-                .find(".js-name-detail")
-                .html();
-            $(this).on("click", function(e) {
-                e.preventDefault();
-                let id = $(this).data("id");
-                var datos = $("#" + id).serialize();
-                axios
-                    .get("/cart/" + id + "/edit?" + datos)
-                    .then(function(response) {
-                        console.log(response);
-                        swal(
-                            nameProduct,
-                            "is added to cart !",
-                            "success"
-                        );
 
-                        function refresh() {
-                            myVar = setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        }
+$(".js-addwish-detail3").each(function() {
+	var nameProduct = $(this)
+			.parent()
+			.parent()
+			.parent()
+			.find(".js-name-detail")
+			.html();
 
-                        refresh();
-                    })
-                    .catch(function(error) {
-                        var errors = error.response.data.errors;
-                        var firstItem = Object.keys(errors)[0];
-                        var firstItemDom = $("#" + firstItem);
-                        var firstErrorMessage = errors[firstItem][0];
-                        var errorMessages = document.querySelectorAll(
-                            ".text-validate"
-                        );
-                        // errorMessages.forEach(function (element) {
-                        // 	return element.textContent = '';
-                        // });
-                        firstItemDom.after(
-                            '<div class="text-validate">' +
-                                firstErrorMessage +
-                                "</div>"
-                        );
-                        console.log(firstItem);
-                    });
-            });
-        });
+	$(this).on("click", function() {
+			let id = $(this).data("id");
+			var datos = $("#" + id).serialize();
+			alert(datos);
+			axios.get("/wishlist/" + id + "/edit?" + datos)
+						.then(function(response) {
+								console.log(response);
+								swal(nameProduct, "is added to wishlist !", "success");
+								$(this).addClass("js-addedwish-detail");
+								$(this).off("click");
+						})
+						.catch(function(error) {
+								var errors = error.response.data.errors;
+								var firstItem = Object.keys(errors)[0];
+								var firstErrorMessage = errors[firstItem][0];
+								alert(firstErrorMessage);
+						});
+						
+
+	});
+});
 
 
 
-		$(".js-addcart-detail1").each(function() {
-            var nameProduct = $(this)
-                .parent()
-                .parent()
-                .parent()
-                .parent()
-                .find(".js-name-detail")
-                .html();
-            $(this).on("click", function(e) {
-                e.preventDefault();
-                let id = $(this).data("id");
-                var datos = $("#1").serialize();
 
-                axios
-                    .get("/cart/" + id + "/edit?" + datos)
-                    .then(function(response) {
-                        console.log(response);
-                        swal(
-                            nameProduct,
-                            "is added to cart !",
-                            "success"
-                        );
-
-                        function refresh() {
-                            myVar = setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        }
-
-                        refresh();
-                    })
-                    .catch(function(error) {
-                        var errors = error.response.data.errors;
-                        var firstItem = Object.keys(errors)[0];
-                        var firstItemDom = $("#" + firstItem);
-                        var firstErrorMessage = errors[firstItem][0];
-                        var errorMessages = document.querySelectorAll(
-                            ".text-validate"
-                        );
-                        // errorMessages.forEach(function(element) {
-                        //     return (element.textContent = "");
-                        // });
-                        alert(firstErrorMessage);
-                    });
-
-                // $.ajax({
-                // 		url: 'cart/'+ id + '/edit',
-                // 		data: datos,
-                // }).done(function(item){
-                // 	console.log('Item added');
-
-                // });
-            });
-        });
-
-		$(".js-addcart-detail2").each(function() {
-            var nameProduct = $(this)
-                .parent()
-                .parent()
-                .parent()
-                .parent()
-                .find(".js-name-detail")
-                .html();
-            $(this).on("click", function(e) {
-                e.preventDefault();
-                let id = $(this).data("id");
-                var datos = $("#2").serialize();
-                axios
-                    .get("/cart/" + id + "/edit?" + datos)
-                    .then(function(response) {
-                        console.log(response);
-                        swal(
-                            nameProduct,
-                            "is added to cart !",
-                            "success"
-                        );
-
-                        function refresh() {
-                            myVar = setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        }
-
-                        refresh();
-                    })
-                    .catch(function(error) {
-                        var errors = error.response.data.errors;
-                        var firstItem = Object.keys(errors)[0];
-                        var firstItemDom = $("#" + firstItem);
-                        var firstErrorMessage = errors[firstItem][0];
-                        var errorMessages = document.querySelectorAll(
-                            ".text-validate"
-                        );
-                        // errorMessages.forEach(function(element) {
-                        //     return (element.textContent = "");
-                        // });
-                        alert(firstErrorMessage);
-                    });
-            });
-        });
-
-        $(".js-addcart-detail3").each(function() {
-            var nameProduct = $(this)
-                .parent()
-                .parent()
-                .parent()
-                .parent()
-                .find(".js-name-detail")
-                .html();
-            $(this).on("click", function(e) {
-                e.preventDefault();
-                swal(nameProduct, "is added to cart !", "success");
-                let id = $(this).data("id");
-                var datos = $("#3").serialize();
-
-                axios
-                    .get("/cart/" + id + "/edit?" + datos)
-                    .then(function(response) {
-                        console.log(response);
-                        swal(
-                            nameProduct,
-                            "is added to cart !",
-                            "success"
-                        );
-
-                        function refresh() {
-                            myVar = setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        }
-
-                        refresh();
-                    })
-                    .catch(function(error) {
-                        var errors = error.response.data.errors;
-                        var firstItem = Object.keys(errors)[0];
-                        var firstItemDom = $("#" + firstItem);
-                        var firstErrorMessage = errors[firstItem][0];
-                        var errorMessages = document.querySelectorAll(
-                            ".text-validate"
-                        );
-                        // errorMessages.forEach(function(element) {
-                        //     return (element.textContent = "");
-                        // });
-                        alert(firstErrorMessage);
-                    });
-            });
-        });
-    
+	
 
 
+
+    console.log("Welcome to gusclick.com");
+});

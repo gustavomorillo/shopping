@@ -46,6 +46,8 @@
 		echo 'header-v4';
 	} elseif(request()->is('products/*')) {
 		echo 'header-v4';
+	} elseif(request()->is('wishlist')) {
+		echo 'header-v4';
 	} else {
 		echo '';
 	}
@@ -93,7 +95,9 @@
 				echo 'how-shadow1';
 			} elseif(request()->is('products/*')) {
 				echo 'how-shadow1';
-			} else {
+			} elseif(request()->is('wishlist')) {
+				echo 'how-shadow1';
+			}else {
 				echo '';
 			}
 		?>
@@ -146,11 +150,11 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{Cart::count()}}">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{Cart::instance('default')->count()}}">
 						<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 						
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+						<a href="/wishlist" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="{{Cart::instance('wishlist')->count()}}">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						
 						</a>
