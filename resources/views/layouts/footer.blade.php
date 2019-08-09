@@ -561,48 +561,93 @@ $(document).ready(function() {
 					});
 	<?php } ?>	
 
+	<?php for($i=1;$i<20;$i++){?>
+	$(".js-addcart-detail<?php echo $i;?>").each(function() {
+        var nameProduct = $(this)
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .find(".js-name-detail")
+            .html();
+        $(this).on("click", function(e) {
+            e.preventDefault();
+            let id = $(this).data("id");
+            var datos = $("#"+ id).serialize();
+
+            axios
+                .get("/cart/" + id + "/edit?" + datos)
+                .then(function(response) {
+                    console.log(response);
+                    swal(nameProduct, "is added to cart !", "success");
+
+                    function refresh() {
+                        myVar = setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    }
+
+                    refresh();
+                })
+                .catch(function(error) {
+                    var errors = error.response.data.errors;
+                    var firstItem = Object.keys(errors)[0];
+                    var firstItemDom = $("#" + firstItem);
+                    var firstErrorMessage = errors[firstItem][0];
+                    var errorMessages = document.querySelectorAll(
+                        ".text-validate"
+                    );
+                    // errorMessages.forEach(function(element) {
+                    //     return (element.textContent = "");
+                    // });
+                    alert(firstErrorMessage);
+                });
+
+            // $.ajax({
+            // 		url: 'cart/'+ id + '/edit',
+            // 		data: datos,
+            // }).done(function(item){
+            // 	console.log('Item added');
+
+            // });
+        });
+		});
+		<?php } ?>	
 
 
+		<?php for($i=1;$i<20;$i++){?>
+		$(".js-addwish-detail<?php echo $i;?>").each(function() {
+			var nameProduct = $(this)
+					.parent()
+					.parent()
+					.parent()
+					.find(".js-name-detail")
+					.html();
 
+			$(this).on("click", function() {
+					let id = $(this).data("id");
+					var datos = $("#" + id).serialize();
+					axios.get("/wishlist/" + id + "/edit?" + datos)
+                .then(function(response) {
+                    console.log(response);
+										swal(nameProduct, "is added to wishlist !", "success");
+										$(this).addClass("js-addedwish-detail");
+										$(this).off("click");
+                })
+                .catch(function(error) {
+                    var errors = error.response.data.errors;
+                    var firstItem = Object.keys(errors)[0];
+                    var firstErrorMessage = errors[firstItem][0];
+                    alert(firstErrorMessage);
+								});
+								
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			});
 	});
 
+	<?php } ?>	
 
-
-
-
-
-
-
+	});
 
 
 </script>

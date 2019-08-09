@@ -520,7 +520,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<a href="{{ route('getOneProduct', ['id' => $product->id]) }}"><img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="IMG-PRODUCT"></a>
+							<a href="{{ route('getOneProduct', ['id' => $product->id]) }}"><img src="{{asset('images/' .$product->image)}}" alt="IMG-PRODUCT"></a>
 							{{-- images/product-01.jpg --}}
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 {{$product->modal_name}}">
 								Quick View
@@ -573,9 +573,9 @@
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 								<div class="slick3 gallery-lb">
-									<div class="item-slick3" data-thumb="images/{{$product->modal->image1}}">
+									<div class="item-slick3" data-thumb="{{asset('images/' . $product->modal->image1)}}">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/{{$product->modal->image1}}" alt="IMG-PRODUCT">
+											<img src="{{asset('images/' . $product->modal->image1)}}" alt="IMG-PRODUCT">
 
 											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$product->modal->image1}}">
 												<i class="fa fa-expand"></i>
@@ -583,21 +583,21 @@
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="images/{{$product->modal->image2}}">
+									<div class="item-slick3" data-thumb="{{asset('images/' .$product->modal->image2)}}">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/{{$product->modal->image2}}" alt="IMG-PRODUCT">
+											<img src="{{asset('images/' .$product->modal->image2)}}" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/{{$product->modal->image2}}">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/' .$product->modal->image2)}}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="images/{{$product->modal->image3}}">
+									<div class="item-slick3" data-thumb="{{asset('images/' .$product->modal->image3)}}">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/{{$product->modal->image3}}" alt="IMG-PRODUCT">
+											<img src="{{asset('images/' .$product->modal->image3)}}" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/{{$product->modal->image3}}">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/' .$product->modal->image3)}}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
