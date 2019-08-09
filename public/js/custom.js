@@ -109,7 +109,6 @@ $(document).ready(function() {
     });
 
 
-
     $(".js-addwish-detail").each(function() {
         var nameProduct = $(this)
                 .parent()
