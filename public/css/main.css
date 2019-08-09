@@ -3346,3 +3346,9 @@ input.num-product::-webkit-inner-spin-button {
   float:right;
   padding-top: 10px;
 }
+.deleteBtn {
+  
+  color:#555;
+  font-size:12px;
+
+}

@@ -133,6 +133,7 @@
                       <div class="how-itemcart1">
                         <img src="{{Storage::disk('local')->url('product_images/'.$cartItem->options->image)}}" alt="IMG">
                       </div>
+                      &nbsp;<a href="#" id="deleteButtonw<?php echo $count;?>" class="deleteBtn">Eliminar</a>
                     </td>
                   <td class="column-2">{{$cartItem->name}}&nbsp; talla: &nbsp;{{$cartItem->options->size}} &nbsp;color: {{$cartItem->options->color}}</td>
                     <td class="column-3">{{$cartItem->price}}</td>

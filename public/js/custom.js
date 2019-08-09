@@ -380,3 +380,4 @@ $(".js-addwish-detail3").each(function() {
 
     console.log("Welcome to gusclick.com");
 });
+

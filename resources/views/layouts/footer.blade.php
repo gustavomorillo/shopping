@@ -376,212 +376,190 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!--===============================================================================================-->
 <script src="{{asset('js/custom.js')}}"></script>
 <!--===============================================================================================-->
+<script>
+$(document).ready(function() {
 
-	<script>
+	<?php for($i=1;$i<20;$i++){?>
+			$('#upCart<?php echo $i;?>').on('click', function(){
+					var subtotal = $('#subtotal<?php echo $i;?>').val();
+					var newqty = $('#up<?php echo $i;?>').val();
+					var rowId = $('#rowId<?php echo $i;?>').val();
+					var proId = $('#proId<?php echo $i;?>').val();
+									$.ajax({
+															type: 'POST',
+															url: 'cart/'+proId,
+															data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
+													}).done(function(item){
+													console.log(item);
+													getAll();
+													});
 	
-			$(document).ready(function() {
-			
-				<?php for($i=1;$i<20;$i++){?>
-				
-				
-					$('#upCart<?php echo $i;?>').on('click', function(){
-									
-						var subtotal = $('#subtotal<?php echo $i;?>').val();
-						var newqty = $('#up<?php echo $i;?>').val();
-						var rowId = $('#rowId<?php echo $i;?>').val();
-						var proId = $('#proId<?php echo $i;?>').val();
-						// alert(newqty);
-						
-				
-								$.ajax({
-											type: 'POST',
-											url: 'cart/'+proId,
-											data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
-										}).done(function(item){
-										console.log(item);
-										getAll();
-										});
-				
-								function getAll(){
-									$.ajax({
-										type: 'get',
-										url:'cart/get/all',
-										data: {rowId:rowId, newqty:newqty}
-										}).done(function(item) {
-										console.log(item);
-										$('#subtotal<?php echo $i;?>').val(item['0']);
-										$('#subtotal').val(item['1']);
-										$('#total').val(item['2']);
-										
-										});
-								}
-						});
-				
-				<?php } ?>
-				
+									function getAll(){
+											$.ajax({
+													type: 'get',
+													url:'cart/get/all',
+													data: {rowId:rowId, newqty:newqty}
+													}).done(function(item) {
+													console.log(item);
+													$('#subtotal<?php echo $i;?>').val(item['0']);
+													$('#subtotal').val(item['1']);
+													$('#total').val(item['2']);
+													
+													});
+									}
 					});
-				
-				
-					$(document).ready(function() {
-				
-				<?php for($i=1;$i<20;$i++){?>
-				
-				
-					$('#downCart<?php echo $i;?>').on('click', function(){
-									
-						var subtotal = $('#subtotal<?php echo $i;?>').val();
-						var newqty = $('#up<?php echo $i;?>').val();
-						var rowId = $('#rowId<?php echo $i;?>').val();
-						var proId = $('#proId<?php echo $i;?>').val();
-						// alert(newqty);
-						
-				
-				
-						if (newqty == 0) {
-							refresh();
-						}
-				
-						function refresh() {
-							myVar = setTimeout(function(){
-								location.reload();
-							}, 1000);
-						}
-						
-						
-								$.ajax({
-											type: 'POST',
-											url: 'cart/'+proId,
-											data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
-										}).done(function(item){
-										console.log(item);
-										getAll();
-										});
-				
-								function getAll(){
-									$.ajax({
-										type: 'get',
-										url:'cart/get/all',
-										data: {rowId:rowId, newqty:newqty}
-										}).done(function(item) {
-										console.log(item);
-										$('#subtotal<?php echo $i;?>').val(item['0']);
-										$('#subtotal').val(item['1']);
-										$('#total').val(item['2']);
-										
-										});
-								}
-				
-							
-						});
-				
-				<?php } ?>
-				
-					});
+	<?php } ?>	
+	<?php for($i=1;$i<20;$i++){?>
 
-
-					// WISHLIST
-
-					$(document).ready(function() {
-			
-			<?php for($i=1;$i<20;$i++){?>
-			
-
-			
-				$('#upCartw<?php echo $i;?>').on('click', function(){
-								
-					var subtotal = $('#subtotalw<?php echo $i;?>').val();
-					var newqty = $('#upw<?php echo $i;?>').val();
-					var rowId = $('#rowIdw<?php echo $i;?>').val();
-					var proId = $('#proIdw<?php echo $i;?>').val();
-					alert(newqty);
-					$('#carrito').data('notify',20);
-					alert($('#carrito').data('notify'))
-					
-			
-							$.ajax({
-										type: 'POST',
-										url: 'wishlist/'+proId,
-										data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
-									}).done(function(item){
-									console.log(item);
-									getAll();
-									});
-			
-							function getAll(){
-								$.ajax({
-									type: 'get',
-									url:'wishlist/get/all',
-									data: {rowId:rowId, newqty:newqty}
-									}).done(function(item) {
-									console.log(item);
-									$('#subtotalw<?php echo $i;?>').val(item['0']);
-									$('#subtotal').val(item['1']);
-									$('#total').val(item['2']);
-									
-									});
-							}
-					});
-			
-			<?php } ?>
-			
-				});
-			
-			
-				$(document).ready(function() {
-			
-			<?php for($i=1;$i<20;$i++){?>
-			
-			
-				$('#downCartw<?php echo $i;?>').on('click', function(){
-								
-					var subtotal = $('#subtotalw<?php echo $i;?>').val();
-					var newqty = $('#upw<?php echo $i;?>').val();
-					var rowId = $('#rowIdw<?php echo $i;?>').val();
-					var proId = $('#proIdw<?php echo $i;?>').val();
-					// alert(newqty);
-					
-			
-			
+			$('#downCart<?php echo $i;?>').on('click', function(){				
+					var subtotal = $('#subtotal<?php echo $i;?>').val();
+					var newqty = $('#up<?php echo $i;?>').val();
+					var rowId = $('#rowId<?php echo $i;?>').val();
+					var proId = $('#proId<?php echo $i;?>').val();
 					if (newqty == 0) {
-						refresh();
+							refresh();
 					}
-			
 					function refresh() {
-						myVar = setTimeout(function(){
-							location.reload();
-						}, 1000);
+							myVar = setTimeout(function(){
+									location.reload();
+							}, 1000);
 					}
-					
-					
-							$.ajax({
-										type: 'POST',
-										url: 'wishlist/'+proId,
-										data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
-									}).done(function(item){
-									console.log(item);
-									getAll();
-									});
-			
-							function getAll(){
-								$.ajax({
-									type: 'get',
-									url:'wishlist/get/all',
-									data: {rowId:rowId, newqty:newqty}
-									}).done(function(item) {
-									console.log(item);
-									$('#subtotalw<?php echo $i;?>').val(item['0']);
-									$('#subtotal').val(item['1']);
-									$('#total').val(item['2']);
-									
-									});
-							}
-			
-						
+									$.ajax({
+															type: 'POST',
+															url: 'cart/'+proId,
+															data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
+													}).done(function(item){
+													console.log(item);
+													getAll();
+													});
+	
+									function getAll(){
+											$.ajax({
+													type: 'get',
+													url:'cart/get/all',
+													data: {rowId:rowId, newqty:newqty}
+													}).done(function(item) {
+													console.log(item);
+													$('#subtotal<?php echo $i;?>').val(item['0']);
+													$('#subtotal').val(item['1']);
+													$('#total').val(item['2']);				
+													});
+									}	
 					});
-			
-			<?php } ?>
-			
-				});
+	<?php } ?>
+			// WISHLIST
+<?php for($i=1;$i<20;$i++){?>
+	$('#upCartw<?php echo $i;?>').on('click', function(){
+			var subtotal = $('#subtotalw<?php echo $i;?>').val();
+			var newqty = $('#upw<?php echo $i;?>').val();
+			var rowId = $('#rowIdw<?php echo $i;?>').val();
+			var proId = $('#proIdw<?php echo $i;?>').val();
+			alert(newqty);
+			$('#carrito').data('notify',20);
+			alert($('#carrito').data('notify'))
+							$.ajax({
+													type: 'POST',
+													url: 'wishlist/'+proId,
+													data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
+											}).done(function(item){
+											console.log(item);
+											getAll();
+											});
+
+							function getAll(){
+									$.ajax({
+											type: 'get',
+											url:'wishlist/get/all',
+											data: {rowId:rowId, newqty:newqty}
+											}).done(function(item) {
+											console.log(item);
+											$('#subtotalw<?php echo $i;?>').val(item['0']);
+											$('#subtotal').val(item['1']);
+											$('#total').val(item['2']);
+											
+											});
+							}
+			});
+
+<?php } ?>
+
+
+
+
+
+<?php for($i=1;$i<20;$i++){?>
+	$('#downCartw<?php echo $i;?>').on('click', function(){				
+			var subtotal = $('#subtotalw<?php echo $i;?>').val();
+			var newqty = $('#upw<?php echo $i;?>').val();
+			var rowId = $('#rowIdw<?php echo $i;?>').val();
+			var proId = $('#proIdw<?php echo $i;?>').val();
+			if (newqty == 0) {
+					refresh();
+			}
+
+			function refresh() {
+					myVar = setTimeout(function(){
+							location.reload();
+					}, 1000);
+			}
+							$.ajax({
+													type: 'POST',
+													url: 'wishlist/'+proId,
+													data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
+											}).done(function(item){
+											console.log(item);
+											getAll();
+											});
+							function getAll(){
+									$.ajax({
+											type: 'get',
+											url:'wishlist/get/all',
+											data: {rowId:rowId, newqty:newqty}
+											}).done(function(item) {
+											console.log(item);
+											$('#subtotalw<?php echo $i;?>').val(item['0']);
+											$('#subtotal').val(item['1']);
+											$('#total').val(item['2']);
+											});
+							}
+			});
+
+<?php } ?>
+
+
+
+<?php for($i=1;$i<20;$i++){?>
+			$('#deleteButton<?php echo $i;?>').on('click', function(){
+					var newqty = 0;
+					var rowId = $('#rowId<?php echo $i;?>').val();
+					var proId = $('#proId<?php echo $i;?>').val();
+									$.ajax({
+															type: 'POST',
+															url: 'cart/'+proId,
+															data: {rowId:rowId,_method: 'DELETE'}
+													}).done(function(item){
+													console.log(item);
+													location.reload();
+													});
+					});
+	<?php } ?>	
+
+	<?php for($i=1;$i<20;$i++){?>
+			$('#deleteButtonw<?php echo $i;?>').on('click', function(){
+					var newqty = 0;
+					var rowId = $('#rowIdw<?php echo $i;?>').val();
+					var proId = $('#proIdw<?php echo $i;?>').val();
+					console.log(rowId);
+									$.ajax({
+															type: 'POST',
+															url: 'wishlist/'+proId,
+															data: {rowId:rowId,_method: 'DELETE'}
+													}).done(function(item){
+													console.log(item);
+													location.reload();
+													});
+					});
+	<?php } ?>	
 
 
 
@@ -593,8 +571,41 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-							
-					</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	});
+
+
+
+
+
+
+
+
+
+
+</script>
 
 </body>
 </html>
