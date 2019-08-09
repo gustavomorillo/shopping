@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('products', ['uses'=>'ProductsController@index', "as" => "allProducts"]);
 Route::get('products/{id}', 'ProductsController@show')->name('getOneProduct');
 
+
 Route::resource('/cart', 'CartController');
 Route::get('cart/get/all', 'CartController@getAll')->name('getDataToAjax');
 
@@ -26,3 +27,15 @@ Route::resource('/wishlist', 'WishListController');
 Route::get('wishlist/get/all', 'WishListController@getAll')->name('getDataToAjax');
 
 Route::get('wishTodefault', 'WishListController@wishTodefault')->name('wishTodefault');
+
+
+// Route::get('admin/products', 'Admin\AdminProductsController@index')->name('adminDisplayProducts');
+// Route::get('admin/{id}/adminproduct', 'Admin\AdminProductsController@edit')->name('editProduct');
+
+Route::resource('/admin', 'Admin\AdminProductsController');
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
