@@ -454,9 +454,7 @@ $(document).ready(function() {
 			var newqty = $('#upw<?php echo $i;?>').val();
 			var rowId = $('#rowIdw<?php echo $i;?>').val();
 			var proId = $('#proIdw<?php echo $i;?>').val();
-			alert(newqty);
-			$('#carrito').data('notify',20);
-			alert($('#carrito').data('notify'))
+			
 							$.ajax({
 													type: 'POST',
 													url: 'wishlist/'+proId,
@@ -647,6 +645,17 @@ $(document).ready(function() {
 
 	<?php } ?>	
 
+	<?php for($i=1;$i<20;$i++){?>
+
+	$('.js-show-modal<?php echo $i;?>').on('click',function(e){
+        e.preventDefault();
+        $('.js-modal<?php echo $i;?>').addClass('show-modal1');
+    });
+
+    $('.js-hide-modal<?php echo $i;?>').on('click',function(){
+        $('.js-modal<?php echo $i;?>').removeClass('show-modal1');
+    });
+		<?php } ?>
 	});
 
 

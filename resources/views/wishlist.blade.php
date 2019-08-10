@@ -131,7 +131,7 @@
                   <tr class="table_row">
                     <td class="column-1">
                       <div class="how-itemcart1">
-                        <img src="{{Storage::disk('local')->url('product_images/'.$cartItem->options->image)}}" alt="IMG">
+                        <img src="{{asset('/images/'. $cartItem->options->image)}}" alt="IMG">
                       </div>
                       &nbsp;<a href="#" id="deleteButtonw<?php echo $count;?>" class="deleteBtn">Eliminar</a>
                     </td>
