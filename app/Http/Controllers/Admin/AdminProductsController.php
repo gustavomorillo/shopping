@@ -127,6 +127,19 @@ class AdminProductsController extends Controller
          */
      public function update(Request $request, $id)
      {
+
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'image' => 'required',
+            'modal_name' => 'required',
+            'modal_name2' => 'required',
+            'second_name' => 'required',
+            'image1' => 'required',
+            'image2' => 'required',
+            'image3' => 'required',
+        ]);
          
          $input = [];
          $input_modal = [];
@@ -146,9 +159,6 @@ class AdminProductsController extends Controller
          $input_modal['image2'] = $request->image2;
          $input_modal['image3'] = $request->image3;
 
-
-
-         
 
          DB::table('modals')
                 ->where('product_id', $id)

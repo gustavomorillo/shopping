@@ -93,11 +93,19 @@ class CartController extends Controller
 
         // Validate that size and color is required and add the item to the cart
 
+        $messages = [
+            'size.required' => 'Debes seleccionar una talla por favor',     
+            'color.required' => 'Debes seleccionar un color por favor'
+          ];
+
+
         $validatedData = $request->validate([
             'size' => 'required',
             'color' => 'required'
             
-        ]);
+        ], $messages);
+
+        
 
         
         $product = $request->all();
