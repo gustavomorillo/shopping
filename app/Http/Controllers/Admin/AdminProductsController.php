@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Session;
 use App\Modal;
 use App\Product;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class AdminProductsController extends Controller
 
         $product = Product::find($id);
         
-        return view('admin.adminProduct', compact('product'));
+        return view('admin.editProduct', compact('product'));
     }
     public function create()
     {
@@ -57,7 +58,14 @@ class AdminProductsController extends Controller
                 ->orderBy('id', 'desc')
                 ->first();
 
-        $lastId = $lastProduct->id + 1;
+
+            if($lastProduct == null) {
+                $lastId = 1;
+            } else {
+                $lastId = $lastProduct->id + 1;
+            }
+        
+                
 
 
         //Save image in public folder
@@ -111,7 +119,8 @@ class AdminProductsController extends Controller
 
          $modal->create($input_modal);
         
-         return redirect()->back();
+         
+         return redirect('/admin');
 
 
 
@@ -189,10 +198,10 @@ class AdminProductsController extends Controller
             DB::table('modals')
                     ->where('product_id', $id)
                     ->update($input_modal);
+            
+            Session::flash('product_updated', 'The product has been updated');
+            return redirect('/admin');
 
-            return redirect()->back();
-
-        
 
 
          
@@ -208,7 +217,17 @@ class AdminProductsController extends Controller
          */
      public function destroy($id)
      {
-         //
+        $product = Product::find($id);
+        $product->delete();
+
+        $modal = Modal::where('product_id', $id);
+        $modal->delete();
+
+        Session::flash('product_deleted', 'The product has been deleted');
+
+        return redirect()->back();
+
+
      }
  
  

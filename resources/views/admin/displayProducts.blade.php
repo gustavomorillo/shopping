@@ -95,10 +95,22 @@
           </button>
         </div>
       </div>
-
+      
       
 
       <h2>Products</h2>
+      @if(Session::has('product_updated'))
+      <div class="alert alert-success">
+          {{session('product_updated')}}
+      </div>
+      @endif
+
+      @if(Session::has('product_deleted'))
+      <div class="alert alert-danger">
+          {{session('product_deleted')}}
+      </div>
+      @endif
+
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -133,7 +145,22 @@
               <td>{{$product->modal->image2}}</td>
               <td>{{$product->modal->image3}}</td>
             <td><a href="{{ route('admin.edit', ['id' => $product->id]) }}"><button class="btn btn-info">Edit</button></a></td>
-              <td><button class="btn btn-danger">Delete</button></td>
+            <td>
+
+            <form action="/admin/{{$product->id}}" method="POST">
+              @csrf
+              @method('delete')
+
+              <button class="btn btn-danger" onclick="return confirm('¿ Estas seguro ?')">Delete</button>
+
+            </form>
+              
+              
+             
+              
+             
+              
+              </td>
 
             </tr>
             @endforeach
