@@ -39,6 +39,17 @@ class AdminProductsController extends Controller
      */
      public function store(Request $request)
      {
+
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'image' => 'required|file',
+            'image1' => 'required|file',
+            'image2' => 'required|file',
+            'image3' => 'required|file',
+        ]);
+
         
         //get the last ID of products table for modal name field
         
@@ -129,42 +140,62 @@ class AdminProductsController extends Controller
      {
 
         $validatedData = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string',
+            'description' => 'required|string',
             'price' => 'required',
-            'image' => 'required',
-            'modal_name' => 'required',
-            'modal_name2' => 'required',
-            'second_name' => 'required',
-            'image1' => 'required',
-            'image2' => 'required',
-            'image3' => 'required',
+            'modal_name' => 'required|string',
+            'modal_name2' => 'required|string',
+            'second_name' => 'required|string',
+            
         ]);
+
+        $input = [];
+        $input_modal = [];
+
+            if($file = $request->file('image')){
+                $name_image = time() . $file->getClientOriginalName();
+                $file->move('images', $name_image);
+                $input['image'] = $name_image;
+            }
+
+            if($file = $request->file('image1')){
+                $name_image1 = time() . $file->getClientOriginalName();
+                $file->move('images', $name_image1);
+                $input_modal['image1'] = $name_image1;
+            }
+
+            if($file = $request->file('image2')){
+                $name_image2 = time() . $file->getClientOriginalName();
+                $file->move('images', $name_image2);
+                $input_modal['image2'] = $name_image2;
+            }
+
+            if($file = $request->file('image3')){
+                $name_image3 = time() . $file->getClientOriginalName();
+                $file->move('images', $name_image3);
+                $input_modal['image3'] = $name_image3;
+            }
+
+            $input['name']  = $request->name;
+            $input['description'] = $request->description;
+            $input['price'] = $request->price;
+            $input['modal_name'] = $request->modal_name;
+            $product = Product::findOrFail($id);
+            $product->update($input);
+
+            $input_modal['name']  = $request->modal_name2;
+            $input_modal['second_name'] = $request->second_name;
+
+            DB::table('modals')
+                    ->where('product_id', $id)
+                    ->update($input_modal);
+
+            return redirect()->back();
+
+        
+
+
          
-         $input = [];
-         $input_modal = [];
-
-         $input['name']  = $request->name;
-         $input['description'] = $request->description;
-         $input['price'] = $request->price;
-         $input['image'] = $request->image;
-         $input['modal_name'] = $request->modal_name;
-
-         $product = Product::findOrFail($id);
-         $product->update($input);
-         
-         $input_modal['name']  = $request->modal_name2;
-         $input_modal['second_name'] = $request->second_name;
-         $input_modal['image1'] = $request->image1;
-         $input_modal['image2'] = $request->image2;
-         $input_modal['image3'] = $request->image3;
-
-
-         DB::table('modals')
-                ->where('product_id', $id)
-                ->update($input_modal);
-
-         return redirect()->back();
          
 
      }

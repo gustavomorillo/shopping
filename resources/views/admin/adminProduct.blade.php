@@ -22,7 +22,7 @@
     </div>
 @endif
 
-  <form action="/admin/{{$product->id}}" method="post">
+  <form action="/admin/{{$product->id}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
 
@@ -42,9 +42,9 @@
       </div>
 
       <div class="form-group">
-          <label for="price">Image</label>
-          <input type="text" class="form-control" id="image" name="image" placeholder="" value="{{$product->image}}" />
-      </div>
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file" id="image" name="image"   />
+        </div>
 
       <div class="form-group">
           <label for="modal_name">modal_name</label>
@@ -62,19 +62,20 @@
       </div>
 
       <div class="form-group">
-          <label for="image1">Image1</label>
-          <input type="text" class="form-control" id="image1" name="image1" placeholder="" value="{{$product->modal->image1}}" />
-      </div>
+            <label for="image">Image1</label>
+            <input type="file" class="form-control-file" id="image1" name="image1"   />
+        </div>
 
-      <div class="form-group">
-          <label for="image1">Image2</label>
-          <input type="text" class="form-control" id="image2" name="image2" placeholder="" value="{{$product->modal->image2}}" />
-      </div>
+        <div class="form-group">
+                <label for="image">Image2</label>
+                <input type="file" class="form-control-file" id="image2" name="image2"   />
+        </div>
 
-      <div class="form-group">
-          <label for="image1">Image3</label>
-          <input type="text" class="form-control" id="image3" name="image3" placeholder="" value="{{$product->modal->image3}}" />
-      </div>
+        <div class="form-group">
+                <label for="image">Image3</label>
+                <input type="file" class="form-control-file" id="image3" name="image3"   />
+        </div>
+
       <input type="submit" value="Send" class="btn btn-primary">
   </form>
 </div>
