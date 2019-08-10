@@ -270,16 +270,14 @@
 						All Products
 					</button>
 
-				<a href="{{route('womenProducts')}}">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
 						Women
-					</button></a>
+					</button>
 
-					<a href="{{route('menProducts')}}">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
 						Men
 					</button>
-					</a>
+
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
 						Bag
 					</button>
@@ -552,7 +550,7 @@
 
 				@endforeach
 
-				{{$products->links()}}
+	
 
 
 				@foreach($products as $product)

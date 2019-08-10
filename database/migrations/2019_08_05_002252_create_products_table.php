@@ -18,8 +18,9 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
-            $table->decimal('price', 8, 2);
-            $table->string('type');
+            $table->integer('price');
+            $table->string('category');
+            $table->string('subcategory');
             $table->string('modal_name');
             $table->timestamps();
         });

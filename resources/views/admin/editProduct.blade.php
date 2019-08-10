@@ -42,6 +42,29 @@
       </div>
 
       <div class="form-group">
+          <label for="category">Category</label>
+          <select class="form-control" id="category" name="category">
+            <option value="{{$product->category}}">{{$product->category}}</option>
+            <option value="women">women</option>
+            <option value="men">men</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="subCategory">subCategory</label>
+          <select class="form-control" id="subCategory" name="subcategory">
+            <option value="{{$product->subcategory}}">{{$product->subcategory}}</option>
+            <option value="chemise">Chemise</option>
+            <option value="blusa">Blusa</option>
+            <option value="franela">Franela</option>
+            <option value="sweater">Sweater</option>
+            <option value="zapatos">Zapatos</option>
+            <option value="gorra">Gorra</option>
+            <option value="accesorios">Accesorios</option>
+          </select>
+        </div>
+
+      <div class="form-group">
             <label for="image">Image</label>
             <input type="file" class="form-control-file" id="image" name="image"   />
         </div>

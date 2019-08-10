@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class AdminProductsController extends Controller
 {
     public function index(){
-        $products = Product::all();
+        $products = Product::paginate(3);
         return view('admin.displayProducts', compact('products'));
     }
 
@@ -45,6 +45,8 @@ class AdminProductsController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|integer',
+            'category' => 'required|string',
+            'subcategory' => 'required|string',
             'image' => 'required|file',
             'image1' => 'required|file',
             'image2' => 'required|file',
@@ -84,7 +86,8 @@ class AdminProductsController extends Controller
          $input['price'] = $request->price;
          $input['image'] = $name_image;
          $input['modal_name'] = 'js-show-modal'. $lastId;
-         $input['type'] = $request->type;
+         $input['category'] = $request->category;
+         $input['subcategory'] = $request->subcategory;
 
 
          
@@ -152,6 +155,8 @@ class AdminProductsController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required',
+            'category' => 'required|string',
+            'subcategory' => 'required|string',
             'modal_name' => 'required|string',
             'modal_name2' => 'required|string',
             'second_name' => 'required|string',
@@ -189,6 +194,8 @@ class AdminProductsController extends Controller
             $input['description'] = $request->description;
             $input['price'] = $request->price;
             $input['modal_name'] = $request->modal_name;
+            $input['category'] = $request->category;
+            $input['subcategory'] = $request->subcategory;
             $product = Product::findOrFail($id);
             $product->update($input);
 
