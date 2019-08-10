@@ -266,17 +266,31 @@
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+						<a href="{{route('allProducts')}}">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 " data-filter="*">
 						All Products
 					</button>
+						</a>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
+					<a href="{{route('womenProducts')}}">
+							<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+								Women
+							</button></a>
+		
+							<a href="{{route('menProducts')}}">
+							<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".men">
+								Men
+							</button>
+							</a>
+							<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+								Women
+							</button></a>
+		
+							<a href="{{route('menProducts')}}">
+							<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+								Men
+							</button>
+							</a>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
 						Bag
@@ -312,7 +326,9 @@
 							<i class="zmdi zmdi-search"></i>
 						</button>
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+						<form action="{{route('search-product')}}" method="get">
+								<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+								</form>
 					</div>	
 				</div>
 
@@ -549,6 +565,8 @@
 				</div>
 
 				@endforeach
+
+				{{$products->links()}}
 
 	
 

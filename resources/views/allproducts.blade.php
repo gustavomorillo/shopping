@@ -266,9 +266,12 @@
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+				
+						<a href="{{route('allProducts')}}">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						All Products
 					</button>
+						</a>
 
 				<a href="{{route('womenProducts')}}">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
@@ -313,8 +316,9 @@
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 							<i class="zmdi zmdi-search"></i>
 						</button>
-
+						<form action="{{route('search-product')}}" method="get">
 						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+						</form>
 					</div>	
 				</div>
 

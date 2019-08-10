@@ -27,12 +27,12 @@ Route::get('cart/get/all', 'CartController@getAll')->name('getDataToAjax');
 
 Route::resource('/wishlist', 'WishListController');
 Route::get('wishlist/get/all', 'WishListController@getAll')->name('getDataToAjax');
-
 //Wishlist products to defaultShopping Cart
 Route::get('wishTodefault', 'WishListController@wishTodefault')->name('wishTodefault');
 
-
 Route::resource('/admin', 'Admin\AdminProductsController')->middleware('restrictToAdmin');
+
+Route::get('search', 'ProductsController@search')->name('search-product');
 
 
 
