@@ -218,10 +218,15 @@ class AdminProductsController extends Controller
      public function destroy($id)
      {
         $product = Product::find($id);
-        $product->delete();
+        unlink(public_path() . '/images/' . $product->image);
 
         $modal = Modal::where('product_id', $id);
+        unlink(public_path() . '/images/' . $product->modal->image1);
+        unlink(public_path() . '/images/' . $product->modal->image2);
+        unlink(public_path() . '/images/' . $product->modal->image3);
         $modal->delete();
+        $product->delete();
+
 
         Session::flash('product_deleted', 'The product has been deleted');
 

@@ -116,10 +116,10 @@
           <thead>
             <tr>
               <th>Id</th>
+              <th>Image</th>
               <th>Name</th>
               <th>Description</th>
               <th>price</th>
-              <th>Image</th>
               <th>Modal name</th>
               <th>Modal </th>
               <th>Modal second_name</th>
@@ -134,10 +134,14 @@
             @foreach($products as $product)
             <tr>
               <td>{{$product->id}}</td>
-              <td>{{$product->name}}</td>
+              <td>
+                
+                  <a href="{{ route('admin.edit', ['id' => $product->id]) }}"><img src="{{asset('/images/' .$product->image)}}" style="width: 100px"alt=""></a>
+              
+              </td>
+              <td >{{$product->name}}</td>
               <td>{{$product->description}}</td>
               <td>{{$product->price}}</td>
-              <td>{{$product->image}}</td>
               <td>{{$product->modal_name}}</td>
               <td>{{$product->modal->name}}</td>
               <td>{{$product->modal->second_name}}</td>
