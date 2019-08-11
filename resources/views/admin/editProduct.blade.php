@@ -41,6 +41,55 @@
           <input type="text" class="form-control" id="price" name="price" placeholder="" value="{{$product->price}}" />
       </div>
 
+
+      <p>Tallas</p>
+
+
+      @if($product->s == 1)
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="s" value="1" name="s" checked>
+        <label class="form-check-label" for="s">Talla S</label>
+      </div>
+      @else 
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="s" value="1" name="s">
+        <label class="form-check-label" for="s">Talla S</label>
+      </div>
+      @endif
+
+      @if($product->m == 1)
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="m" value="1" name="m" checked>
+        <label class="form-check-label" for="m">Talla M</label>
+      </div>
+      @else 
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="m" value="1" name="m">
+        <label class="form-check-label" for="m">Talla M</label>
+      </div>
+      @endif
+
+      @if($product->l == 1)
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="l" value="1" name="l" checked>
+        <label class="form-check-label" for="l">Talla L</label>
+      </div>
+      @else 
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="l" value="1" name="l">
+        <label class="form-check-label" for="l">Talla L</label>
+      </div>
+      @endif
+
+      <div class="form-group">
+        <label for="price">Color</label>
+        <input type="text" class="form-control" id="color" name="color" placeholder="Color" value="{{$product->color}}" />
+    </div>
+
+
+
+
+
       <div class="form-group">
           <label for="category">Category</label>
           <select class="form-control" id="category" name="category">

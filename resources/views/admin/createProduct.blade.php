@@ -41,6 +41,27 @@
           <input type="text" class="form-control" id="price" name="price" placeholder="Price" value="" />
       </div>
 
+      <p>Tallas</p>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="s" value="1" name="s">
+        <label class="form-check-label" for="s">Talla S</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="m" value="1" name="m">
+        <label class="form-check-label" for="m">Talla M</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="l" value="1" name="l">
+        <label class="form-check-label" for="l">Talla L</label>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Color</label>
+        <input type="text" class="form-control" id="color" name="color" placeholder="Color" value="" />
+    </div>
+
         <div class="form-group">
             <label for="category">Category</label>
             <select class="form-control" id="category" name="category">

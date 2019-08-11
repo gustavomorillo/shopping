@@ -38,16 +38,19 @@ class ProductsController extends Controller
         $products = Product::where('category', 'women')->paginate(15);
         return view('womenProducts', compact('products'));
     }
-
         public function search(Request $request) {
-
         $search = $request->get('search-product');
-
         $products = Product::where('name', 'Like', '%' . $search . '%')->paginate(15);  
-
         return view('allproducts', compact('products'));
         
     }
+
+    public function checkoutProducts() {
+        return "123";
+        
+    }
+
+
 
         public function createOrder(Request $request) {
                   

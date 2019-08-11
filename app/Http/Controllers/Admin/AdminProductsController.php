@@ -45,12 +45,14 @@ class AdminProductsController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|integer',
+            'color' => 'required|string',
             'category' => 'required|string',
             'subcategory' => 'required|string',
             'image' => 'required|file',
             'image1' => 'required|file',
             'image2' => 'required|file',
             'image3' => 'required|file',
+            
         ]);
 
         
@@ -84,14 +86,22 @@ class AdminProductsController extends Controller
          $input['name']  = $request->name;
          $input['description'] = $request->description;
          $input['price'] = $request->price;
+         $input['color'] = $request->color;
          $input['image'] = $name_image;
          $input['modal_name'] = 'js-show-modal'. $lastId;
          $input['category'] = $request->category;
          $input['subcategory'] = $request->subcategory;
-
-
          
-        
+
+        if($request->s){
+            $input['s'] = $request->s;
+        }
+        if($request->m){
+            $input['m'] = $request->m;
+        }
+        if($request->l){
+            $input['l'] = $request->l;
+        }
 
          $product = new Product();
 
@@ -110,6 +120,8 @@ class AdminProductsController extends Controller
             $image3 = time() . $file3->getClientOriginalName();
             $file3->move('images', $image3);
         }
+
+        
 
          $input_modal['name']  = 'js-modal' . $id;
          $input_modal['second_name'] = 'js-hide-modal' . $id;
@@ -155,11 +167,13 @@ class AdminProductsController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required',
+            'color' => 'required|string',
             'category' => 'required|string',
             'subcategory' => 'required|string',
             'modal_name' => 'required|string',
             'modal_name2' => 'required|string',
             'second_name' => 'required|string',
+            
             
         ]);
 
@@ -193,9 +207,28 @@ class AdminProductsController extends Controller
             $input['name']  = $request->name;
             $input['description'] = $request->description;
             $input['price'] = $request->price;
+            $input['color'] = $request->color;
             $input['modal_name'] = $request->modal_name;
             $input['category'] = $request->category;
             $input['subcategory'] = $request->subcategory;
+            
+
+            if($request->s == null) {
+                $input['s'] = 0;
+            } else {
+                $input['s'] = 1;
+            }
+            if($request->m == null) {
+                $input['m'] = 0;
+            } else {
+                $input['m'] = 1;
+            }
+            if($request->l == null) {
+                $input['l'] = 0;
+            } else {
+                $input['l'] = 1;
+            }
+
             $product = Product::findOrFail($id);
             $product->update($input);
 

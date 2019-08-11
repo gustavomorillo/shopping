@@ -120,6 +120,10 @@
               <th>Name</th>
               <th>Description</th>
               <th>price</th>
+              <th>talla S</th>
+              <th>talla M</th>
+              <th>talla L</th>
+              <th>color</th>
               <th>Modal name</th>
               <th>Modal </th>
               <th>Modal second_name</th>
@@ -142,6 +146,10 @@
               <td >{{$product->name}}</td>
               <td>{{$product->description}}</td>
               <td>{{$product->price}}</td>
+              <td>{{$product->s}}</td>
+              <td>{{$product->m}}</td>
+              <td>{{$product->l}}</td>
+              <td>{{$product->color}}</td>
               <td>{{$product->modal_name}}</td>
               <td>{{$product->modal->name}}</td>
               <td>{{$product->modal->second_name}}</td>

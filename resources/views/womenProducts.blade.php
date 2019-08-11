@@ -649,11 +649,16 @@
 													<input id="image" name="image" type="hidden" value="{{$product->image}}">
 													<input id="weight" name="weight" type="hidden" value="0">
 											<select class="js-select2" name="size" form="{{$product->id}}" id="size">
-												<option value="">Choose an option</option>
-												<option value="s">Size S</option>
-												<option value="m">Size M</option>
-												<option value="l">Size L</option>
-												<option value="xl">Size XL</option>
+												<option value="">Selecciona una Opción</option>
+												@if($product->s == 1)
+												<option value="s">Talla S</option>
+												@endif
+												@if($product->m == 1)
+												<option value="m">Talla M</option>
+												@endif
+												@if($product->l == 1)
+												<option value="l">Talla L</option>
+												@endif
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -668,11 +673,11 @@
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0">
 											<select class="js-select2" name="color" form="{{$product->id}}" id="color">
-												<option value="">Choose an option</option>
-												<option value="red">Red</option>
+												<option value="{{$product->color}}">{{$product->color}}</option>
+												{{-- <option value="red">Red</option>
 												<option value="blue">Blue</option>
 												<option value="white">White</option>
-												<option value="grey">Grey</option>
+												<option value="grey">Grey</option> --}}
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>

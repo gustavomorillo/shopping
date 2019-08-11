@@ -14,12 +14,13 @@ use App\Product;
 
 Route::get('/', ['uses'=>'ProductsController@index', "as" => "allProducts"]);
 
-Route::get('products/createorder', 'ProductsController@createOrder')->name('createOrder');
+
 Route::get('products', ['uses'=>'ProductsController@index', "as" => "allProducts"]);
 Route::get('products/{id}', 'ProductsController@show')->name('getOneProduct');
 Route::get('/women', 'ProductsController@womenProducts')->name('womenProducts');
 Route::get('/men', 'ProductsController@menProducts')->name('menProducts');
-
+Route::get('product/createorder', 'ProductsController@createOrder')->name('createOrder');
+Route::get('product/checkoutProducts/', 'ProductsController@checkoutProducts')->name('checkoutProducts');
 
 
 Route::resource('/cart', 'CartController');

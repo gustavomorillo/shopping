@@ -37,15 +37,7 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
-		@if(Session::has('order_success'))
-		<div class="alert alert-success">
-				<h3 class="text-center">{{session('order_success')}}</h3>
-		</div>
-
-		<?php header( "refresh:5;url=http://shopping.test/" ); ?>
- 
-
-		@endif
+		
 	
 	<!-- Header -->
 	<header class="
@@ -119,12 +111,12 @@
 		?>
 		
 			">
-			@if(!Session::has('order_success'))
+		
 
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
-					<a href="#" class="logo">
+					<a href="/" class="logo">
 						<img src="{{asset('images/icons/logo-01.png')}}" alt="IMG-LOGO">
 					</a>
 
@@ -179,7 +171,17 @@
 					</div>
 				</nav>
 
+				@if(Session::has('order_success'))
+					<div class="alert alert-success">
+							<h3 class="text-center">{{session('order_success')}}</h3>
+					</div>
+
+				
+ 
+
 				@endif
+
+	
 			</div>	
 		</div>
 
