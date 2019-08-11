@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,13 +47,45 @@ class ProductsController extends Controller
     }
 
     public function checkoutProducts() {
-        return "123";
+        return view('checkout');
         
     }
 
 
 
         public function createOrder(Request $request) {
+
+            $messages = [
+                'name.required' => 'Debes introducir tu nombre por favor',     
+                'lastname.required' => 'Debes introducir tus apellidos por favor',
+                'address.required' => 'Debes introducir tu dirección exacta por favor', 
+                'address.min'  => 'Debes introducir una dirección valida, la que introdujo es muy corta',    
+                'city.required' => 'Debes introducir tu ciudad por favor',
+                'state.required' => 'Debes introducir estado por favor',
+                'phone.required' => 'Debes introducir teléfono por favor',
+                'email.required' => 'Debes introducir email por favor',
+              ];
+    
+    
+            $validatedData = $request->validate([
+                'name' => 'required',
+                'lastname' => 'required',
+                'address' => 'required|min:10',
+                'city' => 'required',
+                'state' => 'required',
+                'phone' => 'required',
+                'email' => 'required|email',
+                
+            ], $messages);
+
+
+        $name = $request->name;
+        $lastname = $request->lastname;
+        $address = $request->address;
+        $city = $request->city;
+        $state = $request->state;
+        $phone = $request->phone;
+        $email = $request->email;
                   
         $total = Cart::total();
 
@@ -63,8 +96,15 @@ class ProductsController extends Controller
 
         if($total) {
             $date = date('Y-m-d H:i:s');
-            $newOrderArray = array("status"=>"on_hold", "date"=>$date, "del_date"=>$date, "price"=>$total);
-            $created_order = DB::table('orders')->insert($newOrderArray);
+            $newOrderArray = array("status"=>"on_hold", "date"=>$date, 
+            "del_date"=>$date, "price"=>$total,"name"=>$total,"price"=>$total,
+            "name"=>$name,"lastname"=>$lastname,"address"=>$address,
+            "city"=>$city,"state"=>$state,"phone"=>$phone);
+            // $created_order = DB::table('orders')->insert($newOrderArray);
+
+            $order = new Order;
+            $order->create($newOrderArray);
+
             $order_id = DB::getPdo()->lastInsertId();
 
             $cartItems = Cart::content();

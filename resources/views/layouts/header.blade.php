@@ -49,7 +49,9 @@
 		echo 'header-v4';
 	} elseif(request()->is('wishlist')) {
 		echo 'header-v4';
-	} else {
+	} elseif(request()->is('product/*')) {
+		echo 'header-v4';
+	}else {
 		echo '';
 	}
 ?>"> 
@@ -104,6 +106,8 @@
 			} elseif(request()->is('products/*')) {
 				echo 'how-shadow1';
 			} elseif(request()->is('wishlist')) {
+				echo 'how-shadow1';
+			}elseif(request()->is('product/*')) {
 				echo 'how-shadow1';
 			}else {
 				echo '';
