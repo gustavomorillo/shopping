@@ -90,7 +90,7 @@ class CartController extends Controller
      */
     public function edit(Request $request, $id)
     {
-
+        // Add item to the cart
         // Validate that size and color is required and add the item to the cart
 
         $messages = [
@@ -104,15 +104,12 @@ class CartController extends Controller
             'color' => 'required'
             
         ], $messages);
-
-        
-
         
         $product = $request->all();
 
-
-        Cart::add($id, $product['name'], $product['qty'], $product['price'], $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
-
+        Cart::add($id, $product['name'], $product['qty'], $product['price'], 
+        $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 
+        'image'=>$product['image']]);
 
 
         //return response()->json($product['name']);
