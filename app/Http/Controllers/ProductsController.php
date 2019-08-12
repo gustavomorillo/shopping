@@ -125,13 +125,12 @@ class ProductsController extends Controller
         }
 
         Cart::destroy();
-        Session::flush();
+        //Session::flush();
 
-        Session::flash('order_success', 'Muchas gracias por tu compra !!');
+        //Session::flash('order_success', 'Su orden esta casi completa, sólo falta el método de pago');
 
-        return redirect('/');
+        return redirect('/product/payment')->with('success', 'Su orden esta casi completa, sólo falta el método de pago');
 
-        // CREAR SESSION desuscefully created
 
         } else {
 

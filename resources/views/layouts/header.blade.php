@@ -175,15 +175,7 @@
 					</div>
 				</nav>
 
-				@if(Session::has('order_success'))
-					<div class="alert alert-success">
-							<h3 class="text-center">{{session('order_success')}}</h3>
-					</div>
-
 				
- 
-
-				@endif
 
 	
 			</div>	

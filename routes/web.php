@@ -21,7 +21,7 @@ Route::get('/women', 'ProductsController@womenProducts')->name('womenProducts');
 Route::get('/men', 'ProductsController@menProducts')->name('menProducts');
 Route::get('product/createorder', 'ProductsController@createOrder')->name('createOrder');
 Route::get('product/checkoutProducts/', 'ProductsController@checkoutProducts')->name('checkoutProducts');
-
+Route::get('product/payment', 'PaymentController@index')->name('payment');
 
 Route::resource('/cart', 'CartController');
 Route::get('cart/get/all', 'CartController@getAll')->name('getDataToAjax');
