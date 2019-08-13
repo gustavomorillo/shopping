@@ -10,6 +10,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
 <!--===============================================================================================-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
@@ -41,20 +42,13 @@
 	
 	<!-- Header -->
 	<header class="
-	<?php if(request()->is('cart')){
-		echo 'header-v4';
-	} elseif(request()->is('product'))  {
-		echo 'header-v4';
-	} elseif(request()->is('products/*')) {
-		echo 'header-v4';
-	} elseif(request()->is('wishlist')) {
-		echo 'header-v4';
-	} elseif(request()->is('product/*')) {
-		echo 'header-v4';
-	}else {
+	<?php if(request()->is('/')){
 		echo '';
-	}
-?>"> 
+	} elseif(request()->is('/products'))  {
+		echo '';
+	} else {
+		echo 'header-v4';
+	} ?> "> 
 	
 	{{-- {{ (request()->is('cart')) ? 'header-v4' : '' }} --}}
 	
@@ -73,13 +67,25 @@
 							Help & FAQs
 						</a>
 
+
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{{ route('logout') }}"
+								 onclick="event.preventDefault();
+															 document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+							</a>
+							
+					</div>
+
+
 						@if(Auth::check())
 						<a href="/home" class="flex-c-m trans-04 p-lr-25">
-							My Account
+							Mi cuenta
 						</a>
+						
 						@else
 						<a href="/login" class="flex-c-m trans-04 p-lr-25">
-							My Account
+							Mi cuenta
 						</a>
 						@endif
 						
@@ -91,6 +97,17 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							USD
 						</a>
+
+						@if(Auth::check())
+						<a class="flex-c-m trans-04 p-lr-25" href="{{ route('logout') }}"
+								 onclick="event.preventDefault();
+															 document.getElementById('logout-form').submit();">
+									{{ __('Salir') }}
+							</a>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								@csrf
+							</form>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -99,22 +116,15 @@
 			
 			{{-- {{ (request()->is('cart')) ? 'how-shadow1' : '' }} --}}
 
-			<?php if(request()->is('cart')){
-				echo 'how-shadow1';
-			} elseif(request()->is('product'))  {
-				echo 'how-shadow1';
-			} elseif(request()->is('products/*')) {
-				echo 'how-shadow1';
-			} elseif(request()->is('wishlist')) {
-				echo 'how-shadow1';
-			}elseif(request()->is('product/*')) {
-				echo 'how-shadow1';
-			}else {
+			<?php if(request()->is('/')){
 				echo '';
-			}
-		?>
+			} elseif(request()->is('/products'))  {
+				echo '';
+			} else {
+				echo 'header-v4';
+			} ?> "> 
 		
-			">
+			
 		
 
 				<nav class="limiter-menu-desktop container">
@@ -128,7 +138,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class=" {{ (request()->is('products')) ? 'active-menu' : '' }}">
-								<a href="{{ url('products')}}">Home</a>
+								<a href="{{ url('products')}}">Inicio</a>
 								<ul class="sub-menu">
 									<li><a href="index.html">Homepage 1</a></li>
 									<li><a href="home-02.html">Homepage 2</a></li>
@@ -244,7 +254,7 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
+					<a href="index.html">Inicio</a>
 					<ul class="sub-menu-m">
 						<li><a href="index.html">Homepage 1</a></li>
 						<li><a href="home-02.html">Homepage 2</a></li>

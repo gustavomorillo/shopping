@@ -22,6 +22,7 @@ Route::get('/men', 'ProductsController@menProducts')->name('menProducts');
 Route::get('product/createorder', 'ProductsController@createOrder')->name('createOrder');
 Route::get('product/checkoutProducts/', 'ProductsController@checkoutProducts')->name('checkoutProducts');
 Route::get('product/payment', 'PaymentController@index')->name('payment');
+// Route::get('createAccount', )
 
 Route::resource('/cart', 'CartController');
 Route::get('cart/get/all', 'CartController@getAll')->name('getDataToAjax');
@@ -39,6 +40,11 @@ Route::resource('/admin', 'Admin\AdminProductsController')->middleware('restrict
 Route::get('search', 'ProductsController@search')->name('search-product');
 
 
+
+Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');;
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+

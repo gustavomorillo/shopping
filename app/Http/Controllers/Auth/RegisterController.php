@@ -48,13 +48,33 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        $messages = [
+            'name.required'=> 'El nombre es requerido',
+            'lastname.required'=> 'El apellido es requerido',
+            'phone.required'=> 'El teléfono es requerido',
+            'gender.required'=> 'El genéro es requerido',
+            'birthdate.required'=> 'La fecha de nacimiento es requerida',
+            'birthdate.date_format' => 'El formato ingresado no es correcto',
+            'email.unique' => 'El correo ya se encuentra registrado',     
+            'email.required' => 'El correo es requerido',
+            'email.email' => 'Formato de correo invalido',
+          ];
+
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'gender' => ['required'],
+            'birthdate' => ['required', 'date_format:d/m/Y', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ], $messages);
     }
 
+
+    
     /**
      * Create a new user instance after a valid registration.
      *
@@ -65,8 +85,16 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'lastname' => $data['lastname'],
+            'phone' => $data['phone'],
+            'gender' => $data['gender'],
+            'birthdate' => $data['birthdate'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    
+
+
 }

@@ -3352,3 +3352,10 @@ input.num-product::-webkit-inner-spin-button {
   font-size:12px;
 
 }
+
+.font30 {
+  font-size:30px!important;
+}
+.font35 {
+  font-size:35px!important;
+}
