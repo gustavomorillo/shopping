@@ -163,8 +163,8 @@
                 <h4 class="mtext-109 cl2 p-b-30">Método de Envío</h4>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="shipping" id="shipping" value="mrw" checked style="margin-left:5px">
-                    <label class="form-check-label stext-110 cl2" for="shipping" style="margin-left:5px">
+                    <input class="form-check-input" type="radio" name="shipping" id="shipping" value="mrw" checked >
+                    <label class="form-check-label stext-110 cl2" for="shipping">
                       MRW
                     </label>
                   </div>

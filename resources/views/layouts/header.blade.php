@@ -8,14 +8,17 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+	{{-- <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"> --}}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap43.min.css') }}">
+	
 <!--===============================================================================================-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons-v1.0.0/icon-font.min.css')}}">
+
+	{{-- <link rel="stylesheet" type="text/css" href="{{asset('fonts/linearicons-v1.0.0/icon-font.min.css')}}"> --}}
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
 <!--===============================================================================================-->	
@@ -44,9 +47,11 @@
 	<header class="
 	<?php if(request()->is('/')){
 		echo '';
-	} elseif(request()->is('/products'))  {
+	} elseif(request()->is('products'))  {
 		echo '';
-	} else {
+	} elseif(request()->is('search'))  {
+		echo '';
+	}else {
 		echo 'header-v4';
 	} ?> "> 
 	
@@ -118,9 +123,11 @@
 
 			<?php if(request()->is('/')){
 				echo '';
-			} elseif(request()->is('/products'))  {
+			} elseif(request()->is('products'))  {
 				echo '';
-			} else {
+			} elseif(request()->is('search'))  {
+				echo '';
+			}else {
 				echo 'header-v4';
 			} ?> "> 
 		

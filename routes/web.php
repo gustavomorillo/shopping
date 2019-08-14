@@ -41,7 +41,8 @@ Route::get('search', 'ProductsController@search')->name('search-product');
 
 
 
-Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');;
+Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');
+Route::post('editAccount', 'AccountController@update')->name("updateAccount")->middleware('auth');
 
 Auth::routes();
 

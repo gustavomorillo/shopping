@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'email.unique' => 'El correo ya se encuentra registrado',     
             'email.required' => 'El correo es requerido',
             'email.email' => 'Formato de correo invalido',
+            'passport.required' => 'La contraseña es requerida'
           ];
 
 
