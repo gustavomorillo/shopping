@@ -1,6 +1,8 @@
 @extends('layouts.index')
 
 @section('center')
+
+@include('layouts.cart')
 {{-- 
 
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

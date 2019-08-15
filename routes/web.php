@@ -20,7 +20,7 @@ Route::get('products/{id}', 'ProductsController@show')->name('getOneProduct');
 Route::get('/women', 'ProductsController@womenProducts')->name('womenProducts');
 Route::get('/men', 'ProductsController@menProducts')->name('menProducts');
 Route::get('product/createorder', 'ProductsController@createOrder')->name('createOrder');
-Route::get('product/checkoutProducts/', 'ProductsController@checkoutProducts')->name('checkoutProducts');
+
 Route::get('product/payment', 'PaymentController@index')->name('payment');
 // Route::get('createAccount', )
 
@@ -43,6 +43,7 @@ Route::get('search', 'ProductsController@search')->name('search-product');
 
 Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');
 Route::post('editAccount', 'AccountController@update')->name("updateAccount")->middleware('auth');
+Route::get('product/checkoutProducts/', 'ProductsController@checkoutProducts')->name('checkoutProducts')->middleware('auth');
 
 Auth::routes();
 
