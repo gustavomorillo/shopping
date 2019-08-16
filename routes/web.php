@@ -1,6 +1,8 @@
 <?php
 use App\Modal;
 use App\Product;
+
+use Gloudemans\Shoppingcart\Facades\Cart;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,9 +46,12 @@ Route::get('search', 'ProductsController@search')->name('search-product');
 Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');
 Route::post('editAccount', 'AccountController@update')->name("updateAccount")->middleware('auth');
 Route::get('product/checkoutProducts/', 'ProductsController@checkoutProducts')->name('checkoutProducts')->middleware('auth');
-
+Route::post('/newlogout','LogoutController@newLogout')->name('newLogout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+
+  
+  

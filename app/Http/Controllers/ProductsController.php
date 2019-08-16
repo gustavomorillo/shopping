@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Session;
 use App\Order;
 use App\Product;
@@ -47,7 +48,13 @@ class ProductsController extends Controller
     }
 
     public function checkoutProducts() {
+
+
+        $user_id = Auth::user()->id;
         
+        // si la base
+        //Cart::store($user_id);
+
         return view('checkout');
         
     }
@@ -140,6 +147,8 @@ class ProductsController extends Controller
         }
 
 
-    }
+        }
+
+        
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 use Session;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -14,11 +15,11 @@ class CartController extends Controller
      */
     public function index()
     {
-        
-        // Session::flush();
-
+       
         // set tax to value of 0
+
         Cart::setGlobalTax(0);
+        //Store products in database base in user id
         $cartItems = Cart::content();
         
         return view('shopping-cart', compact('cartItems'));

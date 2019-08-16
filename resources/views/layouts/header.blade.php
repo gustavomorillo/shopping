@@ -104,12 +104,12 @@
 						</a>
 
 						@if(Auth::check())
-						<a class="flex-c-m trans-04 p-lr-25" href="{{ route('logout') }}"
+						<a class="flex-c-m trans-04 p-lr-25" href="{{ route('newLogout') }}"
 								 onclick="event.preventDefault();
 															 document.getElementById('logout-form').submit();">
 									{{ __('Salir') }}
 							</a>
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+							<form id="logout-form" action="{{ route('newLogout') }}" method="POST" style="display: none;">
 								@csrf
 							</form>
 						@endif
