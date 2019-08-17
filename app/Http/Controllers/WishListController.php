@@ -18,10 +18,12 @@ class WishListController extends Controller
         Cart::instance('wishlist');
 
         // Get the content of the 'wishlist' cart
-        
+        $cartItemsw = Cart::content();
+
+        Cart::instance('default');
         $cartItems = Cart::content();
-        
-        return view('wishlist', compact('cartItems'));
+
+        return view('wishlist', compact('cartItemsw', 'cartItems'));
     }
 
 

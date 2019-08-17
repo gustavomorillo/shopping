@@ -45,7 +45,7 @@ Route::get('search', 'ProductsController@search')->name('search-product');
 
 Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');
 Route::post('editAccount', 'AccountController@update')->name("updateAccount")->middleware('auth');
-Route::get('product/checkoutProducts/', 'ProductsController@checkoutProducts')->name('checkoutProducts')->middleware('auth');
+Route::get('product/shippingProducts/', 'ProductsController@shippingProducts')->name('shippingProducts')->middleware('auth');
 Route::post('/newlogout','LogoutController@newLogout')->name('newLogout');
 Auth::routes();
 

@@ -15,6 +15,8 @@ class LogoutController extends Controller
 
         $user_id = Auth::user()->id;
         Cart::store($user_id);
+        $wish_userid = $user_id + 1000000;
+        Cart::instance('wishlist')->store($wish_userid);
         Session::flush();
         Auth::logout();
         return Redirect('/');

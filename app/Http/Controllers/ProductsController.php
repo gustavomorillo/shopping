@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Session;
 use App\Order;
+use App\Address;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,15 +17,16 @@ class ProductsController extends Controller
     {
 
         $products = Product::paginate(10);
-        return view('allproducts', compact('products'));
+        $cartItems = Cart::content();
+        return view('allproducts', compact('products', 'cartItems'));
 
     }
 
     public function show($id){
         
         $product = Product::find($id);
-        
-        return view('product', compact('product'));
+        $cartItems = Cart::content();
+        return view('product', compact('product', 'cartItems'));
     }  
 
    
@@ -47,21 +49,23 @@ class ProductsController extends Controller
         
     }
 
-    public function checkoutProducts() {
+    public function shippingProducts() {
 
 
         $user_id = Auth::user()->id;
         
-        // si la base
-        //Cart::store($user_id);
+        $cartItems = Cart::content();
 
-        return view('checkout');
+        $addresses = Address::where('user_id', 1)->get();
+
+
+        return view('shipping', compact('cartItems', 'addresses'));
         
     }
 
 
 
-        public function createOrder(Request $request) {
+    public function createOrder(Request $request) {
 
             $messages = [
                 'name.required' => 'Debes introducir tu nombre por favor',     
@@ -100,14 +104,17 @@ class ProductsController extends Controller
      
         $total = str_replace(",","", $total);
 
-
+        
+        $user_id = Auth::id();
 
         if($total) {
             $date = date('Y-m-d H:i:s');
-            $newOrderArray = array("status"=>"on_hold", "date"=>$date, 
-            "del_date"=>$date, "price"=>$total,"name"=>$total,"price"=>$total,
+            $newOrderArray = array("user_id"=>$user_id,"status"=>"on_hold", "date"=>$date, 
+            "del_date"=>$date, "price"=>$total,
+
             "name"=>$name,"lastname"=>$lastname,"address"=>$address,
             "city"=>$city,"state"=>$state,"phone"=>$phone);
+
             // $created_order = DB::table('orders')->insert($newOrderArray);
 
             $order = new Order;
@@ -132,7 +139,7 @@ class ProductsController extends Controller
             $created_order_items = DB::table('order_items')->insert($newItemsInCurrentOrder);
         }
 
-        Cart::destroy();
+        // Cart::destroy();
         //Session::flush();
 
         //Session::flash('order_success', 'Su orden esta casi completa, sólo falta el método de pago');

@@ -76,16 +76,24 @@ $(document).ready(function() {
             axios
                 .get("/cart/" + id + "/edit?" + datos)
                 .then(function(response) {
-                    console.log(response);
-                    swal(nameProduct, "is added to cart !", "success");
+                    swal(nameProduct, "fue agregado a tu carrito de compras !", "success");
+                    $.ajax({
+                        url: "http://shopping.test/products/",
+                        data: { 
+                        },
+                        type: "GET",
+                        dataType: "html",
+                        success: function (data) {
+                            var result = $('<div />').append(data).find('#cartWish').html();
+                            $('#cartWish').html(result);
+                        }});
+                    // function refresh() {
+                    //     myVar = setTimeout(function() {
+                    //         location.reload();
+                    //     }, 2000);
+                    // }
 
-                    function refresh() {
-                        myVar = setTimeout(function() {
-                            location.reload();
-                        }, 2000);
-                    }
-
-                    refresh();
+                    // refresh();
                 })
                 .catch(function(error) {
                     var errors = error.response.data.errors;
@@ -119,14 +127,26 @@ $(document).ready(function() {
 
         $(this).on("click", function() {
                 let id = $(this).data("id");
-                console.log(id);
                 var datos = $("#" + id).serialize();
                 axios.get("/wishlist/" + id + "/edit?" + datos)
             .then(function(response) {
-                console.log(response);
-                                    swal(nameProduct, "is added to wishlist !", "success");
-                                    $(this).addClass("js-addedwish-detail");
-                                    $(this).off("click");
+                
+                                    swal(nameProduct, "fue agregado a tu lista de deseos !", "success");
+                                    $(".js-addwish-detail").addClass("js-addedwish-detail");
+                                    $(".js-addwish-detail").off("click");
+                                    $.ajax({
+                                        url: "http://shopping.test/products/",
+                                        data: { 
+                                        },
+                                        type: "GET",
+                                        dataType: "html",
+                                        success: function (data) {
+                                            var result = $('<div />').append(data).find('#cartWish').html();
+                                            $('#cartWish').html(result);
+                                        }});
+
+                                    
+
             })
             .catch(function(error) {
                 var errors = error.response.data.errors;

@@ -42,6 +42,8 @@ class LoginController extends Controller
     {
         $user_id = Auth::user()->id;
         Cart::restore($user_id);
+        $wish_userid = $user_id + 1000000;
+        Cart::instance('wishlist')->restore($wish_userid);
     }
 
    
