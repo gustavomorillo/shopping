@@ -24,7 +24,7 @@
 		
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85" action="{{route('createOrder')}}">
+	<div class="bg0 p-t-75 p-b-85" >
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -42,23 +42,33 @@
 					<h4 class="mtext-109 cl2 p-b-30">Dirección de Envío </h4><p class="text-right" style="color:red">*requerido</p>
 					
 						<div>
+							@if(count($addresses) > 0)
+
+							<form id="pru" method="post">
+
+								@csrf
+
+								<input type="text" value="hola">
+
+									<select name="address" id="selectAddress" form="pru">
+											@foreach($addresses as $address)
+									<option value="{{$address->address}}" data-id="{{$address->id}}">{{$address->address}}</option>
+											@endforeach
+									</select>
+								</form>
+							
+							@endif
 							
 
-							<form action="">
-
-								<select name="" id="">
-										@foreach($addresses as $address)
-								<option value="">{{$address->address}}</option>
-										@endforeach
-								</select>
-							</form>
+							
+							
 
 
 						
 
 
 						</div>
-
+						<form class="" action="{{route('createOrder')}}">
             <div class="form-group">
                 <label for="name" class="stext-110 cl2">Nombre* </label>
                 <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{ old('name') }}">
@@ -88,10 +98,7 @@
                     <label for="phone" class="stext-110 cl2">Teléfono* </label>
                     <input type="text" class="form-control" id="phone" placeholder="" name="phone" value="{{ old('phone') }}">
                   </div>
-                  <div class="form-group" >
-                      <label for="email" class="stext-110 cl2">E-mail* </label>
-                      <input type="email" class="form-control" id="phone" placeholder="" name="email" value="{{ old('email') }}">
-                    </div>
+                  
 
                 <hr>
 

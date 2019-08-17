@@ -75,7 +75,7 @@ class ProductsController extends Controller
                 'city.required' => 'Debes introducir tu ciudad por favor',
                 'state.required' => 'Debes introducir estado por favor',
                 'phone.required' => 'Debes introducir teléfono por favor',
-                'email.required' => 'Debes introducir email por favor',
+                
               ];
     
     
@@ -86,7 +86,7 @@ class ProductsController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'phone' => 'required',
-                'email' => 'required|email',
+                
                 
             ], $messages);
 

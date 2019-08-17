@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use App\Address;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -54,6 +55,16 @@ class AccountController extends Controller
 
         return redirect('/home');
 
+    }
+
+    public function address(Request $request){
+
+        
+        $id = $request->id;
+
+        $address = Address::find($id);
+
+        return response()->json($address);
     }
 
 

@@ -159,6 +159,65 @@ $(document).ready(function() {
         });
 });
 
+// $('#selectAddress').on('change', function () {
+//     $('#pru').submit(function(e) {
+//     var id = $('#selectAddress').find(':selected').data('id');
+//     e.preventDefault();
+//     var data = $('#pru').serialize();
+//     console.log(data);
+//     // // $('#name').val('hola');
+//     // $.ajax({
+        
+//     //     type: 'POST',
+//     //     url: 'http://shopping.test/address',
+//     //     data: {data}
+//     //   }).done(function(item){
+//     //     console.log(item);
+//     //   });
+//     });
+//     $('#pru').submit();
+// });
+
+$('#selectAddress').on('change', function () {
+    $('#pru').submit(function(e) {
+        e.preventDefault();
+        var id = $('#selectAddress').find(':selected').data('id');
+        //var data = $('#pru').serialize();
+        $.ajax({
+        type: 'POST',
+        url: 'http://shopping.test/address',
+        data: {id}
+      }).done(function(item){
+        $('#name').val(item.name);
+        $('#lastname').val(item.lastname);
+        $('#address').val(item.address);
+        $('#city').val(item.city);
+        $('#state').val(item.state);
+        $('#phone').val(item.phone);
+        $('#email').val(item.email);
+      });
+      
+
+
+
+
+
+
+    });
+    $('#pru').submit();
+});
+
+    
+
+
+
+
+
+
+
+
+
+
     console.log("Welcome to gusclick.com");
 });
 
