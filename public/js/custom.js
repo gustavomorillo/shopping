@@ -86,6 +86,8 @@ $(document).ready(function() {
                         success: function (data) {
                             var result = $('<div />').append(data).find('#cartWish').html();
                             $('#cartWish').html(result);
+                            var result2 = $('<div />').append(data).find('#panel-cart').html();
+                            $('#panel-cart').html(result2);
                         }});
                     // function refresh() {
                     //     myVar = setTimeout(function() {
@@ -143,6 +145,8 @@ $(document).ready(function() {
                                         success: function (data) {
                                             var result = $('<div />').append(data).find('#cartWish').html();
                                             $('#cartWish').html(result);
+                                            var result2 = $('<div />').append(data).find('#panel-cart').html();
+                                            $('#panel-cart').html(result2);
                                         }});
 
                                     
@@ -158,28 +162,8 @@ $(document).ready(function() {
 
         });
 });
-
-// $('#selectAddress').on('change', function () {
-//     $('#pru').submit(function(e) {
-//     var id = $('#selectAddress').find(':selected').data('id');
-//     e.preventDefault();
-//     var data = $('#pru').serialize();
-//     console.log(data);
-//     // // $('#name').val('hola');
-//     // $.ajax({
-        
-//     //     type: 'POST',
-//     //     url: 'http://shopping.test/address',
-//     //     data: {data}
-//     //   }).done(function(item){
-//     //     console.log(item);
-//     //   });
-//     });
-//     $('#pru').submit();
-// });
-
 $('#selectAddress').on('change', function () {
-    $('#pru').submit(function(e) {
+    $('#addressesForm').submit(function(e) {
         e.preventDefault();
         var id = $('#selectAddress').find(':selected').data('id');
         //var data = $('#pru').serialize();
@@ -190,34 +174,20 @@ $('#selectAddress').on('change', function () {
       }).done(function(item){
         $('#name').val(item.name);
         $('#lastname').val(item.lastname);
-        $('#address').val(item.address);
+        $('#address2').val(item.address);
         $('#city').val(item.city);
         $('#state').val(item.state);
         $('#phone').val(item.phone);
         $('#email').val(item.email);
       });
       
-
-
-
-
-
-
     });
-    $('#pru').submit();
+    $('#addressesForm').submit();
 });
-
-    
-
-
-
-
-
-
-
-
-
 
     console.log("Welcome to gusclick.com");
+
+    
 });
+
 

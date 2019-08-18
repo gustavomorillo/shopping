@@ -27,7 +27,7 @@
 	<div class="bg0 p-t-75 p-b-85" >
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+				<div class="col-lg-6 col-xl-7 m-lr-auto m-b-50">
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -44,13 +44,12 @@
 						<div>
 							@if(count($addresses) > 0)
 
-							<form id="pru" method="post">
+							<form id="addressesForm" method="post">
 
 								@csrf
-
-								<input type="text" value="hola">
-
-									<select name="address" id="selectAddress" form="pru">
+								<label class="stext-110 cl2" >Selecciona una dirección</label>
+								
+									<select name="selectAddress" id="selectAddress" form="addressesForm" class="form-control">
 											@foreach($addresses as $address)
 									<option value="{{$address->address}}" data-id="{{$address->id}}">{{$address->address}}</option>
 											@endforeach
@@ -59,16 +58,9 @@
 							
 							@endif
 							
-
-							
-							
-
-
-						
-
-
 						</div>
 						<form class="" action="{{route('createOrder')}}">
+							@csrf
             <div class="form-group">
                 <label for="name" class="stext-110 cl2">Nombre* </label>
                 <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{ old('name') }}">
@@ -80,8 +72,8 @@
             </div>
 
             <div class="form-group">
-              <label for="address" class="stext-110 cl2">Dirección Exacta(Municipio, Parroquia, etc..)* </label>
-              <input type="text" class="form-control" id="address" placeholder="" name="address" value="{{ old('address') }}">
+              <label for="address2" class="stext-110 cl2">Dirección Exacta(Municipio, Parroquia, etc..)* </label>
+              <input type="text" class="form-control" id="address2" placeholder="" name="address2" value="{{ old('address') }}">
             </div>
 
             <div class="form-group">
@@ -97,7 +89,12 @@
                 <div class="form-group" >
                     <label for="phone" class="stext-110 cl2">Teléfono* </label>
                     <input type="text" class="form-control" id="phone" placeholder="" name="phone" value="{{ old('phone') }}">
-                  </div>
+									</div>
+									
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="saveAddressbook" name="saveAddressbook">
+										<label class="form-check-label" for="saveAddressbook">Añadir a mi libreta de direcciones</label>
+									</div>
                   
 
                 <hr>
@@ -128,7 +125,7 @@
 					
 				</div>
 
-				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+				<div class="col-sm-10 col-lg-6 col-xl-5 m-lr-auto m-b-50">
 					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
 						<h4 class="mtext-109 cl2 p-b-30">
 							Cart Totals

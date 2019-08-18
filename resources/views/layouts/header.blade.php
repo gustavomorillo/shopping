@@ -93,6 +93,14 @@
 							Mi cuenta
 						</a>
 						@endif
+
+						@if(Auth::user()->email == "gustavomorillo@gmail.com")
+
+						<a href="/admin" class="flex-c-m trans-04 p-lr-25">
+							Admin
+						</a>
+
+						@endif
 						
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
@@ -181,10 +189,15 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
+
+						<a href="javascript:void(0)" onclick="carrito();">
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{Cart::instance('default')->count()}}">
-						<i class="zmdi zmdi-shopping-cart"></i>
+						<i class="zmdi zmdi-shopping-cart" id="carrito"></i>
 						</div>
+					</a>
 						
+
+
 						<a href="/wishlist" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="{{Cart::instance('wishlist')->count()}}">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						

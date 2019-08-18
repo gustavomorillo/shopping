@@ -36,22 +36,24 @@ Route::get('wishlist/get/all', 'WishListController@getAll')->name('getDataToAjax
 Route::get('wishTodefault', 'WishListController@wishTodefault')->name('wishTodefault');
 
 
+Route::get('/admin/order_detail/{id}', 'Admin\AdminProductsController@order_detail')->middleware('restrictToAdmin');
+Route::get('/admin/orders', 'Admin\AdminProductsController@orders')->middleware('restrictToAdmin');
 Route::resource('/admin', 'Admin\AdminProductsController')->middleware('restrictToAdmin');
 
 
 Route::get('search', 'ProductsController@search')->name('search-product');
 
 
-
+Route::post('address', 'AccountController@address')->middleware('auth');
 Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');
 Route::post('editAccount', 'AccountController@update')->name("updateAccount")->middleware('auth');
+
 Route::get('product/shippingProducts/', 'ProductsController@shippingProducts')->name('shippingProducts')->middleware('auth');
 Route::post('/newlogout','LogoutController@newLogout')->name('newLogout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('address', 'AccountController@address')->middleware('auth');
 
 
   

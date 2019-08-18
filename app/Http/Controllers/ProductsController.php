@@ -66,6 +66,8 @@ class ProductsController extends Controller
 
 
     public function createOrder(Request $request) {
+        
+
 
             $messages = [
                 'name.required' => 'Debes introducir tu nombre por favor',     
@@ -82,7 +84,7 @@ class ProductsController extends Controller
             $validatedData = $request->validate([
                 'name' => 'required',
                 'lastname' => 'required',
-                'address' => 'required|min:10',
+                'address2' => 'required|min:10',
                 'city' => 'required',
                 'state' => 'required',
                 'phone' => 'required',
@@ -93,11 +95,12 @@ class ProductsController extends Controller
 
         $name = $request->name;
         $lastname = $request->lastname;
-        $address = $request->address;
+        $address2 = $request->address2;
         $city = $request->city;
         $state = $request->state;
         $phone = $request->phone;
         $email = $request->email;
+        $saveAddressbook = $request->saveAddressbook;
                   
         $total = Cart::total();
 
@@ -112,10 +115,17 @@ class ProductsController extends Controller
             $newOrderArray = array("user_id"=>$user_id,"status"=>"on_hold", "date"=>$date, 
             "del_date"=>$date, "price"=>$total,
 
-            "name"=>$name,"lastname"=>$lastname,"address"=>$address,
+            "name"=>$name,"lastname"=>$lastname,"address"=>$address2,
             "city"=>$city,"state"=>$state,"phone"=>$phone);
 
             // $created_order = DB::table('orders')->insert($newOrderArray);
+
+            if(!empty($saveAddressbook)){
+                $address = new Address;
+                $addressArray = array("user_id"=>$user_id,"name"=>$name, "lastname"=>$lastname, 
+                "address"=>$address2, "city"=>$city, "state"=>$state, "phone"=>$phone);
+                $address->create($addressArray);
+            }
 
             $order = new Order;
             $order->create($newOrderArray);
@@ -155,6 +165,8 @@ class ProductsController extends Controller
 
 
         }
+
+        
 
         
 

@@ -586,7 +586,9 @@ $(document).ready(function() {
                                         dataType: "html",
                                         success: function (data) {
                                             var result = $('<div />').append(data).find('#cartWish').html();
-                                            $('#cartWish').html(result);
+																						$('#cartWish').html(result);
+																						var result2 = $('<div />').append(data).find('#panel-cart').html();
+                            								$('#panel-cart').html(result2);
                                         }});
                     
                 })
@@ -642,7 +644,9 @@ $(document).ready(function() {
                                         dataType: "html",
                                         success: function (data) {
                                             var result = $('<div />').append(data).find('#cartWish').html();
-                                            $('#cartWish').html(result);
+																						$('#cartWish').html(result);
+																						var result2 = $('<div />').append(data).find('#panel-cart').html();
+                            								$('#panel-cart').html(result2);
 																				}});
 																				
                 })
@@ -671,6 +675,12 @@ $(document).ready(function() {
     });
 		<?php } ?>
 	});
+
+	function carrito() {
+    $('.js-panel-cart').addClass('show-header-cart');
+}
+
+
 
 
 </script>

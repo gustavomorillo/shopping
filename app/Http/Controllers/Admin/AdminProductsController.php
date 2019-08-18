@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use Session;
 use App\Modal;
+use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -274,6 +275,23 @@ class AdminProductsController extends Controller
 
 
      }
+
+     public function orders(){
+
+        $orders = Order::all();
+
+        return view('admin.orders', compact('orders'));
+
+    }
+    
+    public function order_detail($id){
+
+        $orders_details = DB::table('order_items')->where('order_id', $id)->get();
+
+        return view('admin.order_details', compact('orders_details'));
+
+    }
+    
  
  
 }

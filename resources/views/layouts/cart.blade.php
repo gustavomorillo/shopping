@@ -1,7 +1,7 @@
-<div class="wrap-header-cart js-panel-cart">
+<div class="wrap-header-cart js-panel-cart" >
 		<div class="s-full js-hide-cart"></div>
 
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
+		<div class="header-cart flex-col-l p-l-65 p-r-25" >
 			<div class="header-cart-title flex-w flex-sb-m p-b-8">
 				<span class="mtext-103 cl2">
 					Tu Carrito 
@@ -12,7 +12,7 @@
 				</div>
 			</div>
 			
-			<div class="header-cart-content flex-w js-pscroll">
+			<div class="header-cart-content flex-w js-pscroll" id="panel-cart">
 				<ul class="header-cart-wrapitem w-full">
 						@foreach($cartItems as $cartItem)
 					<li class="header-cart-item flex-w flex-t m-b-12">
