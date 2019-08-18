@@ -380,7 +380,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 $(document).ready(function() {
 
 	<?php for($i=1;$i<20;$i++){?>
-			$('#upCart<?php echo $i;?>').on('click', function(){
+			$('#upCart<?php echo $i;?>').on('click', function(){ 
 					var subtotal = $('#subtotal<?php echo $i;?>').val();
 					var newqty = $('#up<?php echo $i;?>').val();
 					var rowId = $('#rowId<?php echo $i;?>').val();
@@ -389,9 +389,9 @@ $(document).ready(function() {
 															type: 'POST',
 															url: 'cart/'+proId,
 															data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
-													}).done(function(item){
-													console.log(item);
+													}).done(function(item){													
 													getAll();
+													updateCart();
 													});
 	
 									function getAll(){
@@ -399,14 +399,32 @@ $(document).ready(function() {
 													type: 'get',
 													url:'cart/get/all',
 													data: {rowId:rowId, newqty:newqty}
-													}).done(function(item) {
-													console.log(item);
-													$('#subtotal<?php echo $i;?>').val(item['0']);
-													$('#subtotal').val(item['1']);
-													$('#total').val(item['2']);
+													}).done(function(item) {													
+													$('#subtotal<?php echo $i;?>').val('Bs. ' + item['0']);
+													$('#subtotal').val('Bs. ' + item['1']);
+													$('#total').val('Bs. ' + item['2']);
 													
 													});
 									}
+
+									function updateCart(){
+										setTimeout(function(){
+										
+									$.ajax({
+															url: "http://shopping.test/products/",
+															data: { 
+															},
+															type: "GET",
+															dataType: "html",
+															success: function (data) {
+																	var result = $('<div />').append(data).find('#cartWish').html();
+																	$('#cartWish').html(result);
+																	var result2 = $('<div />').append(data).find('#panel-cart').html();
+																	$('#panel-cart').html(result2);
+															}});
+														}, 200);
+													}	
+									
 					});
 	<?php } ?>	
 	<?php for($i=1;$i<20;$i++){?>
@@ -428,9 +446,9 @@ $(document).ready(function() {
 															type: 'POST',
 															url: 'cart/'+proId,
 															data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
-													}).done(function(item){
-													console.log(item);
+													}).done(function(item){													
 													getAll();
+													updateCart();
 													});
 	
 									function getAll(){
@@ -439,12 +457,28 @@ $(document).ready(function() {
 													url:'cart/get/all',
 													data: {rowId:rowId, newqty:newqty}
 													}).done(function(item) {
-													console.log(item);
-													$('#subtotal<?php echo $i;?>').val(item['0']);
-													$('#subtotal').val(item['1']);
-													$('#total').val(item['2']);				
+													$('#subtotal<?php echo $i;?>').val('Bs. ' + item['0']);
+													$('#subtotal').val('Bs. ' + item['1']);
+													$('#total').val('Bs. ' + item['2']);				
 													});
-									}	
+									}
+									function updateCart(){
+										setTimeout(function(){
+										
+									$.ajax({
+															url: "http://shopping.test/products/",
+															data: { 
+															},
+															type: "GET",
+															dataType: "html",
+															success: function (data) {
+																	var result = $('<div />').append(data).find('#cartWish').html();
+																	$('#cartWish').html(result);
+																	var result2 = $('<div />').append(data).find('#panel-cart').html();
+																	$('#panel-cart').html(result2);
+															}});
+														}, 200);
+													}	
 					});
 	<?php } ?>
 			// WISHLIST
@@ -460,8 +494,8 @@ $(document).ready(function() {
 													url: 'wishlist/'+proId,
 													data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
 											}).done(function(item){
-											console.log(item);
 											getAll();
+											updateCart();
 											});
 
 							function getAll(){
@@ -470,13 +504,29 @@ $(document).ready(function() {
 											url:'wishlist/get/all',
 											data: {rowId:rowId, newqty:newqty}
 											}).done(function(item) {
-											console.log(item);
-											$('#subtotalw<?php echo $i;?>').val(item['0']);
-											$('#subtotal').val(item['1']);
-											$('#total').val(item['2']);
+											$('#subtotalw<?php echo $i;?>').val('Bs. ' + item['0']);
+											$('#subtotal').val('Bs. ' + item['1']);
+											$('#total').val('Bs. ' + item['2']);
 											
 											});
 							}
+							function updateCart(){
+										setTimeout(function(){
+										
+									$.ajax({
+															url: "http://shopping.test/products/",
+															data: { 
+															},
+															type: "GET",
+															dataType: "html",
+															success: function (data) {
+																	var result = $('<div />').append(data).find('#cartWish').html();
+																	$('#cartWish').html(result);
+																	var result2 = $('<div />').append(data).find('#panel-cart').html();
+																	$('#panel-cart').html(result2);
+															}});
+														}, 200);
+													}
 			});
 
 <?php } ?>
@@ -505,8 +555,8 @@ $(document).ready(function() {
 													url: 'wishlist/'+proId,
 													data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
 											}).done(function(item){
-											console.log(item);
 											getAll();
+											updateCart();
 											});
 							function getAll(){
 									$.ajax({
@@ -514,12 +564,28 @@ $(document).ready(function() {
 											url:'wishlist/get/all',
 											data: {rowId:rowId, newqty:newqty}
 											}).done(function(item) {
-											console.log(item);
-											$('#subtotalw<?php echo $i;?>').val(item['0']);
-											$('#subtotal').val(item['1']);
-											$('#total').val(item['2']);
+											$('#subtotalw<?php echo $i;?>').val('Bs. ' + item['0']);
+											$('#subtotal').val('Bs. ' + item['1']);
+											$('#total').val('Bs. ' + item['2']);
 											});
 							}
+							function updateCart(){
+										setTimeout(function(){
+										
+									$.ajax({
+															url: "http://shopping.test/products/",
+															data: { 
+															},
+															type: "GET",
+															dataType: "html",
+															success: function (data) {
+																	var result = $('<div />').append(data).find('#cartWish').html();
+																	$('#cartWish').html(result);
+																	var result2 = $('<div />').append(data).find('#panel-cart').html();
+																	$('#panel-cart').html(result2);
+															}});
+														}, 200);
+													}
 			});
 
 <?php } ?>

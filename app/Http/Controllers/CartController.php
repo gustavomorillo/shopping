@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Session;
 use App\Product;
+use App\ShippingMethod;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 class CartController extends Controller
@@ -21,8 +22,17 @@ class CartController extends Controller
         Cart::setGlobalTax(0);
         //Store products in database base in user id
         $cartItems = Cart::content();
+
+        $mrwPrice = ShippingMethod::where('name', 'MRW')->first();
+
+        $mrwPrice = $mrwPrice->price;
+
+        $dollarPrice = ShippingMethod::where('name', 'MRW')->first();
+        $dollarPrice = $dollarPrice->dollarPrice;
+
         
-        return view('shopping-cart', compact('cartItems'));
+        
+        return view('shopping-cart', compact('cartItems', 'mrwPrice','dollarPrice'));
     }
 
 
@@ -36,11 +46,11 @@ class CartController extends Controller
         Cart::update($rowId, $qty);
 
         $cartItems = Cart::content();
-        $total = Cart::total();
+        $total = Cart::total(0,',','.');
 
         $oneItem= Cart::get($rowId);
-        $subtotalOneItem = $oneItem->subtotal;
-        $subtotal = Cart::subtotal();
+        $subtotalOneItem = $oneItem->subtotal(0,',','.');
+        $subtotal = Cart::subtotal(0,',','.');
 
         $updateData = [$subtotalOneItem, $subtotal , $total];
 

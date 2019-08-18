@@ -12,11 +12,12 @@ class Product extends Model
     ];
 
 
-    // public function getPriceAttribute($value){
+    public function getPriceAttribute($value){
 
-    //     $newForm = $value." Bs";
-    //     return $newForm;    
-    // }
+        $newForm = number_format($value, 0, ',', '.');
+        $newForm = 'Bs. ' . $newForm;
+        return $newForm;
+    }
     
     public function modal() {
         return $this->hasOne('App\Modal');

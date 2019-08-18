@@ -162,11 +162,11 @@
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="product.html">Chicos</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
+								<a href="shoping-cart.html">Chicas</a>
 							</li>
 
 							<li>
@@ -178,7 +178,7 @@
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="contact.html">Contáctanos</a>
 							</li>
 						</ul>
 					</div>	

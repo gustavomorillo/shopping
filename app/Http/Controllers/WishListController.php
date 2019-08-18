@@ -38,11 +38,11 @@ class WishListController extends Controller
         Cart::update($rowId, $qty);
 
         $cartItems = Cart::content();
-        $total = Cart::total();
+        $total = Cart::total(0,',','.');
 
         $oneItem= Cart::get($rowId);
-        $subtotalOneItem = $oneItem->subtotal;
-        $subtotal = Cart::subtotal();
+        $subtotalOneItem = $oneItem->subtotal(0,',','.');
+        $subtotal = Cart::subtotal(0,',','.');
 
         $updateData = [$subtotalOneItem, $subtotal , $total];
 

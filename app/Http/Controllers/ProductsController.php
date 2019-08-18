@@ -7,6 +7,7 @@ use Session;
 use App\Order;
 use App\Address;
 use App\Product;
+use App\ShippingMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -53,13 +54,19 @@ class ProductsController extends Controller
 
 
         $user_id = Auth::user()->id;
-        
+    
         $cartItems = Cart::content();
+
+        $mrwPrice = ShippingMethod::where('name', 'MRW')->first();
+        $mrwPrice = $mrwPrice->price;
+
+        $dollarPrice = ShippingMethod::where('name', 'MRW')->first();
+        $dollarPrice = $dollarPrice->dollarPrice;
 
         $addresses = Address::where('user_id', 1)->get();
 
 
-        return view('shipping', compact('cartItems', 'addresses'));
+        return view('shipping', compact('cartItems', 'addresses','mrwPrice','dollarPrice'));
         
     }
 
