@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use Auth;
+
 use Session;
+use App\Dolar;
 use App\Product;
 use App\ShippingMethod;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -27,8 +29,8 @@ class CartController extends Controller
 
         $mrwPrice = $mrwPrice->price;
 
-        $dollarPrice = ShippingMethod::where('name', 'MRW')->first();
-        $dollarPrice = $dollarPrice->dollarPrice;
+        $dollarPrice = Dolar::where('name', 'dollarBuy')->first();
+        $dollarPrice = $dollarPrice->price;
 
         
         
@@ -45,14 +47,46 @@ class CartController extends Controller
         $rowId = $request->rowId;
         Cart::update($rowId, $qty);
 
+        $mrwPriceBs = ShippingMethod::where('name', 'MRW')->first();
+        $mrwPriceBs = $mrwPriceBs->price;
         $cartItems = Cart::content();
-        $total = Cart::total(0,',','.');
+        $total = Cart::total(0,',','');
+        $total = $total + $mrwPriceBs;
+         
+        $total = number_format($total, 0, ',', '.');
+
+
+
+
+        
+
+        
+
+        $dollarPrice = Dolar::find(1);
+        $dollarPrice = $dollarPrice->price;
+        $totalDollar = Cart::total(0);
+        $mrwPrice = ShippingMethod::where('name', 'MRW')->first();
+        $mrwPrice = $mrwPrice->price;
+        $mrwPrice = $mrwPrice/$dollarPrice;
+
+
+        $totalDollar = str_replace(",", "", $totalDollar);
+        $totalDollar = ($totalDollar/$dollarPrice)+$mrwPrice;
+        $totalDollar = number_format($totalDollar, 2, '.', ',');
+
+
+
+        
+
+
+
+
 
         $oneItem= Cart::get($rowId);
         $subtotalOneItem = $oneItem->subtotal(0,',','.');
         $subtotal = Cart::subtotal(0,',','.');
 
-        $updateData = [$subtotalOneItem, $subtotal , $total];
+        $updateData = [$subtotalOneItem, $subtotal , $total, $totalDollar];
 
 
 
@@ -103,6 +137,7 @@ class CartController extends Controller
     {
         // Add item to the cart
         // Validate that size and color is required and add the item to the cart
+        
 
         $messages = [
             'size.required' => 'Debes seleccionar una talla por favor',     
@@ -118,7 +153,17 @@ class CartController extends Controller
         
         $product = $request->all();
 
-        Cart::add($id, $product['name'], $product['qty'], $product['price'], 
+
+
+        $newPrice1 = str_replace(".", "", $product['price']);
+        $newPrice1 = str_replace("Bs", "", $newPrice1);
+        $price = intval($newPrice1);
+
+       
+        
+
+
+        Cart::add($id, $product['name'], $product['qty'], $price, 
         $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 
         'image'=>$product['image']]);
 

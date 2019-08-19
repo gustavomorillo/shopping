@@ -93,13 +93,14 @@
 							Mi cuenta
 						</a>
 						@endif
-
+						@if(Auth::check())
 						@if(Auth::user()->email == "gustavomorillo@gmail.com")
 
 						<a href="/admin" class="flex-c-m trans-04 p-lr-25">
 							Admin
 						</a>
 
+						@endif
 						@endif
 						
 

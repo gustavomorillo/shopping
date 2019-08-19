@@ -36,6 +36,11 @@ Route::get('wishlist/get/all', 'WishListController@getAll')->name('getDataToAjax
 Route::get('wishTodefault', 'WishListController@wishTodefault')->name('wishTodefault');
 
 
+Route::post('/admin/shipping/{id}', 'Admin\AdminProductsController@shippingUpdate')->middleware('restrictToAdmin');
+Route::get('/admin/shippingEdit/{id}', 'Admin\AdminProductsController@shippingEdit')->middleware('restrictToAdmin');
+Route::post('/admin/dollar', 'Admin\AdminProductsController@dollarUpdate')->middleware('restrictToAdmin');
+Route::get('/admin/dollar', 'Admin\AdminProductsController@dollarEdit')->middleware('restrictToAdmin');
+Route::get('/admin/shipping', 'Admin\AdminProductsController@shipping')->middleware('restrictToAdmin');
 Route::get('/admin/order_detail/{id}', 'Admin\AdminProductsController@order_detail')->middleware('restrictToAdmin');
 Route::get('/admin/orders', 'Admin\AdminProductsController@orders')->middleware('restrictToAdmin');
 Route::resource('/admin', 'Admin\AdminProductsController')->middleware('restrictToAdmin');

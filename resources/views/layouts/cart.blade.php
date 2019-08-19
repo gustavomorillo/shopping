@@ -26,7 +26,7 @@
 							</a>
 
 							<span class="header-cart-item-info">
-									{{$cartItem->qty}} x {{$cartItem->subtotal}}
+									{{$cartItem->qty}} x Bs.&nbsp;{{$cartItem->subtotal(0,',','.')}}
 							</span>
 						</div>
 					</li>
@@ -67,7 +67,7 @@
 				
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-						Total: $75.00
+						Total: Bs. {{Cart::total(0,',','.')}}
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">

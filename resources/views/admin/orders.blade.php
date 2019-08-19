@@ -34,6 +34,7 @@
       <th scope="col">city</th>
       <th scope="col">state</th>
       <th scope="col">price</th>
+      <th scope="col">shipping</th>
       <th scope="col">date</th>
       <th scope="col">status</th>
       <th scope="col">details</th>
@@ -49,6 +50,7 @@
       <td>{{$order->city}}</td>
       <td>{{$order->state}}</td>
       <td>{{$order->price}}</td>
+      <td>{{$order->shipping}}</td>
       <td>{{$order->date}}</td>
       <td>{{$order->status}}</td>
       <td>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 use Session;
 use App\Modal;
+use App\Dolar;
 use App\Order;
 use App\Product;
+use App\ShippingMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -259,12 +261,22 @@ class AdminProductsController extends Controller
      public function destroy($id)
      {
         $product = Product::find($id);
-        unlink(public_path() . '/images/' . $product->image);
+
+        if(file_exists(public_path() . '/images/' . $product->image)){
+            unlink(public_path() . '/images/' . $product->image);
+        }   
 
         $modal = Modal::where('product_id', $id);
-        unlink(public_path() . '/images/' . $product->modal->image1);
-        unlink(public_path() . '/images/' . $product->modal->image2);
-        unlink(public_path() . '/images/' . $product->modal->image3);
+        if(file_exists(public_path() . '/images/' . $product->modal->image1)){
+            unlink(public_path() . '/images/' . $product->modal->image1);
+        } 
+        if(file_exists(public_path() . '/images/' . $product->modal->image2)){
+            unlink(public_path() . '/images/' . $product->modal->image2);
+        } 
+        if(file_exists(public_path() . '/images/' . $product->modal->image3)){
+            unlink(public_path() . '/images/' . $product->modal->image3);
+        } 
+
         $modal->delete();
         $product->delete();
 
@@ -278,7 +290,7 @@ class AdminProductsController extends Controller
 
      public function orders(){
 
-        $orders = Order::all();
+        $orders = Order::orderBy('order_id', 'desc')->get();
 
         return view('admin.orders', compact('orders'));
 
@@ -291,6 +303,73 @@ class AdminProductsController extends Controller
         return view('admin.order_details', compact('orders_details'));
 
     }
+
+    public function shipping(){
+
+        $shipping = ShippingMethod::all();
+
+        $dollarPrice = Dolar::where('name','dollarBuy')->first();
+        $dollarBuy = $dollarPrice->price;
+
+        $dollarSell = Dolar::where('name','dollarSell')->first();
+        $dollarSell= $dollarSell->price;
+
+        return view('admin.shipping', compact('shipping', 'dollarBuy', 'dollarSell'));
+
+    }
+    public function dollarEdit(){
+
+        $dollarBuy = Dolar::where('name','dollarBuy')->first();
+        $dollarBuy = $dollarBuy->price;
+
+        $dollarSell = Dolar::where('name','dollarSell')->first();
+        $dollarSell= $dollarSell->price;
+
+        return view('admin.dollarEdit', compact('dollarBuy','dollarSell'));
+    }
+
+    public function dollarUpdate(Request $request){
+
+        
+
+        $dollarBuy = Dolar::find(1);
+        $dollarBuy->price = $request->dollarBuy;
+        
+        $dollarBuy->update();
+
+        $dollarSell = Dolar::find(2);
+        $dollarSell->price = $request->dollarSell;
+        
+        $dollarSell->update();
+
+        return redirect('/admin/shipping');        
+    }
+
+    public function shippingEdit($id){
+
+        $shipping = ShippingMethod::find($id);
+
+        return view('admin.shippingEdit', compact('shipping'));
+    }
+
+    public function shippingStore($id){
+
+        $shipping = ShippingMethod::find($id);
+
+        return view('admin.shippingEdit', compact('shipping'));
+    }
+
+    public function shippingUpdate(Request $request, $id){
+
+        $shipping = ShippingMethod::find($id);
+        $shipping->price = $request->shippingPrice;
+        
+        $shipping->update();
+
+
+        return redirect('/admin/shipping');        
+    }
+    
     
  
  

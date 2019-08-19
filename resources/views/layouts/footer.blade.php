@@ -403,6 +403,7 @@ $(document).ready(function() {
 													$('#subtotal<?php echo $i;?>').val('Bs. ' + item['0']);
 													$('#subtotal').val('Bs. ' + item['1']);
 													$('#total').val('Bs. ' + item['2']);
+													$('#totalDollar').val('$ ' + item['3']);
 													
 													});
 									}
@@ -459,7 +460,8 @@ $(document).ready(function() {
 													}).done(function(item) {
 													$('#subtotal<?php echo $i;?>').val('Bs. ' + item['0']);
 													$('#subtotal').val('Bs. ' + item['1']);
-													$('#total').val('Bs. ' + item['2']);				
+													$('#total').val('Bs. ' + item['2']);
+													$('#totalDollar').val('$ ' + item['3']);				
 													});
 									}
 									function updateCart(){
@@ -507,6 +509,7 @@ $(document).ready(function() {
 											$('#subtotalw<?php echo $i;?>').val('Bs. ' + item['0']);
 											$('#subtotal').val('Bs. ' + item['1']);
 											$('#total').val('Bs. ' + item['2']);
+											$('#totalDollar').val('$ ' + item['3']);
 											
 											});
 							}
@@ -567,6 +570,7 @@ $(document).ready(function() {
 											$('#subtotalw<?php echo $i;?>').val('Bs. ' + item['0']);
 											$('#subtotal').val('Bs. ' + item['1']);
 											$('#total').val('Bs. ' + item['2']);
+											$('#totalDollar').val('$ ' + item['3']);
 											});
 							}
 							function updateCart(){
@@ -638,6 +642,7 @@ $(document).ready(function() {
             e.preventDefault();
             let id = $(this).data("id");
             var datos = $("#"+ id).serialize();
+						console.log(datos);
 
             axios
                 .get("/cart/" + id + "/edit?" + datos)

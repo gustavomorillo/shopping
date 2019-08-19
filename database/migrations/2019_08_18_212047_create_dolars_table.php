@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShippingMethodsTable extends Migration
+class CreateDolarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShippingMethodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shipping_methods', function (Blueprint $table) {
+        Schema::create('dolars', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('price');
@@ -28,6 +28,6 @@ class CreateShippingMethodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipping_methods');
+        Schema::dropIfExists('dolars');
     }
 }

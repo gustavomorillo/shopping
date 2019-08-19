@@ -2,23 +2,43 @@
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link 
+          
+            {{request()->is('admin') ? 'active' : ''}}
+              
+            
+            
+            
+            " href="/admin">
               <span data-feather="home"></span>
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/orders">
+          <li class="nav-item ">
+            <a class="nav-link {{request()->is('admin/orders') ? 'active' : ''}}" href="/admin/orders">
               <span data-feather="file"></span>
               Orders
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/create">
+            <a class="nav-link {{request()->is('admin/create') ? 'active' : ''}}" href="/admin/create">
               <span data-feather="shopping-cart"></span>
               Products
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{request()->is('admin/shipping') ? 'active' : ''}}" href="/admin/shipping">
+              <span data-feather="truck"></span>
+              Shipping & Currency
+            </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link {{request()->is('admin/dolar') ? 'active' : ''}}" href="/admin/dollar">
+                <span data-feather="dollar-sign"></span>
+                Dolar Today
+              </a>
+            </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="users"></span>

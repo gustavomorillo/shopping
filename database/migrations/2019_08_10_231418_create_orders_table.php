@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->text('status');
             $table->string('del_date');
             $table->decimal('price', 12, 2);
+            $table->string('shipping');
             $table->timestamps();
         });
     }

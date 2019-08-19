@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Session;
+use App\Dolar;
 use App\Order;
 use App\Address;
 use App\Product;
@@ -16,9 +17,11 @@ class ProductsController extends Controller
 {
     public function index()
     {
-
+        Cart::setGlobalTax(0);
         $products = Product::paginate(10);
+        
         $cartItems = Cart::content();
+
         return view('allproducts', compact('products', 'cartItems'));
 
     }
@@ -60,8 +63,8 @@ class ProductsController extends Controller
         $mrwPrice = ShippingMethod::where('name', 'MRW')->first();
         $mrwPrice = $mrwPrice->price;
 
-        $dollarPrice = ShippingMethod::where('name', 'MRW')->first();
-        $dollarPrice = $dollarPrice->dollarPrice;
+        $dollarPrice = Dolar::where('name', 'dollarBuy')->first();
+        $dollarPrice = $dollarPrice->price;
 
         $addresses = Address::where('user_id', 1)->get();
 
@@ -79,8 +82,7 @@ class ProductsController extends Controller
             $messages = [
                 'name.required' => 'Debes introducir tu nombre por favor',     
                 'lastname.required' => 'Debes introducir tus apellidos por favor',
-                'address.required' => 'Debes introducir tu dirección exacta por favor', 
-                'address.min'  => 'Debes introducir una dirección valida, la que introdujo es muy corta',    
+                'address2.required' => 'Debes introducir tu dirección exacta por favor',  
                 'city.required' => 'Debes introducir tu ciudad por favor',
                 'state.required' => 'Debes introducir estado por favor',
                 'phone.required' => 'Debes introducir teléfono por favor',
@@ -91,7 +93,7 @@ class ProductsController extends Controller
             $validatedData = $request->validate([
                 'name' => 'required',
                 'lastname' => 'required',
-                'address2' => 'required|min:10',
+                'address2' => 'required',
                 'city' => 'required',
                 'state' => 'required',
                 'phone' => 'required',
@@ -99,7 +101,7 @@ class ProductsController extends Controller
                 
             ], $messages);
 
-
+        
         $name = $request->name;
         $lastname = $request->lastname;
         $address2 = $request->address2;
@@ -108,6 +110,7 @@ class ProductsController extends Controller
         $phone = $request->phone;
         $email = $request->email;
         $saveAddressbook = $request->saveAddressbook;
+        $shipping = $request->shipping;
                   
         $total = Cart::total();
 
@@ -123,7 +126,7 @@ class ProductsController extends Controller
             "del_date"=>$date, "price"=>$total,
 
             "name"=>$name,"lastname"=>$lastname,"address"=>$address2,
-            "city"=>$city,"state"=>$state,"phone"=>$phone);
+            "city"=>$city,"state"=>$state,"phone"=>$phone, "shipping"=>$shipping);
 
             // $created_order = DB::table('orders')->insert($newOrderArray);
 

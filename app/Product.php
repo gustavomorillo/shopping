@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Dolar;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -14,7 +14,11 @@ class Product extends Model
 
     public function getPriceAttribute($value){
 
-        $newForm = number_format($value, 0, ',', '.');
+        $dollarPrice = Dolar::find(2);
+        $dollar = $dollarPrice->price;
+
+        $newForm = $value * $dollar;
+        $newForm = number_format($newForm, 0, ',', '.');
         $newForm = 'Bs. ' . $newForm;
         return $newForm;
     }

@@ -27,14 +27,14 @@
 
       <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
         <p class="mtext-110 cl2">
-          MRW
+          MRW ó Domesa 
           {{-- There are no shipping methods available. Please double check your address, or contact us if you need any help. --}}
         </p>
         <br>
 
         <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
             <p class="mtext-110 cl2">
-              Bs. 34.000
+              Bs. {{number_format($mrwPrice, 0, ',', '.')}}
               {{-- There are no shipping methods available. Please double check your address, or contact us if you need any help. --}}
             </p>
           </div>
@@ -92,7 +92,7 @@
 
           <div class="size-209 p-t-1">
             <span class="mtext-110 cl2" >
-            <input type="text" value="$ {{number_format((Cart::total(0,'','')+$mrwPrice)/$dollarPrice, 2, ',', '.')}}" id="total">	
+            <input type="text" value="$ {{number_format((Cart::total(0,'','')+$mrwPrice)/$dollarPrice, 2, ',', '.')}}" id="totalDollar">	
             </span>
           </div>
         </div>
@@ -102,6 +102,7 @@
             <input type="text" value="1 $ = {{number_format(($dollarPrice), 2, ',', '.')}}" id="total">	
             </span>
           </div>
+          
     </div>
   
 
