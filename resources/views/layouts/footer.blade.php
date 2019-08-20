@@ -509,7 +509,7 @@ $(document).ready(function() {
 											$('#subtotalw<?php echo $i;?>').val('Bs. ' + item['0']);
 											$('#subtotal').val('Bs. ' + item['1']);
 											$('#total').val('Bs. ' + item['2']);
-											$('#totalDollar').val('$ ' + item['3']);
+											
 											
 											});
 							}
@@ -570,7 +570,7 @@ $(document).ready(function() {
 											$('#subtotalw<?php echo $i;?>').val('Bs. ' + item['0']);
 											$('#subtotal').val('Bs. ' + item['1']);
 											$('#total').val('Bs. ' + item['2']);
-											$('#totalDollar').val('$ ' + item['3']);
+											
 											});
 							}
 							function updateCart(){

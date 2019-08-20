@@ -44,7 +44,7 @@ class WishListController extends Controller
         $subtotalOneItem = $oneItem->subtotal(0,',','.');
         $subtotal = Cart::subtotal(0,',','.');
 
-        $updateData = [$subtotalOneItem, $subtotal , $total, $total];
+        $updateData = [$subtotalOneItem, $subtotal , $total];
 
 
 
