@@ -41,7 +41,7 @@
                     <hr>
 
 
-                    <a href="">
+                    <a href="{{route('wishlist.index')}}">
                     <div class="py-3">
                     <h4 class="mtext-109 cl2 p-b-17 "><i class="far fa-heart font35"></i>&nbsp;&nbsp;&nbsp;Lista de deseos </h4>
                     <span class="stext-110 cl2 " > Visualiza y modifica productos de tu lista de deseos</span><br>
@@ -50,7 +50,7 @@
                     <hr>
                     
 
-                    <a href="">
+                    <a href="{{route('addresses.index')}}">
                     <div class="py-3">
                     <h4 class="mtext-109 cl2 p-b-17 "><i class="far fa-address-book font35"></i></i>&nbsp;&nbsp;&nbsp;Direcciones </h4>
                     <span class="stext-110 cl2 " >Administra tus direcciones de envío</span><br>

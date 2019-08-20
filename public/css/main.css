@@ -2499,6 +2499,7 @@ input.num-product::-webkit-inner-spin-button {
   height: 50px;
 }
 
+
 .size-117 {
   width: 220px;
   height: 45px;
@@ -3358,4 +3359,15 @@ input.num-product::-webkit-inner-spin-button {
 }
 .font35 {
   font-size:35px!important;
+}
+.size-007 {
+  width: 180px;
+}
+.gus1 {
+width: 460px; 
+height: auto;
+margin: 0 auto;
+padding: 10px;
+padding-left:20px;
+position: relative;
 }

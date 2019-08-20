@@ -51,9 +51,9 @@
                         <img src="{{asset('/images/'. $cartItemw->options->image)}}" alt="IMG">
                       </div>
                       &nbsp;<a href="#" id="deleteButtonw<?php echo $count;?>" class="deleteBtn">Eliminar</a>
-                    </td>
+                   
                   <td class="column-2">{{$cartItemw->name}}&nbsp; talla: &nbsp;{{$cartItemw->options->size}} &nbsp;color: {{$cartItemw->options->color}}</td>
-                    <td class="column-3">{{$cartItemw->price}}</td>
+                    <td class="column-3">Bs. {{number_format($cartItemw->price, 0, ',', '.')}}</td>
                     <td class="column-4">
                       <div class="wrap-num-product flex-w m-l-auto m-r-0">
                         <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" id="downCartw<?php echo $count;?>">
@@ -67,7 +67,7 @@
                         </div>
                       </div>
                     </td>
-                  <td class="column-5"><input type="text" value="{{$cartItemw->subtotal}}" id="subtotalw<?php echo $count;?>" style="text-align:right;" ></td>
+                  <td class="column-5"><input type="text" value="Bs. {{number_format($cartItemw->subtotal, 0, ',', '.')}}" id="subtotalw<?php echo $count;?>" style="text-align:right;" ></td>
                   </tr>
                   <?php $count++; ?>
                   @endforeach

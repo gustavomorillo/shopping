@@ -57,11 +57,6 @@ class CartController extends Controller
 
 
 
-
-        
-
-        
-
         $dollarPrice = Dolar::find(1);
         $dollarPrice = $dollarPrice->price;
         $totalDollar = Cart::total(0);
@@ -73,12 +68,6 @@ class CartController extends Controller
         $totalDollar = str_replace(",", "", $totalDollar);
         $totalDollar = ($totalDollar/$dollarPrice)+$mrwPrice;
         $totalDollar = number_format($totalDollar, 2, '.', ',');
-
-
-
-        
-
-
 
 
 

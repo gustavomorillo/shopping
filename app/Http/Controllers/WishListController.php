@@ -44,7 +44,7 @@ class WishListController extends Controller
         $subtotalOneItem = $oneItem->subtotal(0,',','.');
         $subtotal = Cart::subtotal(0,',','.');
 
-        $updateData = [$subtotalOneItem, $subtotal , $total];
+        $updateData = [$subtotalOneItem, $subtotal , $total, $total];
 
 
 
@@ -104,7 +104,13 @@ class WishListController extends Controller
 
         $product = $request->all();
 
-        Cart::instance('wishlist')->add($id, $product['name'], $product['qty'], $product['price'], $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
+        $newPrice1 = str_replace(".", "", $product['price']);
+        $newPrice1 = str_replace("Bs", "", $newPrice1);
+        $price = intval($newPrice1);
+
+
+
+        Cart::instance('wishlist')->add($id, $product['name'], $product['qty'], $price, $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
     }
 
     /**

@@ -701,6 +701,7 @@ $(document).ready(function() {
 			$(this).on("click", function() {
 					let id = $(this).data("id");
 					var datos = $("#" + id).serialize();
+					console.log(datos);
 					axios.get("/wishlist/" + id + "/edit?" + datos)
                 .then(function(response) {
 										swal(nameProduct, "fue agregado a tu lista de deseos !", "success");

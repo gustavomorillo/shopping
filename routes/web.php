@@ -53,6 +53,9 @@ Route::post('address', 'AccountController@address')->middleware('auth');
 Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');
 Route::post('editAccount', 'AccountController@update')->name("updateAccount")->middleware('auth');
 
+Route::resource('/addresses', 'AddressController')->middleware('auth');
+
+
 Route::get('product/shippingProducts/', 'ProductsController@shippingProducts')->name('shippingProducts')->middleware('auth');
 Route::post('/newlogout','LogoutController@newLogout')->name('newLogout');
 Auth::routes();
