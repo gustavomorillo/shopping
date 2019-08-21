@@ -12,7 +12,15 @@
 
 
   <h4 class="mtext-109 cl2 p-b-30">Editar Dirección </h4><p class="text-right" style="color:red">*requerido</p>
-  
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
    
 <form action="/addresses/{{$address->id}}" method="post">
       @csrf

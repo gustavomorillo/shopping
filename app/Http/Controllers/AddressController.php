@@ -34,7 +34,8 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        $cartItems = Cart::content();
+        return view('auth.createAddress', compact('cartItems'));
     }
 
     /**
@@ -45,7 +46,30 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'name.required' => 'Debes introducir tu nombre por favor',     
+            'lastname.required' => 'Debes introducir tus apellidos por favor',
+            'address.required' => 'Debes introducir tu dirección exacta por favor',  
+            'city.required' => 'Debes introducir tu ciudad por favor',
+            'state.required' => 'Debes introducir estado por favor',
+            'phone.required' => 'Debes introducir teléfono por favor',
+            
+          ];
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'lastname' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'phone' => 'required',
+        ], $messages);
+
+        $input = $request->all();
+        $address = new Address;
+        $address->create($input);
+
+        return redirect('addresses')->with('success', 'Nueva dirección creada satisfactoriamente');;
+
     }
 
     /**
@@ -68,6 +92,9 @@ class AddressController extends Controller
     public function edit($id)
     {
 
+      
+
+
         $address = Address::find($id);
 
         $cartItems = Cart::content();
@@ -84,14 +111,31 @@ class AddressController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
+        $messages = [
+            'name.required' => 'Debes introducir tu nombre por favor',     
+            'lastname.required' => 'Debes introducir tus apellidos por favor',
+            'address.required' => 'Debes introducir tu dirección exacta por favor',  
+            'city.required' => 'Debes introducir tu ciudad por favor',
+            'state.required' => 'Debes introducir estado por favor',
+            'phone.required' => 'Debes introducir teléfono por favor',
+            
+          ];
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'lastname' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'phone' => 'required',
+        ], $messages);
+
         $input = $request->all();
 
         $address = Address::find($id);
 
         $address->update($input);
 
-        return redirect('addresses');
+        return redirect('addresses')->with('success3', 'Dirección actualizada satisfactoriamente');;
 
     }
 
@@ -103,6 +147,9 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
+        $address = Address::find($id);
+        $address->delete();
+        return redirect()->back()->with('success2', 'Dirección eliminada satisfactoriamente');
     }
 }

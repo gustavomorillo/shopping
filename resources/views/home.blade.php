@@ -31,6 +31,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('success2'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success2') }}
+                        </div>
+                    @endif
                     
                     <h4 class="mtext-109 cl2 p-b-30 font35"> MI CUENTA <span class="stext-110 cl2 font30" >| BIENVENIDO, {{Auth::user()->name}}</span></h4>
                     <hr>
@@ -52,19 +57,39 @@
 
                     <a href="{{route('addresses.index')}}">
                     <div class="py-3">
-                    <h4 class="mtext-109 cl2 p-b-17 "><i class="far fa-address-book font35"></i></i>&nbsp;&nbsp;&nbsp;Direcciones </h4>
+                    <h4 class="mtext-109 cl2 p-b-17 "><i class="far fa-address-book font35"></i>&nbsp;&nbsp;&nbsp;Direcciones </h4>
                     <span class="stext-110 cl2 " >Administra tus direcciones de envío</span><br>
-                    </a>
-                    <hr>
                     </div>
+                    </a>
+                     
+                    <hr>
+                    
                     
                     <a href="">
                     <div class="py-3">
                     <h4 class="mtext-109 cl2 p-b-17 "><i class="far fa-calendar-check font35"></i>&nbsp;&nbsp;&nbsp;Historial de órdenes </h4>
                     <span class="stext-110 cl2 " >Revisa el estatus de tus órdenes ó visualiza tus ordenes pasadas</span><br>
+                    </div>
                     </a>
                     <hr>
+                   
+
+                    <a href="{{route('reportPayment')}}">
+                    <div class="py-3">
+                    <h4 class="mtext-109 cl2 p-b-17 "><i class="far fa-money-bill-alt font35"></i>&nbsp;&nbsp;&nbsp;Reportar Pago </h4>
+                    <span class="stext-110 cl2 " >Reporta el pago de tu orden</span><br>
                     </div>
+                    </a>
+                    <hr>
+
+                    <a href="{{route('paymentHistory')}}">
+                    <div class="py-3">
+                    <h4 class="mtext-109 cl2 p-b-17 "><i class="fas fa-file-invoice-dollar font35"></i>&nbsp;&nbsp;&nbsp;Historial de Pagos </h4>
+                    <span class="stext-110 cl2 " >Revisa el historial y el status de tus pagos</span><br>
+                    </div>
+                    </a>
+                    <hr>
+                    
                 
                     
 

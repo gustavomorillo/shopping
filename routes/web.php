@@ -49,9 +49,15 @@ Route::resource('/admin', 'Admin\AdminProductsController')->middleware('restrict
 Route::get('search', 'ProductsController@search')->name('search-product');
 
 
-Route::post('address', 'AccountController@address')->middleware('auth');
+// Route::post('address', 'AccountController@address')->middleware('auth'); nose de que es
 Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');
 Route::post('editAccount', 'AccountController@update')->name("updateAccount")->middleware('auth');
+
+
+Route::get('reportPayment', 'PaymentController@reportPayment')->name("reportPayment")->middleware('auth');
+Route::post('processPayment', 'PaymentController@processPayment')->name("processPayment")->middleware('auth');
+Route::get('paymentHistory', 'PaymentController@paymentHistory')->name("paymentHistory")->middleware('auth');
+
 
 Route::resource('/addresses', 'AddressController')->middleware('auth');
 

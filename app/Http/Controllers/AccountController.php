@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use App\Payment;
 use App\Address;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -66,6 +67,8 @@ class AccountController extends Controller
 
         return response()->json($address);
     }
+
+    
 
 
 }

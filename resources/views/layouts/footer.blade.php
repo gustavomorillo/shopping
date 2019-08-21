@@ -336,11 +336,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-
-
-
- <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-
 <!--===============================================================================================-->	
 <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <!--===============================================================================================-->
@@ -376,6 +371,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!--===============================================================================================-->
 <script src="{{asset('js/custom.js')}}"></script>
 <!--===============================================================================================-->
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.es-es.js" type="text/javascript"></script>
+<!--===============================================================================================-->
+
 <script>
 $(document).ready(function() {
 
@@ -746,11 +745,25 @@ $(document).ready(function() {
         $('.js-modal<?php echo $i;?>').removeClass('show-modal1');
     });
 		<?php } ?>
+
+
+		function carrito() {
+    $('.js-panel-cart').addClass('show-header-cart');
+	}
+
+
+  $('#datepicker').datepicker({
+		uiLibrary: 'bootstrap4',
+		locale: 'es-es',
+
 	});
 
-	function carrito() {
-    $('.js-panel-cart').addClass('show-header-cart');
-}
+	});
+
+
+   
+
+
 
 
 
