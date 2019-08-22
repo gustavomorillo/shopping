@@ -746,12 +746,6 @@ $(document).ready(function() {
     });
 		<?php } ?>
 
-
-		function carrito() {
-    $('.js-panel-cart').addClass('show-header-cart');
-	}
-
-
   $('#datepicker').datepicker({
 		uiLibrary: 'bootstrap4',
 		locale: 'es-es',
@@ -761,12 +755,10 @@ $(document).ready(function() {
 	});
 
 
-   
-
-
-
-
-
+// esta funcion debe ir fuera del document ready para que muestre el panel cart
+	function carrito() {
+    $('.js-panel-cart').addClass('show-header-cart');
+	}
 
 </script>
 

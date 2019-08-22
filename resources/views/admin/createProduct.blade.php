@@ -42,17 +42,17 @@
 
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Name"  />
+        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Name"  />
       </div>
 
       <div class="form-group">
           <label for="description">Description</label>
-          <input type="text" class="form-control" id="description" name="description" placeholder="Description"  />
+          <input type="text" class="form-control" id="description" name="description" value="{{ old('description') }}" placeholder="Description"  />
       </div>
 
       <div class="form-group">
           <label for="price">Price</label>
-          <input type="text" class="form-control" id="price" name="price" placeholder="Price" value="" />
+          <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="Price" value="" />
       </div>
 
       <p>Tallas</p>
@@ -73,7 +73,7 @@
 
       <div class="form-group">
         <label for="price">Color</label>
-        <input type="text" class="form-control" id="color" name="color" placeholder="Color" value="" />
+        <input type="text" class="form-control" id="color" value="{{ old('color') }}" name="color" placeholder="Color" value="" />
     </div>
 
         <div class="form-group">

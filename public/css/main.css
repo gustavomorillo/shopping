@@ -1803,6 +1803,12 @@ button.mfp-close {
   background-color: #f7f7f7;
 }
 
+.num-product2 {
+  width: 120px;
+  height: 100%;
+
+}
+
 input.num-product {
   -moz-appearance: textfield;
   appearance: none;
@@ -1903,6 +1909,7 @@ input.num-product::-webkit-inner-spin-button {
 /*//////////////////////////////////////////////////////////////////
 [ Table Shopping Cart ]*/
 
+
 .wrap-table-shopping-cart {
   overflow: auto;
   border-left: 1px solid #e6e6e6;
@@ -1941,7 +1948,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .column-5 {
-  width: 100px;
+  width: 172px;
   padding-right: 50px;
   text-align: right;
   font-size: 16px;
