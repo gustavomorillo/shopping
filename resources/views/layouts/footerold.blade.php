@@ -407,6 +407,8 @@ $(document).ready(function() {
 													
 													});
 									
+
+									
 									
 					});
 	<?php } ?>	
@@ -443,6 +445,16 @@ $(document).ready(function() {
 			var rowId = $('#rowIdw<?php echo $i;?>').val();
 			var proId = $('#proIdw<?php echo $i;?>').val();
 			
+							$.ajax({
+													type: 'POST',
+													url: 'wishlist/'+proId,
+													data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
+											}).done(function(item){
+											getAll();
+											updateCart();
+											});
+
+							function getAll(){
 									$.ajax({
 											type: 'get',
 											url:'wishlist/get/all',
@@ -454,6 +466,24 @@ $(document).ready(function() {
 											
 											
 											});
+							}
+							function updateCart(){
+										setTimeout(function(){
+										
+									$.ajax({
+															url: "http://shopping.test/products/",
+															data: { 
+															},
+															type: "GET",
+															dataType: "html",
+															success: function (data) {
+																	var result = $('<div />').append(data).find('#cartWish').html();
+																	$('#cartWish').html(result);
+																	var result2 = $('<div />').append(data).find('#panel-cart').html();
+																	$('#panel-cart').html(result2);
+															}});
+														}, 200);
+													}
 			});
 
 <?php } ?>
@@ -477,8 +507,15 @@ $(document).ready(function() {
 							location.reload();
 					}, 1000);
 			}
-							
-						
+							$.ajax({
+													type: 'POST',
+													url: 'wishlist/'+proId,
+													data: {newqty:newqty,rowId:rowId,proId:proId,_method: 'PATCH'}
+											}).done(function(item){
+											getAll();
+											updateCart();
+											});
+							function getAll(){
 									$.ajax({
 											type: 'get',
 											url:'wishlist/get/all',
@@ -489,9 +526,25 @@ $(document).ready(function() {
 											$('#total').val('Bs. ' + item['2']);
 											
 											});
-							});
-							
-			
+							}
+							function updateCart(){
+										setTimeout(function(){
+										
+									$.ajax({
+															url: "http://shopping.test/products/",
+															data: { 
+															},
+															type: "GET",
+															dataType: "html",
+															success: function (data) {
+																	var result = $('<div />').append(data).find('#cartWish').html();
+																	$('#cartWish').html(result);
+																	var result2 = $('<div />').append(data).find('#panel-cart').html();
+																	$('#panel-cart').html(result2);
+															}});
+														}, 200);
+													}
+			});
 
 <?php } ?>
 
@@ -543,17 +596,25 @@ $(document).ready(function() {
             e.preventDefault();
             let id = $(this).data("id");
             var datos = $("#"+ id).serialize();
+						console.log(datos);
+
             axios
                 .get("/cart/" + id + "/edit?" + datos)
                 .then(function(response) {
                     console.log(response);
                     swal(nameProduct, "fue agregado a tu carrito de compras !", "success");
-										refresh();
-										function refresh() {
-												myVar = setTimeout(function(){
-														location.reload();
-												}, 2000);
-										}
+										$.ajax({
+                                        url: "http://shopping.test/products/",
+                                        data: { 
+                                        },
+                                        type: "GET",
+                                        dataType: "html",
+                                        success: function (data) {
+                                            var result = $('<div />').append(data).find('#cartWish').html();
+																						$('#cartWish').html(result);
+																						var result2 = $('<div />').append(data).find('#panel-cart').html();
+                            								$('#panel-cart').html(result2);
+                                        }});
                     
                 })
                 .catch(function(error) {
@@ -564,8 +625,19 @@ $(document).ready(function() {
                     var errorMessages = document.querySelectorAll(
                         ".text-validate"
                     );
+                    // errorMessages.forEach(function(element) {
+                    //     return (element.textContent = "");
+                    // });
                     alert(firstErrorMessage);
                 });
+
+            // $.ajax({
+            // 		url: 'cart/'+ id + '/edit',
+            // 		data: datos,
+            // }).done(function(item){
+            // 	console.log('Item added');
+
+            // });
         });
 		});
 		<?php } ?>	
@@ -583,17 +655,26 @@ $(document).ready(function() {
 			$(this).on("click", function() {
 					let id = $(this).data("id");
 					var datos = $("#" + id).serialize();
+					console.log(datos);
 					axios.get("/wishlist/" + id + "/edit?" + datos)
                 .then(function(response) {
 										swal(nameProduct, "fue agregado a tu lista de deseos !", "success");
 										$(".js-addwish-detail<?php echo $i;?>").addClass("js-addedwish-detail");
 										$(".js-addwish-detail<?php echo $i;?>").off("click");
-										refresh();
-										function refresh() {
-												myVar = setTimeout(function(){
-														location.reload();
-												}, 2000);
-										}									
+
+										$.ajax({
+                                        url: "http://shopping.test/products/",
+                                        data: { 
+                                        },
+                                        type: "GET",
+                                        dataType: "html",
+                                        success: function (data) {
+                                            var result = $('<div />').append(data).find('#cartWish').html();
+																						$('#cartWish').html(result);
+																						var result2 = $('<div />').append(data).find('#panel-cart').html();
+                            								$('#panel-cart').html(result2);
+																				}});
+																				
                 })
                 .catch(function(error) {
                     var errors = error.response.data.errors;
@@ -627,6 +708,12 @@ $(document).ready(function() {
 	});
 
 	});
+
+
+// esta funcion debe ir fuera del document ready para que muestre el panel cart
+	function carrito() {
+    $('.js-panel-cart').addClass('show-header-cart');
+	}
 
 </script>
 

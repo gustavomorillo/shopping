@@ -67,7 +67,7 @@
                         </div>
                       </div>
                     </td>
-                  <td class="column-5"><input type="text" value="Bs. {{number_format($cartItemw->subtotal, 0, ',', '.')}}" id="subtotalw<?php echo $count;?>" style="text-align:right;" ></td>
+                  <td class="column-5"><input type="text" class="mtext-104 cl3 txt-center num-product2" value="Bs. {{number_format($cartItemw->subtotal, 0, ',', '.')}}" id="subtotalw<?php echo $count;?>" style="text-align:right;" ></td>
                   </tr>
                   <?php $count++; ?>
                   @endforeach

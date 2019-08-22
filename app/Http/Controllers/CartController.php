@@ -42,9 +42,50 @@ class CartController extends Controller
     {
         // subtotal item, subtotal of all and total amount of shopping cart
         // is returned to footer.blade.php in ajax where is displayed in shopping-cart.blade.php 
-
         $qty = $request->newqty;
         $rowId = $request->rowId;
+        if ($qty == 0 ){
+            Cart::remove($rowId);
+
+            $mrwPriceBs = ShippingMethod::where('name', 'MRW')->first();
+        $mrwPriceBs = $mrwPriceBs->price;
+        $cartItems = Cart::content();
+        $total = Cart::total(0,',','');
+        $total = $total + $mrwPriceBs;
+         
+        $total = number_format($total, 0, ',', '.');
+
+
+
+        $dollarPrice = Dolar::find(1);
+        $dollarPrice = $dollarPrice->price;
+        $totalDollar = Cart::total(0);
+        $mrwPrice = ShippingMethod::where('name', 'MRW')->first();
+        $mrwPrice = $mrwPrice->price;
+        $mrwPrice = $mrwPrice/$dollarPrice;
+
+
+        $totalDollar = str_replace(",", "", $totalDollar);
+        $totalDollar = ($totalDollar/$dollarPrice)+$mrwPrice;
+        $totalDollar = number_format($totalDollar, 2, '.', ',');
+
+
+
+        // $oneItem= Cart::get($rowId);
+        $subtotalOneItem = 0;
+        $subtotal = Cart::subtotal(0,',','.');
+
+        $updateData = [$subtotalOneItem, $subtotal , $total, $totalDollar];
+
+
+
+
+        return response()->json($updateData);
+            
+        }
+
+        
+        
         Cart::update($rowId, $qty);
 
         $mrwPriceBs = ShippingMethod::where('name', 'MRW')->first();
@@ -180,7 +221,7 @@ class CartController extends Controller
       
             // this function is for update a specific item in shopping cart ,
             // this function is called in footer.blade.php and executed in shopping-cart.blade.php
-
+        
             $qty = $request->newqty;
             $proId = $request->proId;
             $rowId = $request->rowId;

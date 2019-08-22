@@ -301,14 +301,14 @@
 													<i class="fs-16 zmdi zmdi-minus"></i>
 												</div>
 	
-												<input class="mtext-104 cl3 txt-center num-product" type="number"  value="{{$cartItem->qty}}" id="up<?php echo $count;?>">
+												<input class="mtext-104 cl3 txt-center num-product" type="number" min="1"  value="{{$cartItem->qty}}" id="up<?php echo $count;?>">
 	
 												<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" id="upCart<?php echo $count;?>">
 													<i class="fs-16 zmdi zmdi-plus"></i>
 												</div>
 											</div>
 										</td>
-										<td class="column-5"><input class="mtext-104 cl3 txt-center num-product2" type="text" value="Bs. {{number_format($cartItem->subtotal, 0, ',', '.')}}" id="subtotal<?php echo $count;?>" style="text-align:right;" ></td>
+										<td class="column-5"><input class="mtext-104 cl3 txt-center num-product2" type="text" value="Bs. {{number_format($cartItem->subtotal, 0, ',', '.')}}" id="subtotal<?php echo $count;?>" style="text-align:right;" /></td>
 									</tr>
 									<?php $count++; ?>
 									@endforeach
@@ -361,8 +361,8 @@
 								</div>
 							</div>
 
-							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-								Update Cart
+							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 update-cart" onClick="window.location.reload(true)">
+								Actualizar Carrito
 							</div>
 						</div>
 					</div>
