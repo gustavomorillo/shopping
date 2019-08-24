@@ -67,6 +67,10 @@
         <label class="form-check-label" for="s">Talla S</label>
       </div>
       @endif
+      <div class="form-group">
+       
+        <input type="text" class="form-control" id="sqty"  name="sqty"  value="{{$product->sqty}}" />
+    </div>
 
       @if($product->m == 1)
       <div class="form-check form-check-inline">
@@ -79,6 +83,9 @@
         <label class="form-check-label" for="m">Talla M</label>
       </div>
       @endif
+      <div class="form-group">
+      <input type="text" class="form-control" id="mqty"  name="mqty"  value="{{$product->mqty}}" />
+    </div>
 
       @if($product->l == 1)
       <div class="form-check form-check-inline">
@@ -91,6 +98,9 @@
         <label class="form-check-label" for="l">Talla L</label>
       </div>
       @endif
+      <div class="form-group">
+      <input type="text" class="form-control" id="lqty" name="lqty"  value="{{$product->lqty}}" />
+    </div>
 
       <div class="form-group">
         <label for="price">Color</label>

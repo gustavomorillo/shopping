@@ -72,9 +72,9 @@
               <td >{{$product->name}}</td>
               <td>{{$product->description}}</td>
               <td>{{$product->price}}</td>
-              <td>{{$product->s}}</td>
-              <td>{{$product->m}}</td>
-              <td>{{$product->l}}</td>
+              <td>{{$product->sqty}}</td>
+              <td>{{$product->mqty}}</td>
+              <td>{{$product->lqty}}</td>
               <td>{{$product->color}}</td>
               <td>{{$product->modal_name}}</td>
               <td>{{$product->modal->name}}</td>

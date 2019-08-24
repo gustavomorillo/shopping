@@ -110,7 +110,7 @@ class WishListController extends Controller
 
 
 
-        Cart::instance('wishlist')->add($id, $product['name'], $product['qty'], $price, $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']]);
+        Cart::instance('wishlist')->add($id, $product['name'], $product['qty'], $price, $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']])->associate('App\Product');;
     }
 
     /**
@@ -159,7 +159,7 @@ class WishListController extends Controller
             $color = $cartItem->options->color;
             $image = $cartItem->options->image;
 
-            Cart::instance('default')->add($id, $name, $qty, $price, $weight,['size'=>$size, 'color' => $color, 'image'=>$image]);
+            Cart::instance('default')->add($id, $name, $qty, $price, $weight,['size'=>$size, 'color' => $color, 'image'=>$image])->associate('App\Product');
 
             Cart::instance('wishlist')->destroy();
 

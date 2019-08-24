@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 class AdminProductsController extends Controller
 {
     public function index(){
-        $products = Product::paginate(3);
+        $products = Product::paginate(10);
         return view('admin.displayProducts', compact('products'));
     }
 
@@ -94,6 +94,9 @@ class AdminProductsController extends Controller
          $input['modal_name'] = 'js-show-modal'. $lastId;
          $input['category'] = $request->category;
          $input['subcategory'] = $request->subcategory;
+         $input['sqty'] = $request->sqty;
+         $input['mqty'] = $request->mqty;
+         $input['lqty'] = $request->lqty;
          
 
         if($request->s){
@@ -214,7 +217,9 @@ class AdminProductsController extends Controller
             $input['modal_name'] = $request->modal_name;
             $input['category'] = $request->category;
             $input['subcategory'] = $request->subcategory;
-            
+            $input['sqty'] = $request->sqty;
+            $input['mqty'] = $request->mqty;
+            $input['lqty'] = $request->lqty;
 
             if($request->s == null) {
                 $input['s'] = 0;

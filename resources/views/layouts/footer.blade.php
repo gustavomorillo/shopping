@@ -543,31 +543,31 @@ $(document).ready(function() {
             e.preventDefault();
             let id = $(this).data("id");
             var datos = $("#"+ id).serialize();
-            axios
-                .get("/cart/" + id + "/edit?" + datos)
-                .then(function(response) {
-                    console.log(response);
-                    swal(nameProduct, "fue agregado a tu carrito de compras !", "success");
-										refresh();
+
+
+						$.ajax({
+            		url: 'cart/'+ id + '/edit',
+            		data: datos,
+            }).done(function(item){
+							swal(nameProduct, "fue agregado a tu carrito de compras !", "success");
+							refresh();
 										function refresh() {
 												myVar = setTimeout(function(){
 														location.reload();
 												}, 2000);
-										}
-                    
-                })
-                .catch(function(error) {
-                    var errors = error.response.data.errors;
-                    var firstItem = Object.keys(errors)[0];
-                    var firstItemDom = $("#" + firstItem);
-                    var firstErrorMessage = errors[firstItem][0];
-                    var errorMessages = document.querySelectorAll(
-                        ".text-validate"
-                    );
-                    alert(firstErrorMessage);
-                });
+										}	
+            })
+						.fail(function() {
+    				alert( "Debe seleccionar una talla y un color" );
+  						});
+
+
+
+
+							
+					});
         });
-		});
+		
 		<?php } ?>	
 
 
@@ -583,9 +583,11 @@ $(document).ready(function() {
 			$(this).on("click", function() {
 					let id = $(this).data("id");
 					var datos = $("#" + id).serialize();
-					axios.get("/wishlist/" + id + "/edit?" + datos)
-                .then(function(response) {
-										swal(nameProduct, "fue agregado a tu lista de deseos !", "success");
+					$.ajax({
+            		url: '/wishlist/'+ id + '/edit?' + datos,
+            		data: datos,
+            }).done(function(item){
+							swal(nameProduct, "fue agregado a tu lista de deseos !", "success");
 										$(".js-addwish-detail<?php echo $i;?>").addClass("js-addedwish-detail");
 										$(".js-addwish-detail<?php echo $i;?>").off("click");
 										refresh();
@@ -595,14 +597,9 @@ $(document).ready(function() {
 												}, 2000);
 										}									
                 })
-                .catch(function(error) {
-                    var errors = error.response.data.errors;
-                    var firstItem = Object.keys(errors)[0];
-                    var firstErrorMessage = errors[firstItem][0];
-                    alert(firstErrorMessage);
-								});
-								
-
+						.fail(function() {
+    				alert( "Debe seleccionar una talla y un color" );
+  						});
 			});
 	});
 

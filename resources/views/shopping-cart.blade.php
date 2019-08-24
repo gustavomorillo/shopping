@@ -262,6 +262,9 @@
 	</div>
 		
 
+	
+
+
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85" action="{{route('shippingProducts')}}">
 		<div class="container">
@@ -293,7 +296,8 @@
 											</div>
 											<a href="#" id="deleteButton<?php echo $count;?>" class="deleteBtn">Eliminar</a>
 										</td>
-										<td class="column-2">{{$cartItem->name}}&nbsp; talla: &nbsp;{{$cartItem->options->size}} <br>color: {{$cartItem->options->color}}</td>
+										<td class="column-2">{{$cartItem->name}}&nbsp; talla: &nbsp;{{$cartItem->options->size}} <br>color: {{$cartItem->options->color}}<div class="disponibilidad">Disponibilidad: <br>
+											Talla S: {{$cartItem->model->sqty}} Talla M: {{$cartItem->model->mqty}} Talla L:{{$cartItem->model->lqty}}</div></td>
 										<td class="column-3">Bs. {{number_format($cartItem->price, 0, ',', '.')}}</td>
 										<td class="column-4">
 											<div class="wrap-num-product flex-w m-l-auto m-r-0">

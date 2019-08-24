@@ -48,8 +48,8 @@ Route::resource('/admin', 'Admin\AdminProductsController')->middleware('restrict
 
 Route::get('search', 'ProductsController@search')->name('search-product');
 
-
-// Route::post('address', 'AccountController@address')->middleware('auth'); nose de que es
+//
+Route::post('address', 'AccountController@address')->middleware('auth');//retrieve address for address book shipping page
 Route::get('editAccount', 'AccountController@index')->name("editAccount")->middleware('auth');
 Route::post('editAccount', 'AccountController@update')->name("updateAccount")->middleware('auth');
 

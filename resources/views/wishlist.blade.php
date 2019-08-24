@@ -52,7 +52,8 @@
                       </div>
                       &nbsp;<a href="#" id="deleteButtonw<?php echo $count;?>" class="deleteBtn">Eliminar</a>
                    
-                  <td class="column-2">{{$cartItemw->name}}&nbsp; talla: &nbsp;{{$cartItemw->options->size}} &nbsp;color: {{$cartItemw->options->color}}</td>
+                  <td class="column-2">{{$cartItemw->name}}&nbsp; talla: &nbsp;{{$cartItemw->options->size}} &nbsp;color: {{$cartItemw->options->color}}<div class="disponibilidad">Disponibilidad: <br>
+                    Talla S: {{$cartItemw->model->sqty}} Talla M: {{$cartItemw->model->mqty}} Talla L:{{$cartItemw->model->lqty}}</div></td>
                     <td class="column-3">Bs. {{number_format($cartItemw->price, 0, ',', '.')}}</td>
                     <td class="column-4">
                       <div class="wrap-num-product flex-w m-l-auto m-r-0">

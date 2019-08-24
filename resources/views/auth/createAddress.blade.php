@@ -60,13 +60,16 @@
 
       <div class="form-group" >
           <label for="state" class="stext-110 cl2">Estado* </label>
-          <input type="text" class="form-control @error('state') is-invalid @enderror" id="state" placeholder="" name="state" value="{{ old('state') }}" autocomplete="state" autofocus>
-          @error('state')
+          <select name="state" id="state" class="form-control @error('state') is-invalid @enderror">
+              <option value="">Seleccione estado</option>
+        <option value="Amazonas">Amazonas</option><option value="Anzoátegui">Anzoátegui</option><option value="Apure">Apure</option><option value="Aragua">Aragua</option><option value="Barinas">Barinas</option><option value="Bolívar">Bolívar</option><option value="Carabobo">Carabobo</option><option value="Cojedes">Cojedes</option><option value="Delta Amacuro">Delta Amacuro</option><option value="Distrito Capital" >Distrito Capital</option><option value="Falcón">Falcón</option><option value="Guárico">Guárico</option><option value="Guaira">La Guaira</option><option value="Lara">Lara</option><option value="Mérida">Mérida</option><option value="Miranda">Miranda</option><option value="Monagas">Monagas</option><option value="Nueva Esparta">Nueva Esparta</option><option value="Portuguesa">Portuguesa</option><option value="Sucre">Sucre</option><option value="Táchira">Táchira</option><option value="Trujillo">Trujillo</option><option value="Yaracuy">Yaracuy</option><option value="Zulia">Zulia</option></select>
+        @error('state')
       <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
       </span>
       @enderror
         </div>
+
 
         <div class="form-group" >
             <label for="phone" class="stext-110 cl2">Teléfono* </label>

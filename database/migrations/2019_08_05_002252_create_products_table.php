@@ -22,8 +22,11 @@ class CreateProductsTable extends Migration
             $table->string('category');
             $table->string('subcategory');
             $table->boolean('s')->default(0);
+            $table->integer('sqty');
             $table->boolean('m')->default(0);
+            $table->integer('mqty');
             $table->boolean('l')->default(0);
+            $table->integer('lqty');
             $table->string('color')->nullable();
             $table->string('modal_name');
             $table->timestamps();

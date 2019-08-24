@@ -61,15 +61,31 @@
         <input class="form-check-input" type="checkbox" id="s" value="1" name="s">
         <label class="form-check-label" for="s">Talla S</label>
       </div>
+
+      <div class="form-group">
+       
+        <input type="text" class="form-control" id="sqty" value="{{ old('sqty') }}" name="sqty" placeholder="cantidad" required value="" />
+    </div>
+
+
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="m" value="1" name="m">
         <label class="form-check-label" for="m">Talla M</label>
+      </div>
+      <div class="form-group">
+  
+        <input type="text" class="form-control" id="mqty" value="{{ old('mqty') }}" name="mqty" placeholder="cantidad" required value="" />
       </div>
 
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="l" value="1" name="l">
         <label class="form-check-label" for="l">Talla L</label>
       </div>
+
+      <div class="form-group">
+
+        <input type="text" class="form-control" id="lqty" value="{{ old('lqty') }}" name="lqty" placeholder="cantidad" required value="" />
+    </div>
 
       <div class="form-group">
         <label for="price">Color</label>

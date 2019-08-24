@@ -19,10 +19,10 @@ class CartController extends Controller
     public function index()
     {
        
-        // set tax to value of 0
+        $products = Product::all();
 
         Cart::setGlobalTax(0);
-        //Store products in database base in user id
+        
         $cartItems = Cart::content();
 
         $mrwPrice = ShippingMethod::where('name', 'MRW')->first();
@@ -34,7 +34,7 @@ class CartController extends Controller
 
         
         
-        return view('shopping-cart', compact('cartItems', 'mrwPrice','dollarPrice'));
+        return view('shopping-cart', compact('cartItems', 'mrwPrice','dollarPrice','products'));
     }
 
 
@@ -193,9 +193,11 @@ class CartController extends Controller
         
 
 
-        Cart::add($id, $product['name'], $product['qty'], $price, 
+        $cartItem = Cart::add($id, $product['name'], $product['qty'], $price, 
         $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 
-        'image'=>$product['image']]);
+        'image'=>$product['image']])->associate('App\Product');
+
+        
 
 
         //return response()->json($product['name']);
