@@ -66,7 +66,7 @@ class ProductsController extends Controller
         $dollarPrice = Dolar::where('name', 'dollarBuy')->first();
         $dollarPrice = $dollarPrice->price;
 
-        $addresses = Address::where('user_id', 1)->get();
+        $addresses = Address::where('user_id', $user_id)->get();
 
 
         return view('shipping', compact('cartItems', 'addresses','mrwPrice','dollarPrice'));
