@@ -63,6 +63,9 @@ Route::resource('/addresses', 'AddressController')->middleware('auth');
 
 
 Route::get('product/shippingProducts/', 'ProductsController@shippingProducts')->name('shippingProducts')->middleware('auth');
+Route::post('discount/', 'ProductsController@discount')->name('discount')->middleware('auth');
+
+
 Route::post('/newlogout','LogoutController@newLogout')->name('newLogout');
 Auth::routes();
 

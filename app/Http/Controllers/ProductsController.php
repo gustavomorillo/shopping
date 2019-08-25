@@ -73,6 +73,44 @@ class ProductsController extends Controller
         
     }
 
+    public function discount(Request $request) {
+
+    
+
+        $couponCode = $request->coupon;
+
+
+        if($couponCode == 'gusclick50'){
+
+        Cart::setGlobalDiscount(50);
+
+        $user_id = Auth::user()->id;
+    
+        $cartItems = Cart::content();
+
+        $mrwPrice = ShippingMethod::where('name', 'MRW')->first();
+        $mrwPrice = $mrwPrice->price;
+
+        $dollarPrice = Dolar::where('name', 'dollarBuy')->first();
+        $dollarPrice = $dollarPrice->price;
+
+        $addresses = Address::where('user_id', $user_id)->get();
+        
+        Session::flash('coupon', 'Cupón del 50% aplicado correctamente');
+
+        return view('shipping', compact('cartItems', 'addresses','mrwPrice','dollarPrice'));
+
+        } else {
+
+            return redirect('/cart');
+        }
+
+        
+
+        
+        
+    }
+
 
 
     public function createOrder(Request $request) {

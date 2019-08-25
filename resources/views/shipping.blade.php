@@ -28,6 +28,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-xl-7 m-lr-auto m-b-50">
+					
+
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>

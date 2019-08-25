@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 
 
-                                <select class="custom-select col-md-6 col-form-label text-md-right stext-110 cl2 @error('bank') is-invalid @enderror" id="bank" name="bank" form="payment" value="{{ old('bank') }}">
+                                <select class="custom-select col-md-6 col-form-label text-md-right stext-110 cl2 @error('bank') is-invalid @enderror" id="bank" name="bank" form="payment" >
                                   
 
                                     <option selected value="">Banco</option>

@@ -43,6 +43,7 @@ class PaymentController extends Controller
         $messages = [
             'paymentType.required' => 'Debes introducir el tipo de pago por favor',     
             'paymentMount.required' => 'Debes introducir el monto exacto por favor',  
+            'bank.required' => 'Debes seleccionar un valor', 
             'paymentMount.max' => 'Limite de caracteres excedido',
             'comments.max' => 'Limite de caracteres excedido',
             'paymentNumber.max' => 'Limite de caracteres excedido',
@@ -55,7 +56,8 @@ class PaymentController extends Controller
             'paymentMount' => 'required|max:50',
             'comments' => 'max:300',
             'paymentNumber'=>'max:50',
-            'paymentDate'=>'max:20'
+            'paymentDate'=>'max:20',
+            'bank'=>'required|max:20'
             
             
             
@@ -66,6 +68,8 @@ class PaymentController extends Controller
         $payment = new Payment;
 
         $payment->create($input);
+
+        Cart::destroy();
 
         return redirect('/home')->with('success2','Su pago ha sido registrado satisfactoriamente');
 

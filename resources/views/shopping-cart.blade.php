@@ -266,11 +266,13 @@
 
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85" action="{{route('shippingProducts')}}">
+	
 		<div class="container">
 			<div class="row" id="shoppingRow">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						
+						<form class="bg0 p-t-75 " action="{{route('shippingProducts')}}">
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
@@ -355,26 +357,34 @@
 								</tr> --}}
 							</table>
 						</div>
+					</form>
+						<form action="discount" method="post" id="couponForm">
+							@csrf
+
+
+
 
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 							<div class="flex-w flex-m m-r-20 m-tb-5">
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
 									
-								<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+								<button><div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
 									Apply coupon
-								</div>
+								</div></button>
 							</div>
 
 							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10 update-cart" onClick="window.location.reload(true)">
 								Actualizar Carrito
 							</div>
 						</div>
+
+					</form>
 					</div>
 				</div>
 
 				@include('layouts.shippingMethods')
 			</div>
 		</div>
-	</form>
+	
 		
 	@endsection

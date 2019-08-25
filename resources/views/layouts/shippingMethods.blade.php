@@ -1,6 +1,14 @@
 <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+                     
   <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+      @if (session('coupon'))
+      <div class="alert alert-success" role="alert">
+          {{ session('coupon') }}
+      </div>
+  @endif
+  
     <h4 class="mtext-109 cl2 p-b-30">
+       
       Totales
     </h4>
 
@@ -107,9 +115,9 @@
   
 
       <?php if(!request()->is('product/payment')){
-				echo '<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+				echo '<a href="product/shippingProducts"><button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
       Continuar
-    </button>';
+    </button></a>';
 			} else {  
 
         echo '<a href="/reportPayment"><button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
