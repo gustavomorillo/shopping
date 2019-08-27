@@ -43,5 +43,16 @@ return [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
     ],
+    'facebook' => [
+        'client_id' => env('facebook_CLIENT_ID'),
+        'client_secret' => env('facebook_CLIENT_SECRET'),
+        'redirect' => 'https://shopping.test/login/facebook/callback',
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),         // Your GOOGLE Client ID
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'), // Your GOOGLE Client Secret
+        'redirect' => 'http://gusclick.com/login/google/callback',
+    ],
 
 ];

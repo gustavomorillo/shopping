@@ -38,7 +38,13 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            
+                            <div class="col-md-6 offset-md-4">
 
+                                <div class="g-recaptcha"   data-sitekey="{{env('CAPTCHA_SITE_KEY')}}"></div>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -82,7 +88,7 @@
                                         
                                     <a href="/register">
                                         <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer btn-lg" >
-                                                Crear Cuenta Ahora
+                                                Crear Cuenta
                                             </button></a>
                                 </div>
                                 

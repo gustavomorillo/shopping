@@ -40,9 +40,19 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 <!--===============================================================================================-->
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-
-
 <!--===============================================================================================-->
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+	var _smartsupp = _smartsupp || {};
+	_smartsupp.key = 'e2dcee913d0ba8cb12bb902de5cceb355f034e73';
+	window.smartsupp||(function(d) {
+		var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+		s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+		c.type='text/javascript';c.charset='utf-8';c.async=true;
+		c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+	})(document);
+	</script>
+	  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 <body class="animsition">
