@@ -197,10 +197,9 @@ class CartController extends Controller
         $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 
         'image'=>$product['image']])->associate('App\Product');
 
-        
+        $number_of_items = Cart::instance('default')->count();
 
-
-        //return response()->json($product['name']);
+        return response()->json($number_of_items);
         // $product = Product::find($id);
     
         // $price = (int) str_replace(" Bs","",$product->price);

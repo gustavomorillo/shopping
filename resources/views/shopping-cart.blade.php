@@ -291,7 +291,7 @@
 
 
 
-								<tr class="table_row">
+								<tr class="table_row" id="product-<?php echo $count;?>">
 										<td class="column-1">
 											<div class="how-itemcart1">
 												<img src="{{asset('/images/'. $cartItem->options->image)}}" alt="IMG">

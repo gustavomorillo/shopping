@@ -502,13 +502,14 @@ $(document).ready(function() {
 					var newqty = 0;
 					var rowId = $('#rowId<?php echo $i;?>').val();
 					var proId = $('#proId<?php echo $i;?>').val();
+					$('#product-<?php echo $i;?>').remove();
 									$.ajax({
 															type: 'POST',
 															url: 'cart/'+proId,
 															data: {rowId:rowId,_method: 'DELETE'}
 													}).done(function(item){
-													console.log(item);
-													location.reload();
+														
+													
 													});
 					});
 	<?php } ?>	
@@ -530,8 +531,8 @@ $(document).ready(function() {
 					});
 	<?php } ?>	
 
-	<?php for($i=1;$i<20;$i++){?>
-	$(".js-addcart-detail<?php echo $i;?>").each(function() {
+	
+	$(".js-addcart-detailx").each(function() {
         var nameProduct = $(this)
             .parent()
             .parent()
@@ -549,13 +550,11 @@ $(document).ready(function() {
             		url: 'cart/'+ id + '/edit',
             		data: datos,
             }).done(function(item){
+							$('.js-show-cart').attr('data-notify', item);
+							$('#panel-cart').load(document.URL +  ' #panel-cart');
 							swal(nameProduct, "fue agregado a tu carrito de compras !", "success");
-							refresh();
-										function refresh() {
-												myVar = setTimeout(function(){
-														location.reload();
-												}, 2000);
-										}	
+							
+										
             })
 						.fail(function() {
     				alert( "Debe seleccionar una talla y un color" );
@@ -568,7 +567,7 @@ $(document).ready(function() {
 					});
         });
 		
-		<?php } ?>	
+	
 
 
 		<?php for($i=1;$i<20;$i++){?>

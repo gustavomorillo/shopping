@@ -4,8 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card" >
                 <div class="card-header mtext-109 cl2 p-b-30 py-2">{{ __('Entrar a mi Cuenta') }}</div>
+
+                
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -38,13 +40,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            
-                            <div class="col-md-6 offset-md-4">
-
-                                <div class="g-recaptcha"   data-sitekey="{{env('CAPTCHA_SITE_KEY')}}"></div>
-                            </div>
-                        </div>
+                        
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -70,16 +66,25 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="gus2">
+                        <div class="social-login mt-3">
+                                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Acceder con Facebook</span> </button>
+                                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Acceder con Google+</span> </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-                <div class="card">
+        <div class="col-md-6 col-xl-4 ">
+                <div class="card" id="logreg-forms">
                     <div class="card-header mtext-109 cl2 p-b-30 py-2">{{ __('Nuevos Clientes') }}</div>
     
-                   
+                    <div class="social-login mt-3">
+                            <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Registro con Facebook</span> </button>
+                            <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Registro con Google+</span> </button>
+                        </div>
     
                             <div class="form-group row ">
                                     <p class="stext-111 cl6 p-t-2 px-5 py-3">Crear una cuenta es muy sencillo. Solo llena el formulario y disfruta de los beneficios de ser un cliente registrado.</p>
@@ -90,12 +95,14 @@
                                         <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer btn-lg" >
                                                 Crear Cuenta
                                             </button></a>
-                                </div>
+                                        </div>
                                 
                             </div>
                         
-                    </div>
                 </div>
+        </div>
+
+        
         
 
     </div>
