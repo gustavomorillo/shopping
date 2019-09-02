@@ -87,6 +87,17 @@ class PaymentController extends Controller
         return view('auth.paymentHistory', compact('payments', 'cartItems'));
 
     }
+    public function orderHistory(){
+
+        $user_id = Auth::id();
+
+        $cartItems = Cart::content();
+
+        $orders = Order::all()->where('user_id',$user_id);
+
+        return view('auth.orderHistory', compact('orders', 'cartItems'));
+
+    }
 
 
 }

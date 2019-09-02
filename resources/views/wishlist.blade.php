@@ -45,7 +45,7 @@
                   <input id="rowIdw<?php echo $count;?>" name="rowId" type="hidden" value="{{$cartItemw->rowId}}">
                   <input id="proIdw<?php echo $count;?>" name="proId" type="hidden" value="{{$cartItemw->id}}">
                   
-                  <tr class="table_row">
+                  <tr class="table_row" id="product-<?php echo $count;?>">
                     <td class="column-1">
                       <div class="how-itemcart1">
                         <img src="{{asset('/images/'. $cartItemw->options->image)}}" alt="IMG">

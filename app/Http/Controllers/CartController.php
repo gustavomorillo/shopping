@@ -241,5 +241,10 @@ class CartController extends Controller
 
         $rowId = $request->rowId;
         Cart::remove($rowId);
+
+        $number_of_items = Cart::instance('default')->count();
+
+        return response()->json($number_of_items);
+        
     }
 }

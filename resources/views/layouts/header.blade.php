@@ -214,7 +214,7 @@
 						
 
 
-						<a href="/wishlist" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="{{Cart::instance('wishlist')->count()}}">
+						<a href="/wishlist" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti wishlist-icon" data-notify="{{Cart::instance('wishlist')->count()}}">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						
 						</a>

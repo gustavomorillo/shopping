@@ -68,8 +68,8 @@
                         </div>
                         <div class="gus2">
                         <div class="social-login mt-3">
-                                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Acceder con Facebook</span> </button>
-                                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Acceder con Google+</span> </button>
+                                <a href="login/facebook"><button class="btn facebook-btn social-btn" type="button" ><span><i class="fab fa-facebook-f"></i> Acceder con Facebook</span> </button></a>
+                                <a href="login/google"><button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Acceder con Google+</span> </button></a>
                             </div>
                         </div>
                     </form>
@@ -82,8 +82,8 @@
                     <div class="card-header mtext-109 cl2 p-b-30 py-2">{{ __('Nuevos Clientes') }}</div>
     
                     <div class="social-login mt-3">
-                            <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Registro con Facebook</span> </button>
-                            <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Registro con Google+</span> </button>
+                        <a href="login/facebook"> <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Registro con Facebook</span> </button></a>
+                            <a href="login/google"><button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Registro con Google+</span> </button></a>
                         </div>
     
                             <div class="form-group row ">

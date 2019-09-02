@@ -111,7 +111,15 @@ class WishListController extends Controller
 
 
         Cart::instance('wishlist')->add($id, $product['name'], $product['qty'], $price, $product['weight'],['size'=>$product['size'], 'color' => $product['color'], 'image'=>$product['image']])->associate('App\Product');;
+    
+        $number_of_items = Cart::instance('wishlist')->count();
+
+        return response()->json($number_of_items);
+    
+    
     }
+
+    
 
     /**
      * Update the specified resource in storage.
@@ -139,6 +147,10 @@ class WishListController extends Controller
         Cart::instance('wishlist');
         $rowId = $request->rowId;
         Cart::remove($rowId);
+
+        $number_of_items = Cart::instance('wishlist')->count();
+
+        return response()->json($number_of_items);
     }
 
     

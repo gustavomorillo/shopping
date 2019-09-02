@@ -57,6 +57,7 @@ Route::post('editAccount', 'AccountController@update')->name("updateAccount")->m
 Route::get('reportPayment', 'PaymentController@reportPayment')->name("reportPayment")->middleware('auth');
 Route::post('processPayment', 'PaymentController@processPayment')->name("processPayment")->middleware('auth');
 Route::get('paymentHistory', 'PaymentController@paymentHistory')->name("paymentHistory")->middleware('auth');
+Route::get('orderHistory', 'PaymentController@orderHistory')->name("orderHistory")->middleware('auth');
 
 
 Route::resource('/addresses', 'AddressController')->middleware('auth');

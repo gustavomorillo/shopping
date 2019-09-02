@@ -49,7 +49,7 @@
 
       <div class="form-group">
           <label for="price">Price</label>
-          <input type="text" class="form-control" id="price" name="price" placeholder="" value="{{$product->price}}" />
+          <input type="text" class="form-control" id="price" name="price" placeholder="precio en dolares" />
       </div>
 
 
@@ -140,18 +140,18 @@
         </div>
 
       <div class="form-group">
-          <label for="modal_name">modal_name</label>
-          <input type="text" class="form-control" id="modal_name" name="modal_name" placeholder="" value="{{$product->modal_name}}" />
+          {{-- <label for="modal_name">modal_name</label> --}}
+          <input type="hidden" class="form-control" id="modal_name" name="modal_name" placeholder="" value="{{$product->modal_name}}" />
       </div>
 
       <div class="form-group">
-          <label for="modal_name2">modal name2</label>
-          <input type="text" class="form-control" id="modal_name2" name="modal_name2" placeholder="" value="{{$product->modal->name}}" />
+          {{-- <label for="modal_name2">modal name2</label> --}}
+          <input type="hidden" class="form-control" id="modal_name2" name="modal_name2" placeholder="" value="{{$product->modal->name}}" />
       </div>
 
       <div class="form-group">
-          <label for="second_name">Modal second_name</label>
-          <input type="text" class="form-control" id="second_name" name="second_name" placeholder="" value="{{$product->modal->second_name}}" />
+          {{-- <label for="second_name">Modal second_name</label> --}}
+          <input type="hidden" class="form-control" id="second_name" name="second_name" placeholder="" value="{{$product->modal->second_name}}" />
       </div>
 
       <div class="form-group">

@@ -50,12 +50,12 @@
               <th>talla M</th>
               <th>talla L</th>
               <th>color</th>
-              <th>Modal name</th>
+              {{-- <th>Modal name</th>
               <th>Modal </th>
-              <th>Modal second_name</th>
-              <th>image1</th>
+              <th>Modal second_name</th> --}}
+              {{-- <th>image1</th>
               <th>image2</th>
-              <th>image3</th>
+              <th>image3</th> --}}
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -76,12 +76,12 @@
               <td>{{$product->mqty}}</td>
               <td>{{$product->lqty}}</td>
               <td>{{$product->color}}</td>
-              <td>{{$product->modal_name}}</td>
+              {{-- <td>{{$product->modal_name}}</td>
               <td>{{$product->modal->name}}</td>
-              <td>{{$product->modal->second_name}}</td>
-              <td>{{$product->modal->image1}}</td>
+              <td>{{$product->modal->second_name}}</td> --}}
+              {{-- <td>{{$product->modal->image1}}</td>
               <td>{{$product->modal->image2}}</td>
-              <td>{{$product->modal->image3}}</td>
+              <td>{{$product->modal->image3}}</td> --}}
             <td><a href="{{ route('admin.edit', ['id' => $product->id]) }}"><button class="btn btn-info">Edit</button></a></td>
             <td>
 
@@ -110,7 +110,7 @@
 
       </div>
 
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+      {{-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> --}}
 
     </main>
   </div>

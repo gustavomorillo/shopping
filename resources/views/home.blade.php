@@ -65,7 +65,7 @@
                     <hr>
                     
                     
-                    <a href="">
+                    <a href="{{route('orderHistory')}}">
                     <div class="py-3">
                     <h4 class="mtext-109 cl2 p-b-17 "><i class="far fa-calendar-check font35"></i>&nbsp;&nbsp;&nbsp;Historial de órdenes </h4>
                     <span class="stext-110 cl2 " >Revisa el estatus de tus órdenes ó visualiza tus ordenes pasadas</span><br>

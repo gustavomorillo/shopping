@@ -386,14 +386,14 @@ $(document).ready(function() {
 					var newqty = $('#up<?php echo $i;?>').val();
 					var rowId = $('#rowId<?php echo $i;?>').val();
 					var proId = $('#proId<?php echo $i;?>').val();
-					if (newqty == 0) {
-							refresh();
-					}
-					function refresh() {
-							myVar = setTimeout(function(){
-									location.reload();
-							}, 1000);
-					}
+					// if (newqty == 0) {
+					// 		refresh();
+					// }
+					// function refresh() {
+					// 		myVar = setTimeout(function(){
+					// 				location.reload();
+					// 		}, 1000);
+					// }
 									
 											$.ajax({
 													type: 'get',
@@ -468,15 +468,6 @@ $(document).ready(function() {
 			var newqty = $('#upw<?php echo $i;?>').val();
 			var rowId = $('#rowIdw<?php echo $i;?>').val();
 			var proId = $('#proIdw<?php echo $i;?>').val();
-			if (newqty == 0) {
-					refresh();
-			}
-
-			function refresh() {
-					myVar = setTimeout(function(){
-							location.reload();
-					}, 1000);
-			}
 							
 						
 									$.ajax({
@@ -508,7 +499,8 @@ $(document).ready(function() {
 															url: 'cart/'+proId,
 															data: {rowId:rowId,_method: 'DELETE'}
 													}).done(function(item){
-														
+														$('.js-show-cart').attr('data-notify', item);
+														$('#panel-cart').load(document.URL +  ' #panel-cart');
 													
 													});
 					});
@@ -519,14 +511,14 @@ $(document).ready(function() {
 					var newqty = 0;
 					var rowId = $('#rowIdw<?php echo $i;?>').val();
 					var proId = $('#proIdw<?php echo $i;?>').val();
-					console.log(rowId);
+					$('#product-<?php echo $i;?>').remove();
 									$.ajax({
 															type: 'POST',
 															url: 'wishlist/'+proId,
 															data: {rowId:rowId,_method: 'DELETE'}
 													}).done(function(item){
-													console.log(item);
-													location.reload();
+														$('.wishlist-icon').attr('data-notify', item);
+													
 													});
 					});
 	<?php } ?>	
@@ -562,16 +554,13 @@ $(document).ready(function() {
 
 
 
-
+							
 							
 					});
         });
 		
 	
-
-
-		<?php for($i=1;$i<20;$i++){?>
-		$(".js-addwish-detail<?php echo $i;?>").each(function() {
+		$(".js-addwish-detailx").each(function() {
 			var nameProduct = $(this)
 					.parent()
 					.parent()
@@ -587,14 +576,10 @@ $(document).ready(function() {
             		data: datos,
             }).done(function(item){
 							swal(nameProduct, "fue agregado a tu lista de deseos !", "success");
+										$('.wishlist-icon').attr('data-notify', item);
 										$(".js-addwish-detail<?php echo $i;?>").addClass("js-addedwish-detail");
 										$(".js-addwish-detail<?php echo $i;?>").off("click");
-										refresh();
-										function refresh() {
-												myVar = setTimeout(function(){
-														location.reload();
-												}, 2000);
-										}									
+																
                 })
 						.fail(function() {
     				alert( "Debe seleccionar una talla y un color" );
@@ -602,7 +587,7 @@ $(document).ready(function() {
 			});
 	});
 
-	<?php } ?>	
+
 
 	<?php for($i=1;$i<20;$i++){?>
 
