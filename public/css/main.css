@@ -3413,7 +3413,7 @@ position: relative;
   }
   
   #logreg-forms  .social-login{
-      width:200px;
+      width:400px;
       margin:0 auto;
       margin-bottom: 10px;
   }
@@ -3421,7 +3421,7 @@ position: relative;
       font-size: 1.3rem;
       font-weight: 100;
       color:white;
-      width:200px;
+      width:400px;
       height: 56px;
       
   }
